@@ -3,3 +3,6 @@ C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_Programming\Zombie_Exercise\Zom
 C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_Programming\Zombie_Exercise\Zombie_Exercise\bin\Debug\Zombie_Exercise.pdb
 C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_Programming\Zombie_Exercise\Zombie_Exercise\obj\Debug\Zombie_Exercise.exe
 C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_Programming\Zombie_Exercise\Zombie_Exercise\obj\Debug\Zombie_Exercise.pdb
+C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_CSharp\Zombie_Exercise\Zombie_Exercise\bin\Debug\Zombie_Exercise.exe.config
+C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_CSharp\Zombie_Exercise\Zombie_Exercise\obj\Debug\Zombie_Exercise.exe
+C:\Users\jeremy.barzas\Documents\GitHub\Intro_to_CSharp\Zombie_Exercise\Zombie_Exercise\obj\Debug\Zombie_Exercise.pdb
