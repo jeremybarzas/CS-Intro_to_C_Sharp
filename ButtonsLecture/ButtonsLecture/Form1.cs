@@ -12,12 +12,34 @@ namespace ButtonsLecture
 {
     public partial class Form1 : Form
     {
-        public Player player = new Player("Bob");
+        public delegate void DoStuff(int i);
+
+        public Player player;
+
+        public DoStuff dostuff;
 
         public Form1()
         {
+            player = new Player("Bob");
+            dostuff += UpdateState;
             InitializeComponent();
         }
+
+        public void UpdateState(int i)
+        {
+            player.ExpAdd(i);
+
+            float slice = (float)player.CurExp / (float)player.ReqExp * 100;
+            progressBar1.Value = (int)slice;
+
+            textBox1.Text = player.Name + " is level " + player.Level;
+            textBox2.Text = player.Name + "'s current Exp is " + player.CurExp;
+            textBox3.Text = player.Name + "'s required Exp is " + player.ReqExp;
+            textBox4.Text = "Progress %: " + progressBar1.Value;
+            textBox5.Text = player.Name + "'s total Exp is " + player.TotalExp;
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             textBox1.Text = player.Name + " is level " + player.Level;
@@ -29,51 +51,24 @@ namespace ButtonsLecture
 
         private void progressBar1_Click(object sender, EventArgs e)
         {
-            progressBar1.Maximum = player.ReqExp;
-            progressBar1.Value = 0;
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            player.ExpAdd10();
-
-            float slice = (float)player.CurExp / (float)player.ReqExp * 100;
-            progressBar1.Value = (int)slice;
-
-            textBox1.Text = player.Name + " is level " + player.Level;
-            textBox2.Text = player.Name + "'s current Exp is " + player.CurExp;
-            textBox3.Text = player.Name + "'s required Exp is " + player.ReqExp;
-            textBox4.Text = "Progress %: " + progressBar1.Value;
-            textBox5.Text = player.Name + "'s total Exp is " + player.TotalExp;
+            dostuff.Invoke(10);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            player.ExpAdd50();
-
-            float slice = (float)player.CurExp / (float)player.ReqExp * 100;
-            progressBar1.Value = (int)slice;
-
-            textBox1.Text = player.Name + " is level " + player.Level;
-            textBox2.Text = player.Name + "'s current Exp is " + player.CurExp;
-            textBox3.Text = player.Name + "'s required Exp is " + player.ReqExp;
-            textBox4.Text = "Progress %: " + progressBar1.Value;
-            textBox5.Text = player.Name + "'s total Exp is " + player.TotalExp;
+            dostuff.Invoke(50);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            player.ExpAdd100();
-
-            float slice = (float)player.CurExp / (float)player.ReqExp * 100;
-            progressBar1.Value = (int)slice;
-
-            textBox1.Text = player.Name + " is level " + player.Level;
-            textBox2.Text = player.Name + "'s current Exp is " + player.CurExp;
-            textBox3.Text = player.Name + "'s required Exp is " + player.ReqExp;
-            textBox4.Text = "Progress %: " + progressBar1.Value;
-            textBox5.Text = player.Name + "'s total Exp is " + player.TotalExp;
+            dostuff.Invoke(100);
         }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             
@@ -99,7 +94,7 @@ namespace ButtonsLecture
 
         }
     }
-
+ 
     public class Player
     {
         private string name;
@@ -145,7 +140,7 @@ namespace ButtonsLecture
 
         public Player()
         {
-            Name = "Default Player";
+            name = "Default Player";
             totalExp = 0;
             curExp = 0;
             reqExp = 100;
@@ -154,11 +149,22 @@ namespace ButtonsLecture
 
         public Player(string n)
         {
-            Name = n;
+            name = n;
             totalExp = 0;
             curExp = 0;
             reqExp = 100;
             level = 1;
+        }
+
+        public void ExpAdd(int xp)
+        {
+            totalExp += xp;
+            curExp += xp;
+
+            if (curExp >= reqExp)
+            {
+                LevelUp();
+            }
         }
 
         public void ExpAdd10()
@@ -190,7 +196,6 @@ namespace ButtonsLecture
             
             if (curExp >= reqExp)
             {
-
                 LevelUp();
             }
         }
@@ -200,6 +205,8 @@ namespace ButtonsLecture
             level++;
             curExp = curExp - reqExp;
             reqExp *= 2;
+
+            MessageBox.Show("You Have Leveled Up!!!", "CONGRATULATIONS", MessageBoxButtons.OK);
         }
     }
 }
