@@ -4,79 +4,56 @@ namespace FiniteStateMachinePartyCombat
 {
     class TurnManager
     {
-        private List<Party> m_parties;
-        private Party m_curParty;
-        private Player m_curPlayer;
-        private int m_turnCount;
-        private int m_curPartyID;
-        private int m_curPlayerID;
+        private List<Party> parties;
+        private Party currentParty;
    
         public List<Party> Parties
         {
-            get { return m_parties; }
+            get { return parties; }
         }
 
         public Party CurParty
         {
-            get { return m_curParty; }
+            get { return currentParty; }
         }
 
-        public Player CurPlayer
+        public void NextParty()
         {
-            get { return m_curPlayer; }
+            GetNextParty();
         }
 
-        public int TurnCount
-        {
-            get { return m_turnCount; }
-        }
+        int current = 0;
 
-        public int CurPlayerID
+        public Party GetNextParty()
         {
-            get { return m_curPlayerID; }
-        }
-
-        public void NextTurn()
-        {
-            m_curPlayer.EndTurn();
-
-            if (m_curPartyID == 0 && m_curPlayerID == 2)
+            if (current + 1 > parties.Count - 1)
             {
-                m_curPartyID = 1;
-                m_curPlayerID = 0;
-
-                m_curParty = m_parties[m_curPartyID];
-                m_curPlayer = m_parties[m_curPartyID].Roster[m_curPlayerID];
+                current = 0;
+                currentParty = parties[current];
+                return null;
             }
-
-            if (m_curPartyID == 1 && m_curPlayerID == 2)
-            {
-                m_curPartyID = 0;
-                m_curPlayerID = 0;
-
-                m_curParty = m_parties[m_curPartyID];
-                m_curPlayer = m_parties[m_curPartyID].Roster[m_curPlayerID];
-            }
-            
             else
             {
-                m_curPlayerID++;
-                m_curPlayer = m_parties[m_curPartyID].Roster[m_curPlayerID];
+                current += 1;
+                currentParty = parties[current];
             }
 
-            m_turnCount++;
+            return currentParty;
         }
 
-        public TurnManager(List<Party> p)
+        public void AddParty(Party party)
         {
-            m_parties = p;
-            m_turnCount = 0;
+            if (parties.Count <= 0)
+            {
+                currentParty = party;
+            }
+            parties.Add(party);
+            party.onPartyEndTurn += NextParty;
+        }
 
-            m_curPartyID = 0;
-            m_curPlayerID = 0;
-
-            m_curParty = p[0];
-            m_curPlayer = p[0].Roster[0];
+        public TurnManager()
+        {
+            parties = new List<Party>();
         }
     }
 }
