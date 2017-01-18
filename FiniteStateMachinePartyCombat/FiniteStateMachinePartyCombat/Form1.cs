@@ -57,29 +57,29 @@ namespace FiniteStateMachinePartyCombat
             textBox5.Text = turnManager.Parties[1].Roster[2].Name;
 
             // Current player's turn
-            textBox11.Text = "It is " + turnManager.CurParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + turnManager.CurrrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Buttons
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox11.Text = turnManager.CurParty.CurrentPlayer.Name + " has chosen to attack.";
+            textBox11.Text = turnManager.CurrrentParty.CurrentPlayer.Name + " has chosen to attack.";
 
-            turnManager.CurParty.CurrentPlayer.Attack();
+            turnManager.CurrrentParty.CurrentPlayer.Attack();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox11.Text = turnManager.CurParty.CurrentPlayer.Name + " has chosen to defend.";
+            textBox11.Text = turnManager.CurrrentParty.CurrentPlayer.Name + " has chosen to defend.";
 
-            turnManager.CurParty.CurrentPlayer.Defend();
+            turnManager.CurrrentParty.CurrentPlayer.Defend();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            turnManager.CurParty.CurrentPlayer.EndTurn();
+            turnManager.CurrrentParty.CurrentPlayer.EndTurn();
             
-            textBox11.Text = "It is " + turnManager.CurParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + turnManager.CurrrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Text Boxes 

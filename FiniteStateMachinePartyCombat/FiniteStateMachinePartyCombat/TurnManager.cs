@@ -12,7 +12,7 @@ namespace FiniteStateMachinePartyCombat
             get { return parties; }
         }
 
-        public Party CurParty
+        public Party CurrrentParty
         {
             get { return currentParty; }
         }
