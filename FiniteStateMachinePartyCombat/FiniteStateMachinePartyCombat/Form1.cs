@@ -57,29 +57,29 @@ namespace FiniteStateMachinePartyCombat
             textBox5.Text = turnManager.Parties[1].Roster[2].Name;
 
             // Current player's turn
-            textBox11.Text = "It is " + turnManager.CurrrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + turnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Buttons
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox11.Text = turnManager.CurrrentParty.CurrentPlayer.Name + " has chosen to attack.";
+            textBox11.Text = turnManager.CurrentParty.CurrentPlayer.Name + " has chosen to attack.";
 
-            turnManager.CurrrentParty.CurrentPlayer.Attack();
+            turnManager.CurrentParty.CurrentPlayer.Attack();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox11.Text = turnManager.CurrrentParty.CurrentPlayer.Name + " has chosen to defend.";
+            textBox11.Text = turnManager.CurrentParty.CurrentPlayer.Name + " has chosen to defend.";
 
-            turnManager.CurrrentParty.CurrentPlayer.Defend();
+            turnManager.CurrentParty.CurrentPlayer.Defend();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            turnManager.CurrrentParty.CurrentPlayer.EndTurn();
+            turnManager.CurrentParty.CurrentPlayer.EndTurn();
             
-            textBox11.Text = "It is " + turnManager.CurrrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + turnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Text Boxes 
@@ -126,6 +126,22 @@ namespace FiniteStateMachinePartyCombat
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Player currentPlayer = turnManager.CurrentParty.CurrentPlayer;
+
+            DataManagement<Player>.Serialize("Player", currentPlayer);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Player lastPlayer = DataManagement<Player>.Deserialize("Player");
+
+            turnManager.CurrentParty.CurrentPlayer = lastPlayer;
+
+            textBox11.Text = "It is " + turnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
     }
 }

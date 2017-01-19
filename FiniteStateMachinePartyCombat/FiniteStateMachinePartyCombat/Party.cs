@@ -2,7 +2,7 @@
 
 namespace FiniteStateMachinePartyCombat
 {
-    class Party
+   public class Party
     {
         private List<Player> roster;
         private Player currentPlayer;
@@ -19,6 +19,8 @@ namespace FiniteStateMachinePartyCombat
         public Player CurrentPlayer
         {
             get { return currentPlayer; }
+
+            set { currentPlayer = value; }
         }
 
         public string Name

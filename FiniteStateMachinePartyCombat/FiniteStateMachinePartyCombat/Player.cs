@@ -1,25 +1,32 @@
-﻿namespace FiniteStateMachinePartyCombat
+﻿using System.Xml.Serialization;
+using FiniteStateMachinePartyCombat;
+
+namespace FiniteStateMachinePartyCombat
 {
-    class Player
+    public class Player
     {
         private string m_name;
 
         public delegate void OnPlayerEndTurn();
+
+        [XmlIgnore]
         public OnPlayerEndTurn onPlayerEndTurn;
-        
+
         public string Name
         {
             get { return m_name; }
+
+            set { m_name = value; }
         }
 
         public void Attack()
         {
-            
+
         }
 
         public void Defend()
         {
-            
+
         }
 
         public void EndTurn()

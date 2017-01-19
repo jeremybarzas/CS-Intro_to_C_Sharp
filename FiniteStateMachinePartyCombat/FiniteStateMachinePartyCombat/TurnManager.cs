@@ -2,7 +2,7 @@
 
 namespace FiniteStateMachinePartyCombat
 {
-    class TurnManager
+    public class TurnManager
     {
         private List<Party> parties;
         private Party currentParty;
@@ -12,9 +12,11 @@ namespace FiniteStateMachinePartyCombat
             get { return parties; }
         }
 
-        public Party CurrrentParty
+        public Party CurrentParty
         {
             get { return currentParty; }
+
+            set { currentParty = value; }
         }
 
         public void NextParty()
