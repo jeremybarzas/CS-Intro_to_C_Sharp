@@ -12,7 +12,7 @@ namespace FiniteStateMachinePartyCombat
 {
     public partial class Form1 : Form
     {
-        private TurnManager TurnManager;
+        public TurnManager TurnManager;
        
         public Form1()
         {
@@ -53,30 +53,93 @@ namespace FiniteStateMachinePartyCombat
             // P2 Player 3 text
             textBox5.Text = TurnManager.Parties[1].Roster[2].Name;
 
+            // Turn counter text
+            textBox9.Text = "Turn: " + TurnManager.TurnCount + "    Current Party: " + TurnManager.CurrentParty.Name + "    Current Player: " + TurnManager.CurrentParty.CurrentPlayer.Name;
+            // Current turn info
+            textBox10.Text = "Current Party ID: " + TurnManager.CurrentPartyId + "    Current Player ID: " + TurnManager.CurrentParty.CurrentPlayerId;
             // Current player's turn
-            textBox11.Text = "It is " + TurnManager.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + TurnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Buttons
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox11.Text = TurnManager.CurrentPlayer.Name + " has chosen to attack.";
+            textBox11.Text = TurnManager.CurrentParty.CurrentPlayer.Name + " has chosen to attack.";
 
-            TurnManager.CurrentPlayer.Attack();
+            TurnManager.CurrentParty.CurrentPlayer.Attack();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox11.Text = TurnManager.CurrentPlayer.Name + " has chosen to defend.";
+            textBox11.Text = TurnManager.CurrentParty.CurrentPlayer.Name + " has chosen to defend.";
 
-            TurnManager.CurrentPlayer.Defend();
+            TurnManager.CurrentParty.CurrentPlayer.Defend();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TurnManager.CurrentPlayer.EndTurn();
+            TurnManager.CurrentParty.CurrentPlayer.EndTurn();
+
+            TurnManager.TurnCount++;
+
+            textBox9.Text = "Turn: " + TurnManager.TurnCount + "    Current Party: " + TurnManager.CurrentParty.Name + "    Current Player: " + TurnManager.CurrentParty.CurrentPlayer.Name;
+            textBox10.Text = "Current Party ID: " + TurnManager.CurrentPartyId + "    Current Player ID: " + TurnManager.CurrentParty.CurrentPlayerId;
+            textBox11.Text = "It is " + TurnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
+        }
+        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataManagement<TurnManager>.Serialize("GameState", TurnManager);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TurnManager lastGame = DataManagement<TurnManager>.Deserialize("GameState");
             
-            textBox11.Text = "It is " + TurnManager.CurrentPlayer.Name + "'s turn to perform an action.";
+            Player player1 = new Player(lastGame.Parties[0].Roster[0].Name);
+            Player player2 = new Player(lastGame.Parties[0].Roster[1].Name);
+            Player player3 = new Player(lastGame.Parties[0].Roster[2].Name);
+            Player player4 = new Player(lastGame.Parties[1].Roster[0].Name);
+            Player player5 = new Player(lastGame.Parties[1].Roster[1].Name);
+            Player player6 = new Player(lastGame.Parties[1].Roster[2].Name);
+
+            Party party1 = new Party(lastGame.Parties[0].Name);
+            Party party2 = new Party(lastGame.Parties[1].Name);
+
+            TurnManager.Parties.Clear();
+
+            party1.AddPlayer(player1);
+            party1.AddPlayer(player2);
+            party1.AddPlayer(player3);
+            party2.AddPlayer(player4);
+            party2.AddPlayer(player5);
+            party2.AddPlayer(player6);
+
+            TurnManager.AddParty(party1);
+            TurnManager.AddParty(party2);
+
+            TurnManager.CurrentPartyId = lastGame.CurrentPartyId;
+            TurnManager.CurrentParty = TurnManager.Parties[TurnManager.CurrentPartyId];
+
+            TurnManager.CurrentParty.CurrentPlayerId = lastGame.CurrentParty.CurrentPlayerId;
+            TurnManager.CurrentParty.CurrentPlayer = TurnManager.CurrentParty.Roster[TurnManager.CurrentParty.CurrentPlayerId];           
+
+            TurnManager.TurnCount = lastGame.TurnCount;
+            
+            // Text Update
+            textBox1.Text = TurnManager.Parties[0].Name;
+            textBox2.Text = TurnManager.Parties[0].Roster[0].Name;
+            textBox3.Text = TurnManager.Parties[0].Roster[1].Name;
+            textBox4.Text = TurnManager.Parties[0].Roster[2].Name;
+            
+            textBox8.Text = TurnManager.Parties[1].Name;
+            textBox7.Text = TurnManager.Parties[1].Roster[0].Name;
+            textBox6.Text = TurnManager.Parties[1].Roster[1].Name;
+            textBox5.Text = TurnManager.Parties[1].Roster[2].Name;
+
+            textBox9.Text = "Turn: " + TurnManager.TurnCount + "    Current Party: " + TurnManager.CurrentParty.Name + "    Current Player: " + TurnManager.CurrentParty.CurrentPlayer.Name;
+            textBox10.Text = "Current Party ID: " + TurnManager.CurrentPartyId + "    Current Player ID: " + TurnManager.CurrentParty.CurrentPlayerId;
+            textBox11.Text = "It is " + TurnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Text Boxes 
@@ -120,27 +183,19 @@ namespace FiniteStateMachinePartyCombat
 
         }
 
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            // temporary variable to hold current player state.
-            TurnManager currentPlayer = TurnManager;
-
-            // series
-            DataManagement<TurnManager>.Serialize("Player", currentPlayer);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            TurnManager lastPlayer = DataManagement<TurnManager>.Deserialize("Player");
-
-            TurnManager = lastPlayer;
-
-            textBox11.Text = "It is " + TurnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
     }
 }

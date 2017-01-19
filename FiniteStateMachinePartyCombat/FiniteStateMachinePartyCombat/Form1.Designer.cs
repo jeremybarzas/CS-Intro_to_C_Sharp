@@ -42,6 +42,8 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -148,9 +150,9 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(287, 218);
+            this.textBox11.Location = new System.Drawing.Point(305, 218);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(241, 20);
+            this.textBox11.Size = new System.Drawing.Size(211, 20);
             this.textBox11.TabIndex = 13;
             this.textBox11.Text = "Current game state display";
             this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
@@ -175,11 +177,31 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(265, 192);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(289, 20);
+            this.textBox9.TabIndex = 16;
+            this.textBox9.Text = "Turn Info";
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(305, 166);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(211, 20);
+            this.textBox10.TabIndex = 17;
+            this.textBox10.Text = "Current Turn Info";
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 379);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox11);
@@ -217,6 +239,8 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }
 

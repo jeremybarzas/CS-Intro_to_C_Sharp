@@ -1,5 +1,4 @@
 ﻿using System.Xml.Serialization;
-using FiniteStateMachinePartyCombat;
 
 namespace FiniteStateMachinePartyCombat
 {
@@ -8,7 +7,6 @@ namespace FiniteStateMachinePartyCombat
         private string m_name;
 
         public delegate void OnPlayerEndTurn();
-
         [XmlIgnore]
         public OnPlayerEndTurn onPlayerEndTurn;
 

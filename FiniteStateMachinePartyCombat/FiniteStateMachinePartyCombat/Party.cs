@@ -1,16 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace FiniteStateMachinePartyCombat
 {
    public class Party
     {
+        private string m_name;
         private List<Player> roster;
         private Player currentPlayer;
-        private string m_name;
+        int currentPlayerId = 0;
 
         public delegate void OnPartyEndTurn();
+        [XmlIgnore]
         public OnPartyEndTurn onPartyEndTurn;
-        
+
+        public string Name
+        {
+            get { return m_name; }
+
+            set { m_name = value; }
+        }
+
         public List<Player> Roster
         {
             get { return roster; }
@@ -23,11 +33,13 @@ namespace FiniteStateMachinePartyCombat
             set { currentPlayer = value; }
         }
 
-        public string Name
+        public int CurrentPlayerId
         {
-            get { return m_name; }
+            get { return currentPlayerId; }
+
+            set { currentPlayerId = value; }
         }
-        
+
         public void NextPlayer()
         {
             var nextPlayer = GetNextPlayer();
@@ -37,21 +49,19 @@ namespace FiniteStateMachinePartyCombat
                 onPartyEndTurn.Invoke();
             }               
         }
-
-        int current = 0;
         
         public Player GetNextPlayer()
         {
-            if (current + 1 > roster.Count - 1)
+            if (currentPlayerId + 1 > roster.Count - 1)
             {
-                current = 0;
-                currentPlayer = roster[current];
+                currentPlayerId = 0;
+                currentPlayer = roster[currentPlayerId];
                 return null;
             }
             else
             {                
-                current += 1;
-                currentPlayer = roster[current];
+                currentPlayerId += 1;
+                currentPlayer = roster[currentPlayerId];
             }
 
             return currentPlayer;
@@ -61,9 +71,10 @@ namespace FiniteStateMachinePartyCombat
         {
             if (roster.Count <= 0)
             {
-                currentPlayer = player;                
+                currentPlayer = player;
+                currentPlayerId = 0;
             }
-            
+
             player.onPlayerEndTurn += NextPlayer;
             roster.Add(player);
         }
@@ -73,12 +84,13 @@ namespace FiniteStateMachinePartyCombat
             m_name = "Default Party Name";
 
             roster = new List<Player>();
+        }
 
-            var Player1 = new Player();
-            var Player2 = new Player();
+        public Party(string n)
+        {
+            m_name = n;
 
-            AddPlayer(Player1);
-            AddPlayer(Player2);
+            roster = new List<Player>();
         }
 
         public Party(string n, Player p1, Player p2, Player p3)

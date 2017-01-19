@@ -4,10 +4,18 @@ namespace FiniteStateMachinePartyCombat
 {
     public class TurnManager
     {
+        private int turnCount;
         private List<Party> parties;
         private Party currentParty;
-        private Player currentPlayer;
+        int currentPartyId = 0;
    
+        public int TurnCount
+        {
+            get { return turnCount; }
+
+            set { turnCount = value; }
+        }
+
         public List<Party> Parties
         {
             get { return parties; }
@@ -20,11 +28,11 @@ namespace FiniteStateMachinePartyCombat
             set { currentParty = value; }
         }
 
-        public Player CurrentPlayer
+        public int CurrentPartyId
         {
-            get { return currentPlayer; }
+            get { return currentPartyId; }
 
-            set { currentPlayer = value; }
+            set { currentPartyId = value; }
         }
 
         public void NextParty()
@@ -32,20 +40,18 @@ namespace FiniteStateMachinePartyCombat
             GetNextParty();
         }
 
-        int current = 0;
-
         public Party GetNextParty()
         {
-            if (current + 1 > parties.Count - 1)
+            if (currentPartyId + 1 > parties.Count - 1)
             {
-                current = 0;
-                currentParty = parties[current];
+                currentPartyId = 0;
+                currentParty = parties[currentPartyId];
                 return null;
             }
             else
             {
-                current += 1;
-                currentParty = parties[current];
+                currentPartyId += 1;
+                currentParty = parties[currentPartyId];
             }
 
             return currentParty;
@@ -56,35 +62,28 @@ namespace FiniteStateMachinePartyCombat
             if (parties.Count <= 0)
             {
                 currentParty = party;
+                currentPartyId = 0;
             }
-            parties.Add(party);
+
             party.onPartyEndTurn += NextParty;
+            parties.Add(party);
         }
 
         public TurnManager()
         {
+            turnCount = 1;
+
             parties = new List<Party>();
-
-            var Party1 = new Party();
-            var Party2 = new Party();
-
-            Party1.AddPlayer(new Player());
-            Party2.AddPlayer(new Player());
-            
-            currentParty = parties[0];
-            currentPlayer = currentParty.CurrentPlayer;
         }
-
-        // need to base next player off of the property fo the turn manager class.
+        
         public TurnManager(Party p1, Party p2)
         {
+            turnCount = 1;
+
             parties = new List<Party>();
 
             AddParty(p1);
             AddParty(p2);
-
-            currentParty = parties[0];
-            currentPlayer = currentParty.CurrentPlayer;
         }
     }
 }
