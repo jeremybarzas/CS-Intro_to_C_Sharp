@@ -63,20 +63,33 @@ namespace FiniteStateMachinePartyCombat
             {
                 currentPlayer = player;                
             }
-            roster.Add(player);
+            
             player.onPlayerEndTurn += NextPlayer;
+            roster.Add(player);
         }
 
         public Party()
         {
             m_name = "Default Party Name";
+
             roster = new List<Player>();
+
+            var Player1 = new Player();
+            var Player2 = new Player();
+
+            AddPlayer(Player1);
+            AddPlayer(Player2);
         }
 
-        public Party(string n)
+        public Party(string n, Player p1, Player p2, Player p3)
         {
-            m_name = n;
             roster = new List<Player>();
+
+            m_name = n;
+
+            AddPlayer(p1);
+            AddPlayer(p2);
+            AddPlayer(p3);
         }
     }
 }

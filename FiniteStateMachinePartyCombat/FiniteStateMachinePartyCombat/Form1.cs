@@ -12,7 +12,7 @@ namespace FiniteStateMachinePartyCombat
 {
     public partial class Form1 : Form
     {
-        private TurnManager turnManager;
+        private TurnManager TurnManager;
        
         public Form1()
         {
@@ -22,64 +22,61 @@ namespace FiniteStateMachinePartyCombat
 
         private void InitCombat()
         {
-            var Horde = new Party("Horde");
-            var Alliance = new Party("Alliance");
+            Player p1 = new Player("Orc0");
+            Player p2 = new Player("Orc1");
+            Player p3 = new Player("Orc2");
 
-            Horde.AddPlayer(new Player("Orc0"));
-            Horde.AddPlayer(new Player("Orc1"));
-            Horde.AddPlayer(new Player("Orc2"));
+            Player p4 = new Player("Human0");
+            Player p5 = new Player("Human1");
+            Player p6 = new Player("Human2");
 
-            Alliance.AddPlayer(new Player("Human0"));
-            Alliance.AddPlayer(new Player("Human1"));
-            Alliance.AddPlayer(new Player("Human2"));
-
-            turnManager = new TurnManager();
-
-            turnManager.AddParty(Horde);
-            turnManager.AddParty(Alliance);
+            Party Horde = new Party("Horde", p1, p2, p3);
+            Party Alliance = new Party("Alliance", p4, p5, p6);
+          
+            TurnManager = new TurnManager(Horde, Alliance);
 
             // Party 1 text
-            textBox1.Text = turnManager.Parties[0].Name;
+            textBox1.Text = TurnManager.Parties[0].Name;
             // P1 Player 1 text
-            textBox2.Text = turnManager.Parties[0].Roster[0].Name;
+            textBox2.Text = TurnManager.Parties[0].Roster[0].Name;
             // P1 Player 2 text
-            textBox3.Text = turnManager.Parties[0].Roster[1].Name;
+            textBox3.Text = TurnManager.Parties[0].Roster[1].Name;
             // P1 Player 3 text
-            textBox4.Text = turnManager.Parties[0].Roster[2].Name;
+            textBox4.Text = TurnManager.Parties[0].Roster[2].Name;
 
             // Party 2 text
-            textBox8.Text = turnManager.Parties[1].Name;
+            textBox8.Text = TurnManager.Parties[1].Name;
             // P2 Player 1 text
-            textBox7.Text = turnManager.Parties[1].Roster[0].Name;
+            textBox7.Text = TurnManager.Parties[1].Roster[0].Name;
             // P2 Player 2 text
-            textBox6.Text = turnManager.Parties[1].Roster[1].Name;
+            textBox6.Text = TurnManager.Parties[1].Roster[1].Name;
             // P2 Player 3 text
-            textBox5.Text = turnManager.Parties[1].Roster[2].Name;
+            textBox5.Text = TurnManager.Parties[1].Roster[2].Name;
 
             // Current player's turn
-            textBox11.Text = "It is " + turnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + TurnManager.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Buttons
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox11.Text = turnManager.CurrentParty.CurrentPlayer.Name + " has chosen to attack.";
+            textBox11.Text = TurnManager.CurrentPlayer.Name + " has chosen to attack.";
 
-            turnManager.CurrentParty.CurrentPlayer.Attack();
+            TurnManager.CurrentPlayer.Attack();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox11.Text = turnManager.CurrentParty.CurrentPlayer.Name + " has chosen to defend.";
+            textBox11.Text = TurnManager.CurrentPlayer.Name + " has chosen to defend.";
 
-            turnManager.CurrentParty.CurrentPlayer.Defend();
+            TurnManager.CurrentPlayer.Defend();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            turnManager.CurrentParty.CurrentPlayer.EndTurn();
+            TurnManager.CurrentPlayer.EndTurn();
             
-            textBox11.Text = "It is " + turnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + TurnManager.CurrentPlayer.Name + "'s turn to perform an action.";
         }
 
         // Text Boxes 
@@ -130,18 +127,20 @@ namespace FiniteStateMachinePartyCombat
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Player currentPlayer = turnManager.CurrentParty.CurrentPlayer;
+            // temporary variable to hold current player state.
+            TurnManager currentPlayer = TurnManager;
 
-            DataManagement<Player>.Serialize("Player", currentPlayer);
+            // series
+            DataManagement<TurnManager>.Serialize("Player", currentPlayer);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Player lastPlayer = DataManagement<Player>.Deserialize("Player");
+            TurnManager lastPlayer = DataManagement<TurnManager>.Deserialize("Player");
 
-            turnManager.CurrentParty.CurrentPlayer = lastPlayer;
+            TurnManager = lastPlayer;
 
-            textBox11.Text = "It is " + turnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
+            textBox11.Text = "It is " + TurnManager.CurrentParty.CurrentPlayer.Name + "'s turn to perform an action.";
         }
     }
 }
