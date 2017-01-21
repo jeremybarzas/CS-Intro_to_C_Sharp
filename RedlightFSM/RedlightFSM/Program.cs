@@ -7,41 +7,64 @@ using System.Diagnostics;
 
 namespace RedlightFSM
 {
-    public enum LightState
-    {
-        INIT = 0, RED = 1, GREEN = 2, YELLOW = 3, EXIT = 9000,
-    }
-
     class Program
     {
-        static void Main(string[] args)
+        static void redlight()
         {
-            Transition InitToRed = new Transition(-1, new State(LightState.INIT));
-            Transition RedToGreen = new Transition();
-            Transition GreenToYellow = new Transition();
-            Transition YellowToRed = new Transition();
-
-            Transition RedToExit = new Transition();
-            Transition GreenToExit = new Transition();
-            Transition YellowToExit= new Transition();
-
-            State init = new State(LightState.INIT);
-            State exit = new State(LightState.EXIT);
-            State red = new State(LightState.RED);
-            State green = new State(LightState.GREEN);
-            State yellow = new State(LightState.YELLOW);
-           
-            FSM RedlightFSM = new FSM(init);
-
             Stopwatch timer = new Stopwatch();
-            timer.Start();
+
+            RedlightFSM redlightFSM = new RedlightFSM(timer);
+
+            redlightFSM.Start();
 
             while (true)
             {
-                Console.WriteLine(timer.Elapsed.Seconds);
-                Console.ReadLine();
-                Console.Clear();
+                if (redlightFSM.current == LightState.INIT)
+                {
+                    redlightFSM.current = LightState.RED;
+                    Console.WriteLine(redlightFSM.current.ToString());
+                    redlightFSM.Initialize();
+                }
+
+                if (redlightFSM.stopwatch.Elapsed.Seconds > 5 && redlightFSM.current == LightState.RED)
+                {
+                    redlightFSM.current = LightState.GREEN;
+                    redlightFSM.stopwatch.Restart();
+                    Console.WriteLine(redlightFSM.current.ToString());
+                }
+
+                if (redlightFSM.stopwatch.Elapsed.Seconds > 5 && redlightFSM.current == LightState.GREEN)
+                {
+                    redlightFSM.current = LightState.YELLOW;
+                    redlightFSM.stopwatch.Restart();
+                    Console.WriteLine(redlightFSM.current.ToString());
+                }
+
+                if (redlightFSM.stopwatch.Elapsed.Seconds > 2 && redlightFSM.current == LightState.YELLOW)
+                {
+                    redlightFSM.current = LightState.RED;
+                    redlightFSM.stopwatch.Restart();
+                    Console.WriteLine(redlightFSM.current.ToString());
+                }
             }
+        }
+
+        static void player()
+        {
+            PlayerFSM playerfsm = new PlayerFSM();
+
+            playerfsm.Start();
+            
+            while(true)
+            {
+                playerfsm.Update();
+                Console.ReadLine();
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            player();
         }
     }
 }

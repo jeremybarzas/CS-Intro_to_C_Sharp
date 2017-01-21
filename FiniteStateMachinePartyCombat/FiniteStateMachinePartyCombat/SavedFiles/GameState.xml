@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TurnManager xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TurnCount>20</TurnCount>
+  <TurnCount>45</TurnCount>
   <Parties>
     <Party>
       <Name>Horde</Name>
@@ -16,9 +16,9 @@
         </Player>
       </Roster>
       <CurrentPlayer>
-        <Name>Orc1</Name>
+        <Name>Orc2</Name>
       </CurrentPlayer>
-      <CurrentPlayerId>1</CurrentPlayerId>
+      <CurrentPlayerId>2</CurrentPlayerId>
     </Party>
     <Party>
       <Name>Alliance</Name>
@@ -53,9 +53,9 @@
       </Player>
     </Roster>
     <CurrentPlayer>
-      <Name>Orc1</Name>
+      <Name>Orc2</Name>
     </CurrentPlayer>
-    <CurrentPlayerId>1</CurrentPlayerId>
+    <CurrentPlayerId>2</CurrentPlayerId>
   </CurrentParty>
   <CurrentPartyId>0</CurrentPartyId>
 </TurnManager>
