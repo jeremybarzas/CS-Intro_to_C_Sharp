@@ -7,6 +7,11 @@ using System.Diagnostics;
 
 namespace RedlightFSM
 {
+    public enum LightState
+    {
+        INIT = -1, RED = 0, GREEN = 1, YELLOW = 2, EXIT = 3,
+    }
+
     class Program
     {
         static void redlight()
@@ -19,33 +24,7 @@ namespace RedlightFSM
 
             while (true)
             {
-                if (redlightFSM.current == LightState.INIT)
-                {
-                    redlightFSM.current = LightState.RED;
-                    Console.WriteLine(redlightFSM.current.ToString());
-                    redlightFSM.Initialize();
-                }
-
-                if (redlightFSM.stopwatch.Elapsed.Seconds > 5 && redlightFSM.current == LightState.RED)
-                {
-                    redlightFSM.current = LightState.GREEN;
-                    redlightFSM.stopwatch.Restart();
-                    Console.WriteLine(redlightFSM.current.ToString());
-                }
-
-                if (redlightFSM.stopwatch.Elapsed.Seconds > 5 && redlightFSM.current == LightState.GREEN)
-                {
-                    redlightFSM.current = LightState.YELLOW;
-                    redlightFSM.stopwatch.Restart();
-                    Console.WriteLine(redlightFSM.current.ToString());
-                }
-
-                if (redlightFSM.stopwatch.Elapsed.Seconds > 2 && redlightFSM.current == LightState.YELLOW)
-                {
-                    redlightFSM.current = LightState.RED;
-                    redlightFSM.stopwatch.Restart();
-                    Console.WriteLine(redlightFSM.current.ToString());
-                }
+                redlightFSM.Update();
             }
         }
 
@@ -64,7 +43,7 @@ namespace RedlightFSM
 
         static void Main(string[] args)
         {
-            player();
+            redlight();
         }
     }
 }

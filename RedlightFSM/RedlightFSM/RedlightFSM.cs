@@ -1,12 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace RedlightFSM
 {
-    public enum LightState
-    {
-        INIT = -1, RED = 0, GREEN = 1, YELLOW = 2, EXIT = 3,
-    }
-
     class RedlightFSM
     {
         public Stopwatch stopwatch;
@@ -36,7 +32,33 @@ namespace RedlightFSM
 
         public void Update()
         {
+            if (current == LightState.INIT)
+            {
+                current = LightState.RED;
+                Console.WriteLine(current.ToString());
+               Initialize();
+            }
 
+            if (stopwatch.Elapsed.Seconds > 5 && current == LightState.RED)
+            {
+                current = LightState.GREEN;
+                stopwatch.Restart();
+                Console.WriteLine(current.ToString());
+            }
+
+            if (stopwatch.Elapsed.Seconds > 5 && current == LightState.GREEN)
+            {
+                current = LightState.YELLOW;
+                stopwatch.Restart();
+                Console.WriteLine(current.ToString());
+            }
+
+            if (stopwatch.Elapsed.Seconds > 2 && current == LightState.YELLOW)
+            {
+                current = LightState.RED;
+                stopwatch.Restart();
+                Console.WriteLine(current.ToString());
+            }
         }
 
         public void End()
