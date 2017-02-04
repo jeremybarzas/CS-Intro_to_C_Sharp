@@ -2,7 +2,7 @@
 
 namespace WinForms_Combat_Assessment
 {
-    class Potion : IPackable, IConsumable
+    public class Potion : IPackable, IConsumable
     {
         private string m_name;
         private int m_healingPower;

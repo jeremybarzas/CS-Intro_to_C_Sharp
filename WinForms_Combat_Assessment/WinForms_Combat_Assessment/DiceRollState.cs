@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    public interface ICastable
+    public class DiceRollState : IGameState
     {
-        bool Cast(Character target, int Int);
+        public DiceRollState() { }
+
+        public void StateBehaviour()
+        {
+
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    interface IPackable
+    public interface IPackable
     {
        string Name
        {

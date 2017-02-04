@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    public interface ICastable
+    public class CombatState : IGameState
     {
-        bool Cast(Character target, int Int);
+        public CombatState() { }
+
+        public void StateBehaviour()
+        {
+
+        }
+
     }
 }

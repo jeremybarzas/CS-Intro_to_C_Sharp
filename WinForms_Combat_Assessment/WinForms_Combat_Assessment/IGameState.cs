@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {
-    public interface ISwingable
+    public interface IGameState
     {
-        void Swing(Character target, int Str);
+        void StateBehaviour();      
     }
 }

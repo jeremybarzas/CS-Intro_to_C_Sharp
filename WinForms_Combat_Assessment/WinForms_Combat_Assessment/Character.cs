@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    class Character : IBackpack
+    public class Character : ITargetable, IBackpack
     {
         private string m_name;
         private int m_health;
@@ -16,10 +13,19 @@ namespace WinForms_Combat_Assessment
         private int m_strength;
         private int m_intellect;
 
+        private bool m_alive;
+        private int m_turnOrder;
+        private int m_score;
+
         private ITargetable m_currentTarget;
         private ISwingable m_weapon;
-        private ICastable m_spell;
+        private List<ICastable> m_spellbook;
         private List<IPackable> m_backpack;
+
+        public string Name
+        {
+            get { return m_name; }
+        }
 
         public int Health
         {
@@ -57,6 +63,24 @@ namespace WinForms_Combat_Assessment
             set { m_intellect = value; }
         }
 
+        public bool Alive
+        {
+            get { return m_alive; }
+            set { m_alive = value; }
+        }
+
+        public int TurnOrder
+        {
+            get { return m_turnOrder; }
+            set { m_turnOrder = value; }
+        }
+
+        public int Score
+        {
+            get { return m_score; }
+            set { m_score = value; }
+        }
+
         Character() { }
 
         Character(string n)
@@ -76,17 +100,17 @@ namespace WinForms_Combat_Assessment
             m_backpack.Remove(item);
         }
 
-        void SwingWeapon(Character target, ISwingable weapon)
+        void SwingWeapon(Character target, ISwingable weapon, int Str)
         {
-            weapon.Swing(target);
+            weapon.Swing(target, Str);
         }
 
-        void CastSpell(Character target, ICastable spell)
+        void CastSpell(Character target, ICastable spell, int Int)
         {
-            spell.Cast(target);
+            spell.Cast(target, Int);
         }
         
-        void UseItem(Character target, IConsumable item)
+        void CosumeItem(Character target, IConsumable item)
         {
             item.Consume(target);
         }

@@ -2,7 +2,7 @@
 
 namespace WinForms_Combat_Assessment
 {
-    class Spell : ICastable
+    public class Spell : ICastable
     {
         private string m_name;
         private int m_damage;
@@ -15,11 +15,11 @@ namespace WinForms_Combat_Assessment
             m_manaCost = mana;
         }
 
-        public bool Cast(Character target)
+        public bool Cast(Character target, int Int)
         {
             if (target.Mana >= m_manaCost)
             {
-                target.Health -= m_damage;
+                target.Health -= (m_damage * Int);
                 return true;
             }
             else

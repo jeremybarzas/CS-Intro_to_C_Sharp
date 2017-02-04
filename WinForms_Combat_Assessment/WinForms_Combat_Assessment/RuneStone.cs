@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    class RuneStone : IPackable, IConsumable
+    public class RuneStone : IPackable, IConsumable
     {
         private string m_name;
         private int strBuff;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    interface IBackpack
+    public interface IBackpack
     {
         void Add(IPackable p);
 
