@@ -16,5 +16,10 @@ namespace WinForms_Combat_Assessment
         {
             InitializeComponent();
         }
+
+        private void CharacterSheet_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

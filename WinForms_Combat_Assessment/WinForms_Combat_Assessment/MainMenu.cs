@@ -13,11 +13,15 @@ namespace WinForms_Combat_Assessment
 
         private void got_to_rules_Click(object sender, EventArgs e)
         {
-            //GameManager.Instance.FSM_GAMESTATE.SetState(new GameRulesState());
-            GameManager.Instance.IncrementScore();
-            Button b = sender as Button;
-            b.Text = GameManager.Instance.score.ToString();
-            Visible = false;
+            GameManager.Instance.FSM_GAMESTATE.SetState(1);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
+            this.Hide();
+            nextForm.Show();            
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,7 +33,7 @@
             // 
             // got_to_rules
             // 
-            this.got_to_rules.Location = new System.Drawing.Point(102, 112);
+            this.got_to_rules.Location = new System.Drawing.Point(259, 159);
             this.got_to_rules.Name = "got_to_rules";
             this.got_to_rules.Size = new System.Drawing.Size(75, 23);
             this.got_to_rules.TabIndex = 0;
@@ -45,10 +45,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(611, 334);
             this.Controls.Add(this.got_to_rules);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
 
         }

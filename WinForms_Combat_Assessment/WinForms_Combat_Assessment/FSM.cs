@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WinForms_Combat_Assessment
 {
@@ -18,6 +19,11 @@ namespace WinForms_Combat_Assessment
             m_states = gs;
         }
 
+        public IGameState CurrentState
+        {
+            get { return m_currentState; }
+        }
+
         public void AddState(IGameState gs)
         {
             m_states.Add(gs);
@@ -29,8 +35,17 @@ namespace WinForms_Combat_Assessment
         }
 
         public void SetState(IGameState gs)
-        {
+        {            
             m_currentState = gs;
+           // m_currentState.StateBehaviour();
+        }
+
+        public void SetState(int stateID)
+        {
+            // foreach state in the list of states 
+            // if the argument passed in is equal to the StateID 
+            //set that state to current state
+            m_currentState = m_states.Find(state => state.StateID == stateID);            
         }
     }
 }

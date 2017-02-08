@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinForms_Combat_Assessment
 {
-    public partial class CombatPhase : Form
+    public partial class Combat : Form
     {
-        public CombatPhase()
+        public Combat()
         {
             InitializeComponent();
         }

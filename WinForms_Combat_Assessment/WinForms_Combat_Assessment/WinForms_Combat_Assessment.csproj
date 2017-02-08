@@ -53,11 +53,11 @@
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="CharacterSheetState.cs" />
-    <Compile Include="CombatPhase.cs">
+    <Compile Include="Combat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CombatPhase.Designer.cs">
-      <DependentUpon>CombatPhase.cs</DependentUpon>
+    <Compile Include="Combat.Designer.cs">
+      <DependentUpon>Combat.cs</DependentUpon>
     </Compile>
     <Compile Include="CombatState.cs" />
     <Compile Include="DiceRoll.cs">
@@ -103,7 +103,11 @@
     </Compile>
     <Compile Include="ScoreboardState.cs" />
     <Compile Include="Spell.cs" />
+    <Compile Include="Stats.cs" />
     <Compile Include="Weapon.cs" />
+    <EmbeddedResource Include="CharacterSheet.resx">
+      <DependentUpon>CharacterSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>

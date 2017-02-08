@@ -9,10 +9,19 @@ namespace WinForms_Combat_Assessment
     public class ScoreboardState : IGameState
     {
         public ScoreboardState() { }
+        public ScoreboardState(int id) { m_stateID = id; }
 
         public void StateBehaviour()
         {
 
+        }
+        private int m_stateID;
+        public int StateID
+        {
+            get
+            {
+                return m_stateID;
+            }
         }
     }
 }

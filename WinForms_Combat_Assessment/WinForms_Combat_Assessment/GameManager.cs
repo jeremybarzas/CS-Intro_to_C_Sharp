@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace WinForms_Combat_Assessment
 {
     class GameManager
     {
-        public int score = 0;
         private List<Character> m_gameRoster;
 
         public List<Character> GameRoster
@@ -26,17 +26,12 @@ namespace WinForms_Combat_Assessment
 
         public FSM FSM_GAMESTATE
         {
-            get;set;
+            get; set;
         }
 
         public void AddToRoster(Character c)
         {
             m_gameRoster.Add(c);
-        }
-
-        public void IncrementScore()
-        {
-            score++;
         }
     }
 }

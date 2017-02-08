@@ -10,9 +10,19 @@ namespace WinForms_Combat_Assessment
     {
         public CharacterSheetState() { }
 
+        public CharacterSheetState(int id) { m_stateID = id; }
+
         public void StateBehaviour()
         {
 
+        }
+        private int m_stateID;
+        public int StateID
+        {
+            get
+            {
+                return m_stateID;
+            }
         }
     }
 }
