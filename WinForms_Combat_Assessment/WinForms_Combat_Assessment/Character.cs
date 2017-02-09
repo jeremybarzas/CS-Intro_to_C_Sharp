@@ -25,6 +25,7 @@ namespace WinForms_Combat_Assessment
         public string Name
         {
             get { return m_name; }
+            set { m_name = value; }
         }
 
         public int Health
@@ -81,9 +82,9 @@ namespace WinForms_Combat_Assessment
             set { m_score = value; }
         }
 
-        Character() { }
+        public Character() { }
 
-        Character(string n)
+        public Character(string n)
         {
             m_name = n;
             m_strength = 1;

@@ -7,12 +7,20 @@ namespace WinForms_Combat_Assessment
     class GameManager
     {
         private List<Character> m_gameRoster;
+        private int m_playerCount; 
 
         public List<Character> GameRoster
         {
-            get; set;
+            get {return m_gameRoster; }
+            set { m_gameRoster = value; }
         }
-        private GameManager() { }
+
+        public int PlayerCount
+        {
+            get { return m_playerCount; }
+            set { m_playerCount = value; }
+        }
+        private GameManager() { m_gameRoster = new List<Character>(); }
 
         private static readonly GameManager instance = new GameManager();
 

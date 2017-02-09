@@ -11,15 +11,35 @@ namespace WinForms_Combat_Assessment
             InitializeComponent();
         }
 
-        private void got_to_rules_Click(object sender, EventArgs e)
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void New_Game_Click(object sender, EventArgs e)
         {
             GameManager.Instance.FSM_GAMESTATE.SetState(1);
             Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
             this.Hide();
-            nextForm.Show();            
+            nextForm.Show();
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
+        private void Load_Game_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Exit_Game_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Game_Title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_Name_Click(object sender, EventArgs e)
         {
 
         }
