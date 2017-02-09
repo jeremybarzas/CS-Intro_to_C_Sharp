@@ -20,13 +20,13 @@ namespace WinForms_Combat_Assessment
         {
             GameManager.Instance.FSM_GAMESTATE.SetState(1);
             Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
-            this.Hide();
+            this.Enabled = false;
+            this.Visible = false;
             nextForm.Show();
         }
 
         private void Load_Game_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Exit_Game_Click(object sender, EventArgs e)

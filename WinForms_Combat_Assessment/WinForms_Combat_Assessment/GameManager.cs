@@ -20,18 +20,7 @@ namespace WinForms_Combat_Assessment
             get { return m_playerCount; }
             set { m_playerCount = value; }
         }
-        private GameManager() { m_gameRoster = new List<Character>(); }
-
-        private static readonly GameManager instance = new GameManager();
-
-        public static GameManager Instance
-        {
-            get
-            {                
-                return instance;
-            }
-        }
-
+      
         public FSM FSM_GAMESTATE
         {
             get; set;
@@ -40,6 +29,18 @@ namespace WinForms_Combat_Assessment
         public void AddToRoster(Character c)
         {
             m_gameRoster.Add(c);
+        }
+
+        private GameManager() { m_gameRoster = new List<Character>(); }
+
+        private static readonly GameManager instance = new GameManager();
+
+        public static GameManager Instance
+        {
+            get
+            {
+                return instance;
+            }
         }
     }
 }

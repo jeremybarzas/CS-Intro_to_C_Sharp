@@ -14,8 +14,10 @@ namespace WinForms_Combat_Assessment
         private int m_intellect;
 
         private bool m_alive;
-        private int m_turnOrder;
+        private int m_kills;
         private int m_score;
+
+        private int m_turnOrder;
 
         private ITargetable m_currentTarget;
         private ISwingable m_weapon;
@@ -69,11 +71,11 @@ namespace WinForms_Combat_Assessment
             get { return m_alive; }
             set { m_alive = value; }
         }
-
-        public int TurnOrder
+        
+        public int Kills
         {
-            get { return m_turnOrder; }
-            set { m_turnOrder = value; }
+            get { return m_kills; }
+            set { m_kills = value; }
         }
 
         public int Score
@@ -82,13 +84,20 @@ namespace WinForms_Combat_Assessment
             set { m_score = value; }
         }
 
+        public int TurnOrder
+        {
+            get { return m_turnOrder; }
+            set { m_turnOrder = value; }
+        }
+
         public Character() { }
 
         public Character(string n)
         {
             m_name = n;
-            m_strength = 1;
-            m_intellect = 1;
+            m_alive = true;
+            m_kills = 0;
+            m_score = 0;
         }
 
         public void Add(IPackable item)
