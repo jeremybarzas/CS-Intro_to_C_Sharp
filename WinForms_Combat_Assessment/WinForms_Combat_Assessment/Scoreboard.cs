@@ -19,7 +19,9 @@ namespace WinForms_Combat_Assessment
 
         private void Scoreboard_Load(object sender, EventArgs e)
         {
-            foreach(Character character in GameManager.Instance.GameRoster)
+            GameManager.Instance.GameRoster.Sort((a, b) => -1 * (a.Score.CompareTo(b.Score)));
+
+            foreach (Character character in GameManager.Instance.GameRoster)
             {
                 Player_Name_Text.Text += " " + character.Name + "\n\n";                
                 Kills_Text.Text += "    " + character.Kills + "\n\n";
@@ -34,28 +36,18 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM_GAMESTATE.SetState(0);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
+            GameManager.Instance.FSM.SetState(0);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
             this.Dispose();
             nextForm.Show();
         }
 
         private void Start_Game_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM_GAMESTATE.SetState(4);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
+            GameManager.Instance.FSM.SetState(4);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
             this.Dispose();
             nextForm.Show();
         }
-
-        private void Scoreboard_Text_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }        
     }
 }

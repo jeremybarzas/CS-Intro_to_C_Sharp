@@ -108,6 +108,12 @@
     <EmbeddedResource Include="CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Combat.resx">
+      <DependentUpon>Combat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiceRoll.resx">
+      <DependentUpon>DiceRoll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameRules.resx">
       <DependentUpon>GameRules.cs</DependentUpon>
     </EmbeddedResource>

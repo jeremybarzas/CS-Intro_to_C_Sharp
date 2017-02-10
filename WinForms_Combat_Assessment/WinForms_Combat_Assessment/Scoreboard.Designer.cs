@@ -58,7 +58,7 @@
             this.Start_Game.Name = "Start_Game";
             this.Start_Game.Size = new System.Drawing.Size(75, 23);
             this.Start_Game.TabIndex = 1;
-            this.Start_Game.Text = "Start Game";
+            this.Start_Game.Text = "Start Round";
             this.Start_Game.UseVisualStyleBackColor = true;
             this.Start_Game.Click += new System.EventHandler(this.Start_Game_Click);
             // 
@@ -126,6 +126,7 @@
             this.Player_Name_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Player_Name_Text.Location = new System.Drawing.Point(21, 81);
             this.Player_Name_Text.Name = "Player_Name_Text";
+            this.Player_Name_Text.ReadOnly = true;
             this.Player_Name_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.Player_Name_Text.Size = new System.Drawing.Size(142, 340);
             this.Player_Name_Text.TabIndex = 8;
@@ -137,6 +138,7 @@
             this.Status_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Status_Text.Location = new System.Drawing.Point(184, 81);
             this.Status_Text.Name = "Status_Text";
+            this.Status_Text.ReadOnly = true;
             this.Status_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.Status_Text.Size = new System.Drawing.Size(112, 340);
             this.Status_Text.TabIndex = 9;
@@ -148,6 +150,7 @@
             this.Kills_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Kills_Text.Location = new System.Drawing.Point(317, 81);
             this.Kills_Text.Name = "Kills_Text";
+            this.Kills_Text.ReadOnly = true;
             this.Kills_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.Kills_Text.Size = new System.Drawing.Size(112, 340);
             this.Kills_Text.TabIndex = 10;
@@ -159,6 +162,7 @@
             this.Score_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Score_Text.Location = new System.Drawing.Point(450, 81);
             this.Score_Text.Name = "Score_Text";
+            this.Score_Text.ReadOnly = true;
             this.Score_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.Score_Text.Size = new System.Drawing.Size(112, 340);
             this.Score_Text.TabIndex = 11;

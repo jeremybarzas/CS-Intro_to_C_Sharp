@@ -25,16 +25,16 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM_GAMESTATE.SetState(0);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
+            GameManager.Instance.FSM.SetState(0);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
             this.Dispose();
             nextForm.Show();
         }
 
         private void Next_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM_GAMESTATE.SetState(2);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
+            GameManager.Instance.FSM.SetState(2);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
             this.Dispose();
             nextForm.Show();
         }
@@ -43,7 +43,5 @@ namespace WinForms_Combat_Assessment
         {
             GameManager.Instance.PlayerCount = (int)comboBox1.SelectedItem;          
         }
-
-       
     }
 }

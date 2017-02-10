@@ -94,10 +94,33 @@ namespace WinForms_Combat_Assessment
 
         public Character(string n)
         {
+            m_spellbook = new List<ICastable>();
+            m_backpack = new List<IPackable>();
+
+            m_name = n;
+            m_alive = true;
+            m_kills = 0;
+            m_score = 0;            
+        }
+
+        public Character(string n, ISwingable wep, ICastable spell1, ICastable spell2, IPackable item1, IPackable item2, IPackable item3)
+        {
+            m_spellbook = new List<ICastable>();
+            m_backpack = new List<IPackable>();
+
             m_name = n;
             m_alive = true;
             m_kills = 0;
             m_score = 0;
+
+            m_weapon = wep;
+
+            m_spellbook.Add(spell1);
+            m_spellbook.Add(spell1);
+     
+            m_backpack.Add(item1);
+            m_backpack.Add(item2);
+            m_backpack.Add(item3);
         }
 
         public void Add(IPackable item)

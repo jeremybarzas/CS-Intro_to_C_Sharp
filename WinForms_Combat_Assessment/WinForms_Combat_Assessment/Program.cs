@@ -57,7 +57,7 @@ namespace WinForms_Combat_Assessment
 
             fsm.SetState(MainMenu);
 
-            GameManager.Instance.FSM_GAMESTATE = fsm;
+            GameManager.Instance.FSM = fsm;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

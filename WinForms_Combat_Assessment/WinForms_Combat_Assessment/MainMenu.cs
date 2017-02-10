@@ -18,8 +18,8 @@ namespace WinForms_Combat_Assessment
 
         private void New_Game_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM_GAMESTATE.SetState(1);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM_GAMESTATE);
+            GameManager.Instance.FSM.SetState(1);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
             this.Enabled = false;
             this.Visible = false;
             nextForm.Show();
