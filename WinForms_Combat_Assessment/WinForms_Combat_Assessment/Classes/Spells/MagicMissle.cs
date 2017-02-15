@@ -1,16 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
-namespace WinForms_Combat_Assessment
+namespace WinForms_Combat_Assessment.Classes
 {
-    public class Spell : ICastable
+    class MagicMissle : ICastable
     {
         private string m_name;
         private int m_damage;
         private int m_manaCost;
 
-        public Spell(string n, int dmg, int mana)
+        public MagicMissle(int dmg, int mana)
         {
-            m_name = n;
+            m_name = "MagicMissle";
             m_damage = dmg;
             m_manaCost = mana;
         }
@@ -24,9 +29,9 @@ namespace WinForms_Combat_Assessment
             }
             else
             {
-                Console.WriteLine("Not enough mana!!!\n");
+                Debug.WriteLine("Not enough mana!!!\n");
                 return false;
-            } 
+            }
         }
     }
 }

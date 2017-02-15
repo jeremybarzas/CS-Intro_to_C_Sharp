@@ -19,7 +19,10 @@ namespace WinForms_Combat_Assessment
 
         private int m_turnOrder;
 
-        private ITargetable m_currentTarget;
+        private ITargetable m_attackTarget;
+        private ITargetable m_itemTarget;
+        private ITargetable m_spellTarget;
+
         private ISwingable m_weapon;
         private List<ICastable> m_spellbook;
         private List<IPackable> m_backpack;
@@ -90,7 +93,15 @@ namespace WinForms_Combat_Assessment
             set { m_turnOrder = value; }
         }
 
-        public Character() { }
+        public Character()
+        {
+            m_alive = true;
+            m_kills = 0;
+            m_score = 0;
+
+            m_strength = 1;
+            m_intellect = 1;            
+        }
 
         public Character(string n)
         {
@@ -100,7 +111,10 @@ namespace WinForms_Combat_Assessment
             m_name = n;
             m_alive = true;
             m_kills = 0;
-            m_score = 0;            
+            m_score = 0;
+
+            m_strength = 1;
+            m_intellect = 1;
         }
 
         public Character(string n, ISwingable wep, ICastable spell1, ICastable spell2, IPackable item1, IPackable item2, IPackable item3)
@@ -113,6 +127,9 @@ namespace WinForms_Combat_Assessment
             m_kills = 0;
             m_score = 0;
 
+            m_strength = 1;
+            m_intellect = 1;
+
             m_weapon = wep;
 
             m_spellbook.Add(spell1);
@@ -122,7 +139,7 @@ namespace WinForms_Combat_Assessment
             m_backpack.Add(item2);
             m_backpack.Add(item3);
         }
-
+        
         public void Add(IPackable item)
         {
             m_backpack.Add(item);

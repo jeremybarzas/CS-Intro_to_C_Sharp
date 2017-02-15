@@ -46,78 +46,87 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterSheet.cs">
+    <Compile Include="Classes\Spells\Blizzard.cs" />
+    <Compile Include="Classes\Spells\DivineIntervention.cs" />
+    <Compile Include="Classes\Spells\Flashburn.cs" />
+    <Compile Include="Classes\Spells\LightningBolt.cs" />
+    <Compile Include="Classes\Spells\MagicMissle.cs" />
+    <Compile Include="Classes\Spells\Regeneration.cs" />
+    <Compile Include="Classes\Weapons\Axe.cs" />
+    <Compile Include="Classes\Weapons\Mace.cs" />
+    <Compile Include="Forms\CharacterSheet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharacterSheet.Designer.cs">
+    <Compile Include="Forms\CharacterSheet.Designer.cs">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </Compile>
-    <Compile Include="CharacterSheetState.cs" />
-    <Compile Include="Combat.cs">
+    <Compile Include="FSMs\CharacterSheetState.cs" />
+    <Compile Include="Forms\Combat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Combat.Designer.cs">
+    <Compile Include="Forms\Combat.Designer.cs">
       <DependentUpon>Combat.cs</DependentUpon>
     </Compile>
-    <Compile Include="CombatState.cs" />
-    <Compile Include="DiceRoll.cs">
+    <Compile Include="FSMs\CombatState.cs" />
+    <Compile Include="Forms\DiceRoll.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiceRoll.Designer.cs">
+    <Compile Include="Forms\DiceRoll.Designer.cs">
       <DependentUpon>DiceRoll.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiceRollState.cs" />
-    <Compile Include="FSM.cs" />
-    <Compile Include="GameRules.cs">
+    <Compile Include="FSMs\DiceRollState.cs" />
+    <Compile Include="Classes\Items\Elixir.cs" />
+    <Compile Include="Classes\Items\Ether.cs" />
+    <Compile Include="FSMs\FSM.cs" />
+    <Compile Include="Forms\GameRules.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameRules.Designer.cs">
+    <Compile Include="Forms\GameRules.Designer.cs">
       <DependentUpon>GameRules.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameRulesState.cs" />
-    <Compile Include="GameManager.cs" />
-    <Compile Include="IBackpack.cs" />
-    <Compile Include="IGameState.cs" />
-    <Compile Include="IPackable.cs" />
-    <Compile Include="ISwingable.cs" />
-    <Compile Include="ICastable.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="IConsumable.cs" />
-    <Compile Include="ITargetable.cs" />
-    <Compile Include="MainMenu.cs">
+    <Compile Include="FSMs\GameRulesState.cs" />
+    <Compile Include="Singletons\GameManager.cs" />
+    <Compile Include="Interfaces\IBackpack.cs" />
+    <Compile Include="Interfaces\IGameState.cs" />
+    <Compile Include="Interfaces\IPackable.cs" />
+    <Compile Include="Interfaces\ISwingable.cs" />
+    <Compile Include="Interfaces\ICastable.cs" />
+    <Compile Include="Classes\Character\Character.cs" />
+    <Compile Include="Interfaces\IConsumable.cs" />
+    <Compile Include="Interfaces\ITargetable.cs" />
+    <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
+    <Compile Include="Forms\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenuState.cs" />
-    <Compile Include="Potion.cs" />
+    <Compile Include="FSMs\MainMenuState.cs" />
+    <Compile Include="Classes\Items\Potion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RuneStone.cs" />
-    <Compile Include="Scoreboard.cs">
+    <Compile Include="Classes\Items\RuneStone.cs" />
+    <Compile Include="Forms\Scoreboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Scoreboard.Designer.cs">
+    <Compile Include="Forms\Scoreboard.Designer.cs">
       <DependentUpon>Scoreboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScoreboardState.cs" />
-    <Compile Include="Spell.cs" />
-    <Compile Include="Stats.cs" />
-    <Compile Include="Weapon.cs" />
-    <EmbeddedResource Include="CharacterSheet.resx">
+    <Compile Include="FSMs\ScoreboardState.cs" />
+    <Compile Include="Classes\Character\Stats.cs" />
+    <Compile Include="Classes\Weapons\Sword.cs" />
+    <EmbeddedResource Include="Forms\CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Combat.resx">
+    <EmbeddedResource Include="Forms\Combat.resx">
       <DependentUpon>Combat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DiceRoll.resx">
+    <EmbeddedResource Include="Forms\DiceRoll.resx">
       <DependentUpon>DiceRoll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameRules.resx">
+    <EmbeddedResource Include="Forms\GameRules.resx">
       <DependentUpon>GameRules.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
+    <EmbeddedResource Include="Forms\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -129,7 +138,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Scoreboard.resx">
+    <EmbeddedResource Include="Forms\Scoreboard.resx">
       <DependentUpon>Scoreboard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

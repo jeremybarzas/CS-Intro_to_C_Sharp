@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {
     public class RuneStone : IPackable, IConsumable
     {
-        private string m_name;
         private int strBuff;
         private int intBuff;
+        public string Name { get; set; }
 
-        public string Name
+        public RuneStone() { }
+
+        public RuneStone(int s, int i)
         {
-            get { return m_name; }
-        }
-
-        public RuneStone()
-        { }
-
-        public RuneStone(string n, int s, int i)
-        {
-            m_name = n;
+            Name = "Runestone";
             strBuff = s;
             intBuff = i;
         }

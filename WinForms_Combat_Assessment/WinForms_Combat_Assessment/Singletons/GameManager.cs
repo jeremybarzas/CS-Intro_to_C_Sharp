@@ -9,7 +9,7 @@ namespace WinForms_Combat_Assessment
         private List<Character> m_gameRoster;
         private int m_playerCount;
         private Random diceRoller;
-        private List<int> m_usedRolls;
+        private List<int> m_usedRolls;       
 
         public int TurnCount
         {
@@ -117,12 +117,6 @@ namespace WinForms_Combat_Assessment
 
         public void SetCurrentPlayer()
         {
-            //if (m_gameRoster.Count == 0)
-            //{
-            //    CurrentPlayer = m_gameRoster[0];
-            //    return;
-            //}
-
             if (TurnCount == 0)
             {
                 CurrentPlayer = m_gameRoster[0];
