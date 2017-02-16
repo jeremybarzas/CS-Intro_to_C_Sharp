@@ -24,15 +24,10 @@ namespace WinForms_Combat_Assessment
 
         }
 
-        private void Character_Name_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM.SetState(0);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
+            GameManager.Instance.DataManager.FSM.SetState(0);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
             this.Hide();
             nextForm.Show();
         }
@@ -40,19 +35,19 @@ namespace WinForms_Combat_Assessment
         private void Next_Click(object sender, EventArgs e)
         {
             // Actual Code
-            GameManager.Instance.AddToRoster(new Character(Character_Name.Text));
+            GameManager.Instance.DataManager.AddToRoster(new Character(Character_Name.Text));
 
-            if (GameManager.Instance.GameRoster.Count < GameManager.Instance.PlayerCount)
+            if (GameManager.Instance.DataManager.GameRoster.Count < GameManager.Instance.DataManager.PlayerCount)
             {
-                GameManager.Instance.FSM.SetState(2);
-                Form charSheet = Program.ChangeForm(GameManager.Instance.FSM);
+                GameManager.Instance.DataManager.FSM.SetState(2);
+                Form charSheet = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
                 this.Dispose();
                 charSheet.Show();
             }
             else
             {
-                GameManager.Instance.FSM.SetState(3);
-                Form scoreboard = Program.ChangeForm(GameManager.Instance.FSM);
+                GameManager.Instance.DataManager.FSM.SetState(3);
+                Form scoreboard = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
                 this.Dispose();
                 scoreboard.Show();
             }

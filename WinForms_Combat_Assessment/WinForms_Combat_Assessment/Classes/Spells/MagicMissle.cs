@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace WinForms_Combat_Assessment.Classes
 {
     class MagicMissle : ICastable
-    {
+    {       
         private string m_name;
         private int m_damage;
         private int m_manaCost;
@@ -20,18 +20,9 @@ namespace WinForms_Combat_Assessment.Classes
             m_manaCost = mana;
         }
 
-        public bool Cast(Character target, int Int)
+        public void Cast(Character target, int Int)
         {
-            if (target.Mana >= m_manaCost)
-            {
-                target.Health -= (m_damage * Int);
-                return true;
-            }
-            else
-            {
-                Debug.WriteLine("Not enough mana!!!\n");
-                return false;
-            }
+            target.Health -= (m_damage * Int);           
         }
     }
 }

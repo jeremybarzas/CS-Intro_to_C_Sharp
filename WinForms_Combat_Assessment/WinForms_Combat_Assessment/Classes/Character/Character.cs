@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {
-    public class Character : ITargetable, IBackpack
+    public class Character : ITargetable
     {
         private string m_name;
         private int m_health;
@@ -95,12 +95,8 @@ namespace WinForms_Combat_Assessment
 
         public Character()
         {
-            m_alive = true;
-            m_kills = 0;
-            m_score = 0;
-
-            m_strength = 1;
-            m_intellect = 1;            
+            m_spellbook = new List<ICastable>();
+            m_backpack = new List<IPackable>();
         }
 
         public Character(string n)
@@ -140,12 +136,12 @@ namespace WinForms_Combat_Assessment
             m_backpack.Add(item3);
         }
         
-        public void Add(IPackable item)
+        public void AddToBackpack(IPackable item)
         {
             m_backpack.Add(item);
         }
 
-        public void Remove(IPackable item)
+        public void RemoveToBackpack(IPackable item)
         {
             m_backpack.Remove(item);
         }
@@ -160,9 +156,9 @@ namespace WinForms_Combat_Assessment
             spell.Cast(target, Int);
         }
         
-        void CosumeItem(Character target, IConsumable item)
+        void CosumeItem(Character target, IUseable item)
         {
-            item.Consume(target);
+            item.Use(target);
         }
     }
 }

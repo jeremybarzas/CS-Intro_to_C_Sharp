@@ -18,8 +18,8 @@ namespace WinForms_Combat_Assessment
 
         private void New_Game_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.FSM.SetState(1);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
+            GameManager.Instance.DataManager.FSM.SetState(1);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
             this.Enabled = false;
             this.Visible = false;
             nextForm.Show();
@@ -27,6 +27,14 @@ namespace WinForms_Combat_Assessment
 
         private void Load_Game_Click(object sender, EventArgs e)
         {
+            //DataManager dm = GameSerialization<DataManager>.Deserialize("GameSave");
+            GameManager.Instance.DataManager = GameSerialization<DataManager>.Deserialize("GameSave");;
+
+            GameManager.Instance.DataManager.FSM.SetState(3);
+            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
+            this.Enabled = false;
+            this.Visible = false;
+            nextForm.Show();          
         }
 
         private void Exit_Game_Click(object sender, EventArgs e)

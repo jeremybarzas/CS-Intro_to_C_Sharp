@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace WinForms_Combat_Assessment.Classes.Spells
 {
-    class LightningBolt
+    class LightningBolt : ICastable
     {
         private string m_name;
         private int m_damage;
@@ -20,18 +20,9 @@ namespace WinForms_Combat_Assessment.Classes.Spells
             m_manaCost = mana;
         }
 
-        public bool Cast(Character target, int Int)
+        public void Cast(Character target, int Int)
         {
-            if (target.Mana >= m_manaCost)
-            {
-                target.Health -= (m_damage * Int);
-                return true;
-            }
-            else
-            {
-                Debug.WriteLine("Not enough mana!!!\n");
-                return false;
-            }
+            target.Health -= (m_damage * Int);
         }
     }
 }

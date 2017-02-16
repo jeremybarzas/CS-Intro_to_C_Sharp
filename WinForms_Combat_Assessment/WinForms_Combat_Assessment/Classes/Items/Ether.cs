@@ -2,7 +2,7 @@
 
 namespace WinForms_Combat_Assessment
 {
-    public class Ether : IPackable, IConsumable
+    public class Ether : IPackable, IUseable
     {
         private int m_manaPower;
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace WinForms_Combat_Assessment
             m_manaPower = mana;
         }
 
-        public void Consume(Character target)
+        public void Use(Character target)
         {
             target.Mana += m_manaPower;
         }

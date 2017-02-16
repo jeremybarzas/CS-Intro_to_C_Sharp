@@ -8,6 +8,6 @@ namespace WinForms_Combat_Assessment
 {
     public interface ICastable
     {
-        bool Cast(Character target, int Int);
+        void Cast(Character target, int Int);
     }
 }

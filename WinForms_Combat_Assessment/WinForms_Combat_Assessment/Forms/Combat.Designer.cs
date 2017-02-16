@@ -78,6 +78,7 @@
             this.Item_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Selector.TabIndex = 3;
             this.Item_Selector.Text = "Select Item";
+            this.Item_Selector.SelectedIndexChanged += new System.EventHandler(this.Item_Selector_SelectedIndexChanged);
             // 
             // Spell_Selector
             // 

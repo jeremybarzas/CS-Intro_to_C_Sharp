@@ -2,7 +2,7 @@
 
 namespace WinForms_Combat_Assessment
 {
-    public class Elixir: IPackable, IConsumable
+    public class Elixir: IPackable, IUseable
     {
         private int m_healingPower;
         private int m_manaPower;
@@ -17,7 +17,7 @@ namespace WinForms_Combat_Assessment
             m_manaPower = mana;
         }
 
-        public void Consume(Character target)
+        public void Use(Character target)
         {           
             target.Health += m_healingPower;
             target.Mana += m_manaPower;

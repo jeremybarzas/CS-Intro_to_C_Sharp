@@ -80,6 +80,7 @@
             this.Save_Game.TabIndex = 3;
             this.Save_Game.Text = "Save Game";
             this.Save_Game.UseVisualStyleBackColor = true;
+            this.Save_Game.Click += new System.EventHandler(this.Save_Game_Click);
             // 
             // Player_Label
             // 

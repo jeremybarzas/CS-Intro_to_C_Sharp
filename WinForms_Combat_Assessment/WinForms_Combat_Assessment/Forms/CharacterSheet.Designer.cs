@@ -50,8 +50,7 @@
             this.Character_Name.Location = new System.Drawing.Point(228, 93);
             this.Character_Name.Name = "Character_Name";
             this.Character_Name.Size = new System.Drawing.Size(165, 20);
-            this.Character_Name.TabIndex = 1;
-            this.Character_Name.TextChanged += new System.EventHandler(this.Character_Name_TextChanged);
+            this.Character_Name.TabIndex = 1;            
             // 
             // Character_Name_Label
             // 

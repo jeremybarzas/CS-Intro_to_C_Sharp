@@ -2,7 +2,7 @@
 
 namespace WinForms_Combat_Assessment
 {
-    public class RuneStone : IPackable, IConsumable
+    public class RuneStone : IPackable, IUseable
     {
         private int strBuff;
         private int intBuff;
@@ -17,7 +17,7 @@ namespace WinForms_Combat_Assessment
             intBuff = i;
         }
 
-        public void Consume(Character target)
+        public void Use(Character target)
         {
             target.Strength += strBuff;
             target.Intellect += intBuff;

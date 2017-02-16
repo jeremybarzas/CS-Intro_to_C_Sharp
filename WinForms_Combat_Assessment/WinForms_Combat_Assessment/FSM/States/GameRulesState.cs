@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace WinForms_Combat_Assessment
 {
-    public interface IBackpack
+    
+    public class GameRulesState : State
     {
-        void Add(IPackable p);
+        public GameRulesState() { }
 
-        void Remove(IPackable p);
+        public GameRulesState(int id) { StateID = id; }        
     }
 }
