@@ -2,13 +2,13 @@
 {
     public class RuneStone : Item
     {
-        private int strBuff;
-        private int intBuff;
+        private int m_strBuff;
+        private int m_intBuff;
 
-        new public void Use(Character target)
+        public override void Use(Character target)
         {
-            target.Strength += strBuff;
-            target.Intellect += intBuff;
+            target.Info.Strength += m_strBuff;
+            target.Info.Intellect += m_intBuff;
         }
 
         public RuneStone() { }
@@ -16,8 +16,8 @@
         public RuneStone(string n, int s, int i)
         {
             Name = n;
-            strBuff = s;
-            intBuff = i;
+            m_strBuff = s;
+            m_intBuff = i;
         }       
     }
 }

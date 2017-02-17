@@ -22,7 +22,7 @@ namespace WinForms_Combat_Assessment
 
         private void Load_Game_Click(object sender, EventArgs e)
         {            
-            GameManager.Instance.DataManager = GameSerialization<DataManager>.Deserialize("GameSave");
+            FormManager.Instance.DataManager = DataSerializer<DataManager>.Deserialize("GameSave");
 
             Program.ChangeForm(this, 3);
         }

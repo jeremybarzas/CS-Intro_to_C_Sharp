@@ -1,49 +1,112 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace WinForms_Combat_Assessment
-{
+{    
     public class DataManager
     {
-        public FSM FSM { get; set; }
+        private FSM m_mainFSM;
+        private Character m_currentPlayer;
+        private Random m_diceRoller;
+        private List<Character> m_gameRoster;
+        private List<Weapon> m_weaponList;
+        private List<Spell> m_spellList;
+        private List<Item> m_itemList;
+        private int m_turnCount;
+        private int m_remainingPlayers;
+        private int m_roundNumber;
+        private int m_playerCount;
 
-        public Character CurrentPlayer { get; set; }
+        public FSM MainFSM
+        {
+            get { return m_mainFSM; }
+            set { m_mainFSM = value; }
+        }
 
-        public Random DiceRoller { get; set; }
+        public Character CurrentPlayer
+        {
+            get { return m_currentPlayer; }
+        }
 
-        public List<Character> GameRoster { get; set; }
+        public Random DiceRoller
+        {
+            get { return m_diceRoller; }
+            set { m_diceRoller = value; }
+        }
 
-        public List<Weapon> WeaponList { get; set; }
+        public List<Character> GameRoster
+        {
+            get { return m_gameRoster; }
+        }
 
-        public List<Spell> SpellList { get; set; }
+        public List<Weapon> WeaponList
+        {
+            get { return m_weaponList; }
+        }
 
-        public List<Item> ItemList { get; set; }        
+        public List<Spell> SpellList
+        {
+            get { return m_spellList; }
+        }
 
-        public List<int> UsedRolls { get; set; }
+        public List<Item> ItemList
+        {
+            get { return m_itemList; }
+        }
 
-        public int TurnCount { get; set; }
+        public int TurnCount
+        {
+            get { return m_turnCount; }
+            set { m_turnCount = value; }
+        }
 
-        public int RemainingPlayers { get; set; }
+        public int RemainingPlayers
+        {
+            get { return m_remainingPlayers; }
+        }
 
-        public int RoundNumber { get; set; }             
+        public int RoundNumber
+        {
+            get { return m_roundNumber; }
+            set { m_roundNumber = value; }
+        }
 
-        public int PlayerCount { get; set; }      
+        public int PlayerCount
+        {
+            get { return m_playerCount; }
+            set { m_playerCount = value; }
+        }
+
+        public void AddToWeaponList(Weapon weapon)
+        {
+            WeaponList.Add(weapon);
+        }
+
+        public void AddToSpellList(Spell spell)
+        {
+            SpellList.Add(spell);
+        }
+
+        public void AddToItemList(Item item)
+        {
+            ItemList.Add(item);
+        }
 
         public void AddToRoster(Character c)
         {
-            GameRoster.Add(c);
+            m_gameRoster.Add(c);
             SetCurrentPlayer();
         }
 
         public void SetRemainingPlayers()
         {
-            RemainingPlayers = 0;
+            m_remainingPlayers = 0;
 
-            foreach (Character character in GameRoster)
+            foreach (Character character in m_gameRoster)
             {
-                if (character.Alive == true)
-                    RemainingPlayers += 1;
+                if (character.Info.Alive == true)
+                    m_remainingPlayers += 1;
             }
         }
 
@@ -51,53 +114,48 @@ namespace WinForms_Combat_Assessment
         {
             SetRemainingPlayers();
 
-            DiceRoller = new Random();
-            int maxRange = RemainingPlayers + 1;
+            m_diceRoller = new Random();
+            int maxRange = m_remainingPlayers + 1;
             int currentRoll;
 
-            foreach (Character character in GameRoster)
+            foreach (Character character in m_gameRoster)
             {
-                currentRoll = DiceRoller.Next(1, maxRange);
+                List<int> usedRolls = new List<int>();
 
-                if (UsedRolls.Contains(currentRoll))
+                currentRoll = m_diceRoller.Next(1, maxRange);
+
+                if (usedRolls.Contains(currentRoll))
                 {
-                    while (UsedRolls.Contains(currentRoll))
+                    while (usedRolls.Contains(currentRoll))
                     {
-                        currentRoll = DiceRoller.Next(1, maxRange);
-                        Debug.WriteLine(currentRoll);
+                        currentRoll = m_diceRoller.Next(1, maxRange);
                     }
                 }
 
-                character.TurnOrder = currentRoll;
-                UsedRolls.Add(currentRoll);
+                character.Info.TurnOrder = currentRoll;
+                usedRolls.Add(currentRoll);
             }
 
-            foreach (Character dude in GameRoster)
-            {
-                Debug.WriteLine(dude.Name + "'s turn order is " + dude.TurnOrder + "\n\n");
-            }
-
-            GameRoster.Sort((a, b) => (a.TurnOrder.CompareTo(b.TurnOrder)));
-            UsedRolls.Clear();
-            TurnCount = 0;
+            m_gameRoster.Sort((a, b) => (a.Info.TurnOrder.CompareTo(b.Info.TurnOrder)));
+            m_turnCount = 0;
         }
 
         public void SetCurrentPlayer()
         {
-            if (TurnCount == 0)
+            if (m_turnCount == 0)
             {
-                CurrentPlayer = GameRoster[0];
+                m_currentPlayer = m_gameRoster[0];
                 return;
             }
             else
             {
-                int i = GameRoster.IndexOf(CurrentPlayer) + 1;
+                int i = m_gameRoster.IndexOf(m_currentPlayer) + 1;
 
-                if (GameRoster[i].Alive == true)
+                if (m_gameRoster[i].Info.Alive == true)
                 {
-                    CurrentPlayer = GameRoster[i];
+                    m_currentPlayer = m_gameRoster[i];
                 }
-                if (i == GameRoster.Count)
+                if (i == m_gameRoster.Count)
                 {
                     i = 0;
                 }
@@ -106,14 +164,13 @@ namespace WinForms_Combat_Assessment
 
         public DataManager()
         {
-            FSM = new FSM();                   
-            GameRoster = new List<Character>();           
-            WeaponList = new List<Weapon>();
-            SpellList = new List<Spell>();
-            ItemList = new List<Item>();
-            UsedRolls = new List<int>();
+            MainFSM = new FSM();                   
+            m_gameRoster = new List<Character>();           
+            m_weaponList = new List<Weapon>();
+            m_spellList = new List<Spell>();
+            m_itemList = new List<Item>();
 
-            RoundNumber = 1;        
+            m_roundNumber = 1;        
         }
     }
 }

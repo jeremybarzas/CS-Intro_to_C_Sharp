@@ -4,8 +4,10 @@
     {  
         public override void Cast(Character target, int intModifer)
         {
-            target.Health -= SpellPower * intModifer;
+            target.Info.Health -= SpellPower * intModifer;
         }
+
+        public DivineIntervention() { }
 
         public DivineIntervention(string n, int dmg, int mana)
         {

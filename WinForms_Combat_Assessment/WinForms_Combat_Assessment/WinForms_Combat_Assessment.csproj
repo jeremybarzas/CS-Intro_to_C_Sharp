@@ -51,7 +51,7 @@
     <Compile Include="Classes\Base Classes\State.cs" />
     <Compile Include="Classes\Base Classes\Weapon.cs" />
     <Compile Include="Classes\Game Management\DataManager.cs" />
-    <Compile Include="Classes\Game Management\GameSerialization.cs" />
+    <Compile Include="Classes\Game Management\DataSerializer.cs" />
     <Compile Include="Classes\Spells\Blizzard.cs" />
     <Compile Include="Classes\Spells\DivineIntervention.cs" />
     <Compile Include="Classes\Spells\Flashburn.cs" />
@@ -66,31 +66,31 @@
     <Compile Include="Forms\CharacterSheet.Designer.cs">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSM\States\CharacterSheetState.cs" />
+    <Compile Include="Classes\Game Management\FSM\States\CharacterSheetState.cs" />
     <Compile Include="Forms\Combat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Combat.Designer.cs">
       <DependentUpon>Combat.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSM\States\CombatState.cs" />
+    <Compile Include="Classes\Game Management\FSM\States\CombatState.cs" />
     <Compile Include="Forms\DiceRoll.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DiceRoll.Designer.cs">
       <DependentUpon>DiceRoll.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSM\States\DiceRollState.cs" />
-    <Compile Include="FSM\FSM.cs" />
+    <Compile Include="Classes\Game Management\FSM\States\DiceRollState.cs" />
+    <Compile Include="Classes\Game Management\FSM\FSM.cs" />
     <Compile Include="Forms\GameRules.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\GameRules.Designer.cs">
       <DependentUpon>GameRules.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSM\States\GameRulesState.cs" />
-    <Compile Include="Classes\Game Management\GameManager.cs" />
-    <Compile Include="Classes\Character\Character.cs" />
+    <Compile Include="Classes\Game Management\FSM\States\GameRulesState.cs" />
+    <Compile Include="Classes\Game Management\FormManager.cs" />
+    <Compile Include="Classes\Base Classes\Character.cs" />
     <Compile Include="Interfaces\ITargetable.cs" />
     <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
@@ -98,7 +98,7 @@
     <Compile Include="Forms\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSM\States\MainMenuState.cs" />
+    <Compile Include="Classes\Game Management\FSM\States\MainMenuState.cs" />
     <Compile Include="Classes\Items\Potion.cs" />
     <Compile Include="Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,8 +109,8 @@
     <Compile Include="Forms\Scoreboard.Designer.cs">
       <DependentUpon>Scoreboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSM\States\ScoreboardState.cs" />
-    <Compile Include="Classes\Character\Stats.cs" />
+    <Compile Include="Classes\Game Management\FSM\States\ScoreboardState.cs" />
+    <Compile Include="Classes\Base Classes\Stats.cs" />
     <Compile Include="Classes\Weapons\Sword.cs" />
     <EmbeddedResource Include="Forms\CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
@@ -139,6 +139,7 @@
     <EmbeddedResource Include="Forms\Scoreboard.resx">
       <DependentUpon>Scoreboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\DataManager.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,9 +153,7 @@
   <ItemGroup>
     <None Include="Program\App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\Game Management\Singleton\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

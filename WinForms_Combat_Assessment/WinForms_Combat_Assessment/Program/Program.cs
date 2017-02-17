@@ -9,9 +9,9 @@ namespace WinForms_Combat_Assessment
         {
             Form nextForm = new Form();
 
-            GameManager.Instance.DataManager.FSM.SetState(i);
+            FormManager.Instance.DataManager.MainFSM.SetState(i);
 
-            State currentState = GameManager.Instance.DataManager.FSM.CurrentState;
+            State currentState = FormManager.Instance.DataManager.MainFSM.CurrentState;           
 
             if (currentState as MainMenuState != null)
                 nextForm = new MainMenu();
@@ -33,7 +33,6 @@ namespace WinForms_Combat_Assessment
 
             f.Hide();
             nextForm.Show();
-
             return nextForm;
         }
 
@@ -50,7 +49,7 @@ namespace WinForms_Combat_Assessment
         [STAThread]
         static void Main()
         {
-            GameManager.Instance.Initializer.Invoke();
+            FormManager.Instance.Initializer.Invoke();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

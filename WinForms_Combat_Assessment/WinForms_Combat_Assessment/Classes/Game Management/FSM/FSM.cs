@@ -4,15 +4,9 @@ namespace WinForms_Combat_Assessment
 {
     public class FSM
     {
-        public List<State> States
-        {
-            get; set;
-        }
+        public List<State> States { get; set; }        
 
-        public State CurrentState
-        {
-            get; set;
-        }
+        public State CurrentState { get; set; }
 
         public FSM()
         {

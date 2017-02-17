@@ -8,7 +8,7 @@ namespace WinForms_Combat_Assessment
     [XmlInclude(typeof(ScoreboardState))]
     [XmlInclude(typeof(DiceRollState))]
     [XmlInclude(typeof(CombatState))]
-    public class State
+    public abstract class State
     {       
         public State() { }
 

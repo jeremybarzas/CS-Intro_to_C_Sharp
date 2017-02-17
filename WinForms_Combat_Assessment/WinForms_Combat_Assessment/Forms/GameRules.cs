@@ -28,7 +28,7 @@ namespace WinForms_Combat_Assessment
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.PlayerCount = (int)comboBox1.SelectedItem;          
+            FormManager.Instance.DataManager.PlayerCount = (int)comboBox1.SelectedItem;          
         }
     }
 }

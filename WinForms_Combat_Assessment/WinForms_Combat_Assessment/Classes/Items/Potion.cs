@@ -5,10 +5,10 @@
         private int m_healingPower;
         private int m_manaPower;
 
-        new public void Use(Character target)
+        public override void Use(Character target)
         {
-            target.Health += m_healingPower;
-            target.Mana += m_manaPower;
+            target.Info.Health += m_healingPower;
+            target.Info.Mana += m_manaPower;
         }
 
         public Potion() { }

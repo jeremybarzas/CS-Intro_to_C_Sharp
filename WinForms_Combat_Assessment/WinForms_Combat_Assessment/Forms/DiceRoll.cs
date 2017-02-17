@@ -17,11 +17,11 @@ namespace WinForms_Combat_Assessment
 
         private void Roll_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.AssignTurnOrder();
+            FormManager.Instance.DataManager.AssignTurnOrder();
 
-            for (int i = 0, j = 1; i < GameManager.Instance.DataManager.GameRoster.Count; i++, j++)
+            for (int i = 0, j = 1; i < FormManager.Instance.DataManager.GameRoster.Count; i++, j++)
             {
-                Turn_Order_Box.Text += j + ": " + GameManager.Instance.DataManager.GameRoster[i].Name + "\n\n";
+                Turn_Order_Box.Text += j + ": " + FormManager.Instance.DataManager.GameRoster[i].Info.Name + "\n\n";
             }
 
             Roll.Enabled = false;
@@ -30,7 +30,7 @@ namespace WinForms_Combat_Assessment
 
         private void Next_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.SetCurrentPlayer();
+            FormManager.Instance.DataManager.SetCurrentPlayer();
 
             Program.ChangeForm(this, 5);
         }

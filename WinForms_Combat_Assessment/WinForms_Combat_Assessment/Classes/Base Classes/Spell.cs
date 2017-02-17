@@ -2,6 +2,12 @@
 
 namespace WinForms_Combat_Assessment
 {
+    [XmlInclude(typeof(Blizzard))]
+    [XmlInclude(typeof(DivineIntervention))]
+    [XmlInclude(typeof(Flashburn))]
+    [XmlInclude(typeof(LightningBolt))]
+    [XmlInclude(typeof(MagicMissle))]
+    [XmlInclude(typeof(Regeneration))]
     public abstract class Spell
     {
         public string Name;

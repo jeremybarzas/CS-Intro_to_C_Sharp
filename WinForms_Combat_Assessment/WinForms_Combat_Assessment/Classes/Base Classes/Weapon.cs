@@ -1,17 +1,14 @@
 ﻿using System.Xml.Serialization;
 
 namespace WinForms_Combat_Assessment
-{ 
-    public class Weapon
+{
+    [XmlInclude(typeof(Sword))]
+    [XmlInclude(typeof(Axe))]
+    [XmlInclude(typeof(Mace))]   
+    public abstract class Weapon
     {
-        public string Name { get; set; }
-
-        public int Damage { get; set; }
-
-        public void Strike(Character target, int strModifer) { }
-
-        public Weapon() { }
-
-        public Weapon(string n) { Name = n; }
+        public string Name;
+        public int Damage;        
+        public abstract void Strike(Character target, int strModifer);        
     }
 }

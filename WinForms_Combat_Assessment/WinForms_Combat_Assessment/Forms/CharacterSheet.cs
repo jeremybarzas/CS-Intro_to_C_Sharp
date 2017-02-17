@@ -22,27 +22,27 @@ namespace WinForms_Combat_Assessment
 
         private void Next_Click(object sender, EventArgs e)
         {
-            //// Actual Code
-            GameManager.Instance.DataManager.AddToRoster(new Character(Character_Name.Text));
+            // Actual Code
+            FormManager.Instance.DataManager.AddToRoster(new Character(Character_Name.Text));
 
-            if (GameManager.Instance.DataManager.GameRoster.Count < GameManager.Instance.DataManager.PlayerCount)
+            if (FormManager.Instance.DataManager.GameRoster.Count < FormManager.Instance.DataManager.PlayerCount)
                 Program.ChangeForm(this, 2);
             else
                 Program.ChangeForm(this, 3);
 
             //// Test Code
-            //GameManager.Instance.AddToRoster(new Character("Test Player 1"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 2"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 3"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 4"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 5"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 6"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 7"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 8"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 9"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 10"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 1"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 2"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 3"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 4"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 5"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 6"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 7"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 8"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 9"));
+            //FormManager.Instance.DataManager.AddToRoster(new Character("Test Player 10"));
 
-            //Program.ChangeForm(3);
+            //Program.ChangeForm(this, 3);
         }
     }    
 }

@@ -35,7 +35,7 @@
             this.Player_Label = new System.Windows.Forms.Label();
             this.Status_Label = new System.Windows.Forms.Label();
             this.Kills_Label = new System.Windows.Forms.Label();
-            this.Score_Label = new System.Windows.Forms.Label();
+            this.Gold_Label = new System.Windows.Forms.Label();
             this.Player_Name_Text = new System.Windows.Forms.RichTextBox();
             this.Status_Text = new System.Windows.Forms.RichTextBox();
             this.Kills_Text = new System.Windows.Forms.RichTextBox();
@@ -112,15 +112,15 @@
             this.Kills_Label.TabIndex = 6;
             this.Kills_Label.Text = "Kills";
             // 
-            // Score_Label
+            // Gold_Label
             // 
-            this.Score_Label.AutoSize = true;
-            this.Score_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Score_Label.Location = new System.Drawing.Point(475, 58);
-            this.Score_Label.Name = "Score_Label";
-            this.Score_Label.Size = new System.Drawing.Size(56, 20);
-            this.Score_Label.TabIndex = 7;
-            this.Score_Label.Text = "Score";
+            this.Gold_Label.AutoSize = true;
+            this.Gold_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gold_Label.Location = new System.Drawing.Point(475, 58);
+            this.Gold_Label.Name = "Gold_Label";
+            this.Gold_Label.Size = new System.Drawing.Size(47, 20);
+            this.Gold_Label.TabIndex = 7;
+            this.Gold_Label.Text = "Gold";
             // 
             // Player_Name_Text
             // 
@@ -179,7 +179,7 @@
             this.Controls.Add(this.Kills_Text);
             this.Controls.Add(this.Status_Text);
             this.Controls.Add(this.Player_Name_Text);
-            this.Controls.Add(this.Score_Label);
+            this.Controls.Add(this.Gold_Label);
             this.Controls.Add(this.Kills_Label);
             this.Controls.Add(this.Status_Label);
             this.Controls.Add(this.Player_Label);
@@ -204,7 +204,7 @@
         private System.Windows.Forms.Label Player_Label;
         private System.Windows.Forms.Label Status_Label;
         private System.Windows.Forms.Label Kills_Label;
-        private System.Windows.Forms.Label Score_Label;
+        private System.Windows.Forms.Label Gold_Label;
         private System.Windows.Forms.RichTextBox Player_Name_Text;
         private System.Windows.Forms.RichTextBox Status_Text;
         private System.Windows.Forms.RichTextBox Kills_Text;
