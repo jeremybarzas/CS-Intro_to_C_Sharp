@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-
-namespace WinForms_Combat_Assessment.Classes.Spells
+﻿namespace WinForms_Combat_Assessment
 {
-    class Regeneration : ICastable
+    public class Regeneration : Spell
     {
-        private string m_name;
-        private int m_healing;
-        private int m_manaCost;
-
-        public Regeneration(int heal, int mana)
+        public override void Cast(Character target, int intModifer)
         {
-            m_name = "Regeneration";
-            m_healing = heal;
-            m_manaCost = mana;
+            target.Health -= SpellPower * intModifer;
         }
 
-        public void Cast(Character target, int Int)
+        public Regeneration(string n, int dmg, int mana)
         {
-            target.Health += (m_healing * Int);
+            Name = n;
+            SpellPower = dmg;
+            ManaCost = mana;
         }
     }
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinForms_Combat_Assessment
@@ -27,10 +20,7 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.FSM.SetState(0);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-            this.Dispose();
-            nextForm.Show();
+            Program.ChangeForm(0);
         }
 
         private void Confirm_Click(object sender, EventArgs e)
@@ -54,20 +44,14 @@ namespace WinForms_Combat_Assessment
                 GameManager.Instance.DataManager.RoundNumber++;
                 GameManager.Instance.DataManager.TurnCount = 0;
 
-                GameManager.Instance.DataManager.FSM.SetState(3);
-                Form scoreboard = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-                this.Dispose();
-                scoreboard.Show();
+                Program.ChangeForm(this, 3);
             }
             else
             {
                 GameManager.Instance.DataManager.TurnCount += 1;
                 GameManager.Instance.DataManager.SetCurrentPlayer();
-                
-                GameManager.Instance.DataManager.FSM.SetState(5);
-                Form combatPhase = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-                this.Dispose();
-                combatPhase.Show();
+
+                Program.ChangeForm(this, 5);
             }            
         }
 

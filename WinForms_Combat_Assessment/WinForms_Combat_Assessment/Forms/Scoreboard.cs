@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinForms_Combat_Assessment
@@ -36,25 +29,17 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.FSM.SetState(0);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-            this.Dispose();
-            nextForm.Show();
+            Program.ChangeForm(this, 0);
         }
 
         private void Start_Game_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.FSM.SetState(4);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-            this.Dispose();
-            nextForm.Show();
+            Program.ChangeForm(this, 4);
         }
 
         private void Save_Game_Click(object sender, EventArgs e)
-        {
-            //GameSerialization<FSM>.Serialize("FSM", GameManager.Instance.DataManager.FSM);
-            var gm = GameManager.Instance.DataManager;
-            GameSerialization<DataManager>.Serialize("GameSave", gm);
+        {           
+            GameSerialization<DataManager>.Serialize("GameSave", GameManager.Instance.DataManager);
         }
     }
 }

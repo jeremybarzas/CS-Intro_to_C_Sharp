@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Base Classes\Item.cs" />
+    <Compile Include="Classes\Base Classes\Spell.cs" />
     <Compile Include="Classes\Base Classes\State.cs" />
-    <Compile Include="Classes\Data Management\DataManager.cs" />
-    <Compile Include="Classes\Data Management\GameSerialization.cs" />
+    <Compile Include="Classes\Base Classes\Weapon.cs" />
+    <Compile Include="Classes\Game Management\DataManager.cs" />
+    <Compile Include="Classes\Game Management\GameSerialization.cs" />
     <Compile Include="Classes\Spells\Blizzard.cs" />
     <Compile Include="Classes\Spells\DivineIntervention.cs" />
     <Compile Include="Classes\Spells\Flashburn.cs" />
@@ -78,8 +81,6 @@
       <DependentUpon>DiceRoll.cs</DependentUpon>
     </Compile>
     <Compile Include="FSM\States\DiceRollState.cs" />
-    <Compile Include="Classes\Items\Elixir.cs" />
-    <Compile Include="Classes\Items\Ether.cs" />
     <Compile Include="FSM\FSM.cs" />
     <Compile Include="Forms\GameRules.cs">
       <SubType>Form</SubType>
@@ -88,13 +89,8 @@
       <DependentUpon>GameRules.cs</DependentUpon>
     </Compile>
     <Compile Include="FSM\States\GameRulesState.cs" />
-    <Compile Include="Classes\Singletons\GameManager.cs" />
-    <Compile Include="Interfaces\IGameState.cs" />
-    <Compile Include="Interfaces\IPackable.cs" />
-    <Compile Include="Interfaces\ISwingable.cs" />
-    <Compile Include="Interfaces\ICastable.cs" />
+    <Compile Include="Classes\Game Management\GameManager.cs" />
     <Compile Include="Classes\Character\Character.cs" />
-    <Compile Include="Interfaces\IUseable.cs" />
     <Compile Include="Interfaces\ITargetable.cs" />
     <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
@@ -155,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Program\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\Game Management\Singleton\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

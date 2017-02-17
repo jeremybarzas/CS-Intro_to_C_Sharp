@@ -1,40 +1,48 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using System.Collections.Generic;
+
 namespace WinForms_Combat_Assessment
 {
-   
     static class Program
     {
-        public static Form ChangeForm(FSM fsm)
+        public static Form ChangeForm(Form f, int i)
         {
-            State current = fsm.CurrentState;
+            Form nextForm = new Form();
 
-            Form currentForm = new Form();
+            GameManager.Instance.DataManager.FSM.SetState(i);
 
-            //if (current as MainMenuState != null)
-            //  currentForm = new MainMenu();
+            State currentState = GameManager.Instance.DataManager.FSM.CurrentState;
 
-            if (current as GameRulesState != null)
-                currentForm = new GameRules();
+            if (currentState as MainMenuState != null)
+                nextForm = new MainMenu();
 
-            if (current as CharacterSheetState != null)
-                currentForm = new CharacterSheet();
+            if (currentState as GameRulesState != null)
+                nextForm = new GameRules();
 
-            if (current as ScoreboardState != null)
-                currentForm = new Scoreboard();
+            if (currentState as CharacterSheetState != null)
+                nextForm = new CharacterSheet();
 
-            if (current as DiceRollState != null)
-                currentForm = new DiceRoll();
+            if (currentState as ScoreboardState != null)
+                nextForm = new Scoreboard();
 
-            if (current as CombatState != null)
-                currentForm = new Combat();
+            if (currentState as DiceRollState != null)
+                nextForm = new DiceRoll();
 
-            return currentForm;
+            if (currentState as CombatState != null)
+                nextForm = new Combat();
+
+            f.Hide();
+            nextForm.Show();
+
+            return nextForm;
         }
 
+        public static Form ChangeForm(int i)
+        {
+            Form nextForm = ChangeForm(new Form(), i);
+
+            return nextForm;
+        }
 
         /// <summary>
         /// The main entry point for the application.
@@ -42,48 +50,11 @@ namespace WinForms_Combat_Assessment
         [STAThread]
         static void Main()
         {
-            FSM fsm = new FSM();
-            GameManager.Instance.DataManager.FSM = fsm;
-            var gm = GameManager.Instance.DataManager;
-
-            State MainMenu = new MainMenuState(0);
-            
-            XmlSerializer ser = new XmlSerializer(typeof(FSM));
-            TextWriter tw = new StreamWriter(Environment.CurrentDirectory + "../Saves/" + "mainmenu" + ".xml");
-
-            //CharacterSheetState CharacterSheet = new CharacterSheetState(2);
-            //ScoreboardState Scoreboard = new ScoreboardState(3);
-            //DiceRollState DiceRoll = new DiceRollState(4);
-            //CombatState Combat = new CombatState(5);
-            GameRulesState GameRules = new GameRulesState(1);
-            
-            fsm.AddState(new MainMenuState());
-            
-            //fsm.AddState(Scoreboard);
-            
-            fsm.AddState(GameRules);
-            GameSerialization<DataManager>.Serialize("GameSave", gm);
-            //fsm.AddState(CharacterSheet);
-
-
-            //fsm.AddState(DiceRoll);
-            //fsm.AddState(Combat);
-            //fsm.SetState(0);
-
-
-
-
-
-
-
-
-
-
-            GameManager.Instance.DataManager.FSM = fsm;
+            GameManager.Instance.Initializer.Invoke();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Application.Run(ChangeForm(0));
         }
     }
 }

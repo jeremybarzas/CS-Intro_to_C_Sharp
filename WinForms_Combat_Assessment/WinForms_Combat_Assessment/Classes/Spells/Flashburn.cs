@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-
-namespace WinForms_Combat_Assessment.Classes
+﻿namespace WinForms_Combat_Assessment
 {
-    class Flashburn : ICastable
+    public class Flashburn : Spell
     {
-        private string m_name;
-        private int m_damage;
-        private int m_manaCost;
-
-        public Flashburn(int dmg, int mana)
+        public override void Cast(Character target, int intModifer)
         {
-            m_name = "Flashburn";
-            m_damage = dmg;
-            m_manaCost = mana;
+            target.Health -= SpellPower * intModifer;
         }
-
-        public void Cast(Character target, int Int)
+        
+        public Flashburn(string n, int dmg, int mana)
         {
-            target.Health -= (m_damage * Int);
+            Name = n;
+            SpellPower = dmg;
+            ManaCost = mana;
         }
     }
 }

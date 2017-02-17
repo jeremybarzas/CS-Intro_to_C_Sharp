@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinForms_Combat_Assessment
 {
     public partial class CharacterSheet : Form
     {
-        public Character newCharacter;
-
         public CharacterSheet()
-        {
+        {                        
             InitializeComponent();
         }
 
@@ -26,33 +17,20 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            GameManager.Instance.DataManager.FSM.SetState(0);
-            Form nextForm = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-            this.Hide();
-            nextForm.Show();
+            Program.ChangeForm(0);
         }
 
         private void Next_Click(object sender, EventArgs e)
         {
-            // Actual Code
+            //// Actual Code
             GameManager.Instance.DataManager.AddToRoster(new Character(Character_Name.Text));
 
             if (GameManager.Instance.DataManager.GameRoster.Count < GameManager.Instance.DataManager.PlayerCount)
-            {
-                GameManager.Instance.DataManager.FSM.SetState(2);
-                Form charSheet = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-                this.Dispose();
-                charSheet.Show();
-            }
+                Program.ChangeForm(this, 2);
             else
-            {
-                GameManager.Instance.DataManager.FSM.SetState(3);
-                Form scoreboard = Program.ChangeForm(GameManager.Instance.DataManager.FSM);
-                this.Dispose();
-                scoreboard.Show();
-            }
+                Program.ChangeForm(this, 3);
 
-            // Test Code
+            //// Test Code
             //GameManager.Instance.AddToRoster(new Character("Test Player 1"));
             //GameManager.Instance.AddToRoster(new Character("Test Player 2"));
             //GameManager.Instance.AddToRoster(new Character("Test Player 3"));
@@ -63,20 +41,8 @@ namespace WinForms_Combat_Assessment
             //GameManager.Instance.AddToRoster(new Character("Test Player 8"));
             //GameManager.Instance.AddToRoster(new Character("Test Player 9"));
             //GameManager.Instance.AddToRoster(new Character("Test Player 10"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 11"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 12"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 13"));
-            //GameManager.Instance.AddToRoster(new Character("Test Player 14"));
 
-            //GameManager.Instance.FSM.SetState(3);
-            //Form nextForm = Program.ChangeForm(GameManager.Instance.FSM);
-            //this.Dispose();
-            //nextForm.Show();
+            //Program.ChangeForm(3);
         }
-
-        private void Character_Name_Label_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+    }    
 }

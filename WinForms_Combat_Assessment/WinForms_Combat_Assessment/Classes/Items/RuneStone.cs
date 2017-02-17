@@ -1,26 +1,23 @@
-﻿using System;
-
-namespace WinForms_Combat_Assessment
+﻿namespace WinForms_Combat_Assessment
 {
-    public class RuneStone : IPackable, IUseable
+    public class RuneStone : Item
     {
         private int strBuff;
         private int intBuff;
-        public string Name { get; set; }
 
-        public RuneStone() { }
-
-        public RuneStone(int s, int i)
-        {
-            Name = "Runestone";
-            strBuff = s;
-            intBuff = i;
-        }
-
-        public void Use(Character target)
+        new public void Use(Character target)
         {
             target.Strength += strBuff;
             target.Intellect += intBuff;
         }
+
+        public RuneStone() { }
+
+        public RuneStone(string n, int s, int i)
+        {
+            Name = n;
+            strBuff = s;
+            intBuff = i;
+        }       
     }
 }

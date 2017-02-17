@@ -1,19 +1,18 @@
 ﻿namespace WinForms_Combat_Assessment
 {
-    public class Sword : ISwingable
+    public class Sword : Weapon
     {
-        private string m_name;
-        private int m_damage;
-
-        public Sword(int dmg)
+        new public void Strike(Character target, int strModifer)
         {
-            m_name = "Sword";
-            m_damage = dmg;
+            target.Health -= Damage * strModifer;
         }
 
-        public void Swing(Character target, int Str)
+        public Sword() { }
+
+        public Sword(string n, int dmg)
         {
-            target.Health -= (m_damage * Str); 
+            Name = n;
+            Damage = dmg;
         }
     }
 }

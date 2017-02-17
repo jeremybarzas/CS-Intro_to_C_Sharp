@@ -1,66 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Xml.Serialization;
-
 
 namespace WinForms_Combat_Assessment
 {
-    [XmlInclude(typeof(DataManager))]
     public class DataManager
     {
-        public int TurnCount
-        {
-            get; set;
-        }
+        public FSM FSM { get; set; }
 
-        public int RemainingPlayers
-        {
-            get; set;
-        }
+        public Character CurrentPlayer { get; set; }
 
-        public int RoundNumber
-        {
-            get; set;
-        }
+        public Random DiceRoller { get; set; }
 
-        public Character CurrentPlayer
-        {
-            get; set;
-        }
+        public List<Character> GameRoster { get; set; }
 
-        public List<Character> GameRoster
-        {
-            get; set;
-        }
+        public List<Weapon> WeaponList { get; set; }
 
-        public int PlayerCount
-        {
-            get; set;
-        }
+        public List<Spell> SpellList { get; set; }
 
-        public Random DiceRoller
-        {
-            get; set;
-        }
+        public List<Item> ItemList { get; set; }        
 
-        public List<int> UsedRolls
-        {
-            get; set;
-        }
+        public List<int> UsedRolls { get; set; }
 
-        
-        public FSM FSM
-        {
-            get; set;
-        }
+        public int TurnCount { get; set; }
+
+        public int RemainingPlayers { get; set; }
+
+        public int RoundNumber { get; set; }             
+
+        public int PlayerCount { get; set; }      
 
         public void AddToRoster(Character c)
         {
             GameRoster.Add(c);
+            SetCurrentPlayer();
         }
 
         public void SetRemainingPlayers()
@@ -129,26 +102,18 @@ namespace WinForms_Combat_Assessment
                     i = 0;
                 }
             }
-        }
+        }       
 
         public DataManager()
         {
-            //FSM = new FSM();
+            FSM = new FSM();                   
+            GameRoster = new List<Character>();           
+            WeaponList = new List<Weapon>();
+            SpellList = new List<Spell>();
+            ItemList = new List<Item>();
             UsedRolls = new List<int>();
-            GameRoster = new List<Character>();            
-        }
 
-        public DataManager(DataManager dm)
-        {
-            TurnCount = dm.TurnCount;
-            RemainingPlayers = dm.RemainingPlayers;
-            RoundNumber = dm.RoundNumber;
-            CurrentPlayer = dm.CurrentPlayer;
-            GameRoster = dm.GameRoster;
-            PlayerCount = dm.PlayerCount;
-            DiceRoller = dm.DiceRoller;
-            UsedRolls = dm.UsedRolls;
-            //FSM = dm.FSM;
+            RoundNumber = 1;        
         }
     }
 }

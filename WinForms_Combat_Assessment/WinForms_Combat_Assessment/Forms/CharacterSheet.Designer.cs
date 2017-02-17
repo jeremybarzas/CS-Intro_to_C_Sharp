@@ -60,7 +60,6 @@
             this.Character_Name_Label.Size = new System.Drawing.Size(84, 13);
             this.Character_Name_Label.TabIndex = 2;
             this.Character_Name_Label.Text = "Character Name";
-            this.Character_Name_Label.Click += new System.EventHandler(this.Character_Name_Label_Click);
             // 
             // Next
             // 

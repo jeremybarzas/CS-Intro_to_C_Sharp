@@ -1,23 +1,23 @@
-﻿using System;
-
-namespace WinForms_Combat_Assessment
+﻿namespace WinForms_Combat_Assessment
 {
-    public class Potion : IPackable, IUseable
+    public class Potion : Item
     {
         private int m_healingPower;
-        public string Name { get; set; }
+        private int m_manaPower;
+
+        new public void Use(Character target)
+        {
+            target.Health += m_healingPower;
+            target.Mana += m_manaPower;
+        }
 
         public Potion() { }
 
-        public Potion(int heal)
+        public Potion(string n, int heal, int mana)
         {
-            Name = "Potion";
+            Name = n;
             m_healingPower = heal;
-        }
-
-        public void Use(Character target)
-        {
-            target.Health += m_healingPower;
-        }
+            m_manaPower = mana;
+        }      
     }
 }

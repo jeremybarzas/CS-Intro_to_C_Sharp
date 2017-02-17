@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinForms_Combat_Assessment.Classes.Weapons
+﻿namespace WinForms_Combat_Assessment
 {
-    class Mace
+    public class Mace : Weapon
     {
-        private string m_name;
-        private int m_damage;
-
-        public Mace(int dmg)
+        new public void Strike(Character target, int strModifer)
         {
-            m_name = "Mace";
-            m_damage = dmg;
+            target.Health -= Damage * strModifer;
         }
 
-        public void Swing(Character target, int Str)
+        public Mace() { }
+
+        public Mace(string n, int dmg)
         {
-            target.Health -= (m_damage * Str);
+            Name = n;
+            Damage = dmg;
         }
     }
 }

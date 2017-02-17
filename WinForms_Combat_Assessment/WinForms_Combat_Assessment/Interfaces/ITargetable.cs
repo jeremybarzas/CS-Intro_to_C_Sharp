@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinForms_Combat_Assessment
+﻿namespace WinForms_Combat_Assessment
 {
     public interface ITargetable
-    {
-        string Name
-        {
-            get;
-        }
+    {        
+        void RecieveWaponAction(Weapon w, int strModifer);
+
+        void RecieveSpellAction(Spell s, int intModifer);
+        
+        void RecieveItemAction(Item i);
+
+        void CommitAction(ITargetable weaponTarget, ITargetable spellTarget, ITargetable itemTarget, int strModifer, int intModifer);
     }
 }
