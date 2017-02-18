@@ -12,9 +12,9 @@ namespace WinForms_Combat_Assessment
 
         private void Scoreboard_Load(object sender, EventArgs e)
         {
-            FormManager.Instance.DataManager.GameRoster.Sort((a, b) => -1 * (a.Info.Gold.CompareTo(b.Info.Gold)));
+            AppManager.Instance.DataManager.GameRoster.Sort((a, b) => -1 * (a.Info.Gold.CompareTo(b.Info.Gold)));
 
-            foreach (Character character in FormManager.Instance.DataManager.GameRoster)
+            foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {
                 Player_Name_Text.Text += " " + character.Info.Name + "\n\n";                
                 Kills_Text.Text += "    " + character.Info.Kills + "\n\n";
@@ -39,7 +39,7 @@ namespace WinForms_Combat_Assessment
 
         private void Save_Game_Click(object sender, EventArgs e)
         {           
-            DataSerializer<DataManager>.Serialize("GameSave", FormManager.Instance.DataManager);
+            DataSerializer<DataManager>.Serialize("GameSave", AppManager.Instance.DataManager);
         }
     }
 }

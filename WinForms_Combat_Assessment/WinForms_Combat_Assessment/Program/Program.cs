@@ -9,9 +9,9 @@ namespace WinForms_Combat_Assessment
         {
             Form nextForm = new Form();
 
-            FormManager.Instance.DataManager.MainFSM.SetState(i);
+            AppManager.Instance.DataManager.MainFSM.SetState(i);
 
-            State currentState = FormManager.Instance.DataManager.MainFSM.CurrentState;           
+            State currentState = AppManager.Instance.DataManager.MainFSM.CurrentState;           
 
             if (currentState as MainMenuState != null)
                 nextForm = new MainMenu();
@@ -49,7 +49,7 @@ namespace WinForms_Combat_Assessment
         [STAThread]
         static void Main()
         {
-            FormManager.Instance.Initializer.Invoke();
+            AppManager.Instance.Initializer.Invoke();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

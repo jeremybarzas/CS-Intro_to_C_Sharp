@@ -17,16 +17,16 @@ namespace WinForms_Combat_Assessment
 
         private void Roll_Click(object sender, EventArgs e)
         {
-            FormManager.Instance.DataManager.AssignTurnOrder();
+            AppManager.Instance.DataManager.AssignTurnOrder();
 
             int i = 0;
             int j = 1;
 
-            while (i < FormManager.Instance.DataManager.GameRoster.Count)
+            while (i < AppManager.Instance.DataManager.GameRoster.Count)
             {
-                if (FormManager.Instance.DataManager.GameRoster[i].Info.Alive == true)
+                if (AppManager.Instance.DataManager.GameRoster[i].Info.Alive == true)
                 {
-                    Turn_Order_Box.Text += j + ": " + FormManager.Instance.DataManager.GameRoster[i].Info.Name + "\n\n";                    
+                    Turn_Order_Box.Text += j + ": " + AppManager.Instance.DataManager.GameRoster[i].Info.Name + "\n\n";                    
                     j++;
                 }
                 i++;

@@ -1,6 +1,6 @@
 ﻿namespace WinForms_Combat_Assessment
 {
-    public class FormManager
+    public class AppManager
     {
         private DataManager m_dataManager;
 
@@ -46,14 +46,14 @@
             DataManager.AddToItemList(new RuneStone("Blue Runestone", 0, 1));
         }
 
-        private static readonly FormManager instance = new FormManager();
+        private static readonly AppManager instance = new AppManager();
 
-        public static FormManager Instance
+        public static AppManager Instance
         {
             get { return instance; }           
         }
 
-        private FormManager()
+        private AppManager()
         {
             DataManager = new DataManager();
             Initializer += InitalizeMainFSM;

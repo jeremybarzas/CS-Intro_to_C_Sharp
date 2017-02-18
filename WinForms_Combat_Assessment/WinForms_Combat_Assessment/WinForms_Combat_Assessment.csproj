@@ -50,8 +50,8 @@
     <Compile Include="Classes\Base Classes\Spell.cs" />
     <Compile Include="Classes\Base Classes\State.cs" />
     <Compile Include="Classes\Base Classes\Weapon.cs" />
-    <Compile Include="Classes\Game Management\DataManager.cs" />
-    <Compile Include="Classes\Game Management\DataSerializer.cs" />
+    <Compile Include="Classes\App Management\DataManager.cs" />
+    <Compile Include="Classes\App Management\DataSerializer.cs" />
     <Compile Include="Classes\Spells\Blizzard.cs" />
     <Compile Include="Classes\Spells\DivineIntervention.cs" />
     <Compile Include="Classes\Spells\Flashburn.cs" />
@@ -81,7 +81,7 @@
       <DependentUpon>DiceRoll.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\States\DiceRollState.cs" />
-    <Compile Include="Classes\Game Management\FSM.cs" />
+    <Compile Include="Classes\App Management\FSM.cs" />
     <Compile Include="Forms\GameRules.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,7 +89,7 @@
       <DependentUpon>GameRules.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\States\GameRulesState.cs" />
-    <Compile Include="Classes\Game Management\FormManager.cs" />
+    <Compile Include="Classes\App Management\AppManager.cs" />
     <Compile Include="Classes\Base Classes\Character.cs" />
     <Compile Include="Interfaces\ITargetable.cs" />
     <Compile Include="Forms\MainMenu.cs">
