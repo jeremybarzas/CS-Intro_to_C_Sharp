@@ -32,8 +32,9 @@
             this.Combat_Phase_Label = new System.Windows.Forms.Label();
             this.Current_Player_Name_Label = new System.Windows.Forms.Label();
             this.Attack_Selector = new System.Windows.Forms.ComboBox();
-            this.weaponListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gameRosterBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.dataManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.weaponListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gameRosterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Item_Selector = new System.Windows.Forms.ComboBox();
             this.itemListBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -48,14 +49,18 @@
             this.gameRosterBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.Attack_Target_Selector = new System.Windows.Forms.ComboBox();
             this.gameRosterBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).BeginInit();
+            this.dataManagerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Combat_Textbox = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spellListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // Combat_Phase_Label
@@ -85,15 +90,22 @@
             this.Attack_Selector.Name = "Attack_Selector";
             this.Attack_Selector.Size = new System.Drawing.Size(121, 21);
             this.Attack_Selector.TabIndex = 2;
+            this.Attack_Selector.Text = "Select Attack";
+            this.Attack_Selector.SelectedIndexChanged += new System.EventHandler(this.Attack_Selector_SelectedIndexChanged);
+            // 
+            // gameRosterBindingSource4
+            // 
+            this.gameRosterBindingSource4.DataMember = "GameRoster";
+            this.gameRosterBindingSource4.DataSource = this.dataManagerBindingSource;
+            // 
+            // dataManagerBindingSource
+            // 
+            this.dataManagerBindingSource.DataSource = typeof(WinForms_Combat_Assessment.DataManager);
             // 
             // weaponListBindingSource
             // 
             this.weaponListBindingSource.DataMember = "WeaponList";
             this.weaponListBindingSource.DataSource = this.dataManagerBindingSource;
-            // 
-            // dataManagerBindingSource
-            // 
-            this.dataManagerBindingSource.DataSource = typeof(WinForms_Combat_Assessment.DataManager);
             // 
             // gameRosterBindingSource
             // 
@@ -107,6 +119,7 @@
             this.Item_Selector.Name = "Item_Selector";
             this.Item_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Selector.TabIndex = 3;
+            this.Item_Selector.Text = "Select Item";
             this.Item_Selector.SelectedIndexChanged += new System.EventHandler(this.Item_Selector_SelectedIndexChanged);
             // 
             // itemListBindingSource
@@ -121,6 +134,8 @@
             this.Spell_Selector.Name = "Spell_Selector";
             this.Spell_Selector.Size = new System.Drawing.Size(121, 21);
             this.Spell_Selector.TabIndex = 4;
+            this.Spell_Selector.Text = "Select Spell";
+            this.Spell_Selector.SelectedIndexChanged += new System.EventHandler(this.Spell_Selector_SelectedIndexChanged);
             // 
             // spellListBindingSource
             // 
@@ -164,6 +179,8 @@
             this.Spell_Target_Selector.Name = "Spell_Target_Selector";
             this.Spell_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Spell_Target_Selector.TabIndex = 10;
+            this.Spell_Target_Selector.Text = "Select Spell Target";
+            this.Spell_Target_Selector.SelectedIndexChanged += new System.EventHandler(this.Spell_Target_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource3
             // 
@@ -177,6 +194,8 @@
             this.Item_Target_Selector.Name = "Item_Target_Selector";
             this.Item_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Target_Selector.TabIndex = 9;
+            this.Item_Target_Selector.Text = "Select Item Target";
+            this.Item_Target_Selector.SelectedIndexChanged += new System.EventHandler(this.Item_Target_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource2
             // 
@@ -190,17 +209,32 @@
             this.Attack_Target_Selector.Name = "Attack_Target_Selector";
             this.Attack_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Attack_Target_Selector.TabIndex = 8;
+            this.Attack_Target_Selector.Text = "Select Attack Target";
+            this.Attack_Target_Selector.SelectedIndexChanged += new System.EventHandler(this.Attack_Target_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource1
             // 
             this.gameRosterBindingSource1.DataMember = "GameRoster";
             this.gameRosterBindingSource1.DataSource = this.dataManagerBindingSource;
             // 
+            // dataManagerBindingSource1
+            // 
+            this.dataManagerBindingSource1.DataSource = typeof(WinForms_Combat_Assessment.DataManager);
+            // 
+            // Combat_Textbox
+            // 
+            this.Combat_Textbox.Location = new System.Drawing.Point(59, 222);
+            this.Combat_Textbox.Name = "Combat_Textbox";
+            this.Combat_Textbox.Size = new System.Drawing.Size(458, 176);
+            this.Combat_Textbox.TabIndex = 11;
+            this.Combat_Textbox.Text = "";
+            // 
             // Combat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.Combat_Textbox);
             this.Controls.Add(this.Spell_Target_Selector);
             this.Controls.Add(this.Item_Target_Selector);
             this.Controls.Add(this.Attack_Target_Selector);
@@ -215,14 +249,16 @@
             this.Name = "Combat";
             this.Text = "CombatPhase";
             this.Load += new System.EventHandler(this.Combat_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spellListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,5 +285,8 @@
         private System.Windows.Forms.BindingSource gameRosterBindingSource3;
         private System.Windows.Forms.BindingSource gameRosterBindingSource2;
         private System.Windows.Forms.BindingSource gameRosterBindingSource1;
+        private System.Windows.Forms.BindingSource gameRosterBindingSource4;
+        private System.Windows.Forms.BindingSource dataManagerBindingSource1;
+        private System.Windows.Forms.RichTextBox Combat_Textbox;
     }
 }

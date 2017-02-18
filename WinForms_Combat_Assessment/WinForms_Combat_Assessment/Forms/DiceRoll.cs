@@ -19,9 +19,17 @@ namespace WinForms_Combat_Assessment
         {
             FormManager.Instance.DataManager.AssignTurnOrder();
 
-            for (int i = 0, j = 1; i < FormManager.Instance.DataManager.GameRoster.Count; i++, j++)
+            int i = 0;
+            int j = 1;
+
+            while (i < FormManager.Instance.DataManager.GameRoster.Count)
             {
-                Turn_Order_Box.Text += j + ": " + FormManager.Instance.DataManager.GameRoster[i].Info.Name + "\n\n";
+                if (FormManager.Instance.DataManager.GameRoster[i].Info.Alive == true)
+                {
+                    Turn_Order_Box.Text += j + ": " + FormManager.Instance.DataManager.GameRoster[i].Info.Name + "\n\n";                    
+                    j++;
+                }
+                i++;
             }
 
             Roll.Enabled = false;
@@ -30,8 +38,6 @@ namespace WinForms_Combat_Assessment
 
         private void Next_Click(object sender, EventArgs e)
         {
-            FormManager.Instance.DataManager.SetCurrentPlayer();
-
             Program.ChangeForm(this, 5);
         }
 

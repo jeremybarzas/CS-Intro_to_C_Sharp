@@ -4,7 +4,8 @@
     {
         public override void Strike(Character target, int strModifer)
         {
-            target.Info.Health -= Damage * strModifer;
+            int dmg = (Damage * strModifer);
+            target.Info.Health -= Damage;
         }
 
         public Mace() { }

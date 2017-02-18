@@ -7,8 +7,7 @@ namespace WinForms_Combat_Assessment
     public class DataManager
     {
         private FSM m_mainFSM;
-        private Character m_currentPlayer;
-        private Random m_diceRoller;
+        private Character m_currentPlayer;        
         private List<Character> m_gameRoster;
         private List<Weapon> m_weaponList;
         private List<Spell> m_spellList;
@@ -27,13 +26,7 @@ namespace WinForms_Combat_Assessment
         public Character CurrentPlayer
         {
             get { return m_currentPlayer; }
-        }
-
-        public Random DiceRoller
-        {
-            get { return m_diceRoller; }
-            set { m_diceRoller = value; }
-        }
+        }       
 
         public List<Character> GameRoster
         {
@@ -95,8 +88,17 @@ namespace WinForms_Combat_Assessment
 
         public void AddToRoster(Character c)
         {
+            c.AddToWeapons(new Sword("Sword", 25));
+
+            c.AddToSpellbook(new MagicMissle("Magic Missle", 25, 25));
+            c.AddToSpellbook(new Flashburn("Flashburn", 25, 25));
+
+            c.AddToBackpack(new Potion("Potion", 50, 0));
+            c.AddToBackpack(new Potion("Ether", 0, 50));
+            c.AddToBackpack(new Potion("Elixir", 30, 30));
+            c.AddToBackpack(new RuneStone("Red Runestone", 1, 0));
+
             m_gameRoster.Add(c);
-            SetCurrentPlayer();
         }
 
         public void SetRemainingPlayers()
@@ -114,7 +116,7 @@ namespace WinForms_Combat_Assessment
         {
             SetRemainingPlayers();
 
-            m_diceRoller = new Random();
+            Random m_diceRoller = new Random();
             int maxRange = m_remainingPlayers + 1;
             int currentRoll;
 
@@ -138,28 +140,13 @@ namespace WinForms_Combat_Assessment
 
             m_gameRoster.Sort((a, b) => (a.Info.TurnOrder.CompareTo(b.Info.TurnOrder)));
             m_turnCount = 0;
+
+            SetCurrentPlayer(0);            
         }
 
-        public void SetCurrentPlayer()
+        public void SetCurrentPlayer(int i)
         {
-            if (m_turnCount == 0)
-            {
-                m_currentPlayer = m_gameRoster[0];
-                return;
-            }
-            else
-            {
-                int i = m_gameRoster.IndexOf(m_currentPlayer) + 1;
-
-                if (m_gameRoster[i].Info.Alive == true)
-                {
-                    m_currentPlayer = m_gameRoster[i];
-                }
-                if (i == m_gameRoster.Count)
-                {
-                    i = 0;
-                }
-            }
+            m_currentPlayer = m_gameRoster[i];           
         }       
 
         public DataManager()

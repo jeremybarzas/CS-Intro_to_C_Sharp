@@ -66,29 +66,29 @@
     <Compile Include="Forms\CharacterSheet.Designer.cs">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Game Management\FSM\States\CharacterSheetState.cs" />
+    <Compile Include="Classes\States\CharacterSheetState.cs" />
     <Compile Include="Forms\Combat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Combat.Designer.cs">
       <DependentUpon>Combat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Game Management\FSM\States\CombatState.cs" />
+    <Compile Include="Classes\States\CombatState.cs" />
     <Compile Include="Forms\DiceRoll.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DiceRoll.Designer.cs">
       <DependentUpon>DiceRoll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Game Management\FSM\States\DiceRollState.cs" />
-    <Compile Include="Classes\Game Management\FSM\FSM.cs" />
+    <Compile Include="Classes\States\DiceRollState.cs" />
+    <Compile Include="Classes\Game Management\FSM.cs" />
     <Compile Include="Forms\GameRules.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\GameRules.Designer.cs">
       <DependentUpon>GameRules.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Game Management\FSM\States\GameRulesState.cs" />
+    <Compile Include="Classes\States\GameRulesState.cs" />
     <Compile Include="Classes\Game Management\FormManager.cs" />
     <Compile Include="Classes\Base Classes\Character.cs" />
     <Compile Include="Interfaces\ITargetable.cs" />
@@ -98,7 +98,7 @@
     <Compile Include="Forms\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Game Management\FSM\States\MainMenuState.cs" />
+    <Compile Include="Classes\States\MainMenuState.cs" />
     <Compile Include="Classes\Items\Potion.cs" />
     <Compile Include="Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,7 +109,7 @@
     <Compile Include="Forms\Scoreboard.Designer.cs">
       <DependentUpon>Scoreboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Game Management\FSM\States\ScoreboardState.cs" />
+    <Compile Include="Classes\States\ScoreboardState.cs" />
     <Compile Include="Classes\Base Classes\Stats.cs" />
     <Compile Include="Classes\Weapons\Sword.cs" />
     <EmbeddedResource Include="Forms\CharacterSheet.resx">

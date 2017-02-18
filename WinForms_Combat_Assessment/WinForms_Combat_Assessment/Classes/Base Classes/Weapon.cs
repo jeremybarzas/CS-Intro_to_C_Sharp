@@ -9,6 +9,6 @@ namespace WinForms_Combat_Assessment
     {
         public string Name;
         public int Damage;        
-        public abstract void Strike(Character target, int strModifer);        
+        public abstract void Strike(Character target, int strModifer);  
     }
 }

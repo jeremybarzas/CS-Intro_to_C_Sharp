@@ -27,19 +27,23 @@
 
         public void InitalizeDataManager()
         {
-            DataManager.AddToWeaponList(new Sword());
-            DataManager.AddToWeaponList(new Axe());
-            DataManager.AddToWeaponList(new Mace());
+            DataManager.AddToWeaponList(new Sword("Sword", 25));
+            DataManager.AddToWeaponList(new Axe("Axe", 25));
+            DataManager.AddToWeaponList(new Mace("Mace", 25));
+            DataManager.AddToWeaponList(new Mace("PunkBuster VAC Ban Hammer", 100));
 
-            DataManager.AddToSpellList(new MagicMissle());
-            DataManager.AddToSpellList(new Flashburn());
-            DataManager.AddToSpellList(new Blizzard());
-            DataManager.AddToSpellList(new LightningBolt());
-            DataManager.AddToSpellList(new Regeneration());
-            DataManager.AddToSpellList(new DivineIntervention());
+            DataManager.AddToSpellList(new MagicMissle("Magic Missle", 25, 25));
+            DataManager.AddToSpellList(new Flashburn("Flashburn", 25, 25));
+            DataManager.AddToSpellList(new Blizzard("Blizzard", 25, 25));
+            DataManager.AddToSpellList(new LightningBolt("LightningBolt", 25, 25));
+            DataManager.AddToSpellList(new Regeneration("Regeneration", 25, 25));
+            DataManager.AddToSpellList(new DivineIntervention("DivineIntervention", 25, 25));
 
-            DataManager.AddToItemList(new Potion());
-            DataManager.AddToItemList(new RuneStone());
+            DataManager.AddToItemList(new Potion("Potion", 50, 0));
+            DataManager.AddToItemList(new Potion("Ether", 0, 50));
+            DataManager.AddToItemList(new Potion("Elixir", 30, 30));
+            DataManager.AddToItemList(new RuneStone("Red Runestone", 1, 0));
+            DataManager.AddToItemList(new RuneStone("Blue Runestone", 0, 1));
         }
 
         private static readonly FormManager instance = new FormManager();

@@ -4,7 +4,8 @@
     {
         public override void Cast(Character target, int intModifer)
         {
-            target.Info.Health -= SpellPower * intModifer;
+            int dmg = (SpellPower * intModifer);
+            target.Info.Health -= dmg;
         }
 
         public MagicMissle() { }

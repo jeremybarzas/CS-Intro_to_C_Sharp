@@ -6,31 +6,31 @@ namespace WinForms_Combat_Assessment
     public class Stats
     {
         [XmlIgnore]
-        private ITargetable m_attackTarget;
+        private Character m_attackTarget;
         [XmlIgnore]
-        private ITargetable m_itemTarget;
+        private Character m_itemTarget;
         [XmlIgnore]
-        private ITargetable m_spellTarget;
+        private Character m_spellTarget;
         [XmlIgnore]
-        public ITargetable AttackTarget
+        public Character AttackTarget
         {
             get { return m_attackTarget; }
             set { m_attackTarget = value; }
         }
         [XmlIgnore]
-        public ITargetable ItemTarget
+        public Character ItemTarget
         {
             get { return m_itemTarget; }
             set { m_itemTarget = value; }
         }
         [XmlIgnore]
-        public ITargetable SpellTarget
+        public Character SpellTarget
         {
             get { return m_spellTarget; }
             set { m_spellTarget = value; }
         }
 
-        private Weapon m_weapon;
+        private List<Weapon> m_weapons;
         private List<Spell> m_spellbook;
         private List<Item> m_backpack;
         private Weapon m_activeWeapon;
@@ -46,10 +46,10 @@ namespace WinForms_Combat_Assessment
         private int m_gold;
         private int m_turnOrder;
 
-        public Weapon Weapon
+        public List<Weapon> Weapons
         {
-            get { return m_weapon; }
-            set { m_weapon = value; }
+            get { return m_weapons; }
+            set { m_weapons = value; }
         }
 
         public List<Spell> Spellbook
@@ -138,6 +138,7 @@ namespace WinForms_Combat_Assessment
 
         public Stats()
         {
+            m_weapons = new List<Weapon>();
             m_spellbook = new List<Spell>();
             m_backpack = new List<Item>();
         }
