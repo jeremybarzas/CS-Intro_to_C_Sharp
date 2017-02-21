@@ -34,7 +34,9 @@ namespace WinForms_Combat_Assessment
 
         private Character ConfirmSelections()
         {
-            Character newCharacter = new Character(Character_Name.Text);
+            Character newCharacter = new Character();
+
+            newCharacter.Info.Name = Character_Name.Text;
 
             foreach (Weapon weapon in AppManager.Instance.DataManager.WeaponList)
             {
@@ -100,6 +102,7 @@ namespace WinForms_Combat_Assessment
                     break;
                 }
             }
+                        
             return newCharacter;
         }
 
@@ -120,6 +123,7 @@ namespace WinForms_Combat_Assessment
 
         private void Next_Click(object sender, EventArgs e)
         {
+            //Character newCharacter = ConfirmSelections();
             // Actual Code
             AppManager.Instance.DataManager.AddToRoster(ConfirmSelections());
 

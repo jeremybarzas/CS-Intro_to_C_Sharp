@@ -2,10 +2,11 @@
 {
     public class Mace : Weapon
     {
-        public override void Strike(Character target, int strModifer)
+        public override int Strike(Character target, int strModifer)
         {
             int dmg = (Damage * strModifer);
-            target.Info.Health -= Damage;
+            target.Info.Health -= dmg;
+            return dmg;
         }
 
         public Mace() { }

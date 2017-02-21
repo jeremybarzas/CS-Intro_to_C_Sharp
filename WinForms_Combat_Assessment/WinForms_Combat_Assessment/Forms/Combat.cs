@@ -8,7 +8,7 @@ namespace WinForms_Combat_Assessment
     {        
         private void FillComboBoxes()
         {
-            // atack spell item select
+            // attack spell item select
             foreach (Weapon weapon in AppManager.Instance.DataManager.CurrentPlayer.Info.Weapons)
                 Attack_Selector.Items.Add(weapon.Name);
 
@@ -30,13 +30,13 @@ namespace WinForms_Combat_Assessment
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
                 if (character.Info.Alive == true)
                     Item_Target_Selector.Items.Add(character.Info.Name);
-            foreach(var control in Controls)
+
+            foreach (var control in Controls)
             {
                 var c = control as ComboBox;
                 if(c != null)               
                     c.SelectedIndex = 1;
-            }
-         
+            }         
         }
 
         private void ConfirmSelections()
@@ -96,12 +96,9 @@ namespace WinForms_Combat_Assessment
             }            
         }
 
- 
-
         private void FillCombatText()
         {
-            Combat_Textbox.Text = AppManager.Instance.CombatLog;
-            
+            Combat_Textbox.Text = AppManager.Instance.CombatLog;            
         }
 
         public Combat()
@@ -157,6 +154,7 @@ namespace WinForms_Combat_Assessment
             {                
                 if(AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1].Info.Alive &&
                    AppManager.Instance.DataManager.CurrentPlayer != AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.Count - 1])
+
                 AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);               
 
                 Program.ChangeForm(this, 5);

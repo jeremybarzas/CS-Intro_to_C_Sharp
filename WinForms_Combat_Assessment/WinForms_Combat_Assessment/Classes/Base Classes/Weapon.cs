@@ -8,7 +8,7 @@ namespace WinForms_Combat_Assessment
     public abstract class Weapon
     {
         public string Name;
-        public int Damage;        
-        public abstract void Strike(Character target, int strModifer);  
+        public int Damage;
+        public abstract int Strike(Character target, int strModifer);  
     }
 }

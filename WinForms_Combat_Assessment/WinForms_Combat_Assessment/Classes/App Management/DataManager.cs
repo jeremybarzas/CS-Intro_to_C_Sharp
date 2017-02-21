@@ -88,16 +88,6 @@ namespace WinForms_Combat_Assessment
 
         public void AddToRoster(Character c)
         {
-            c.AddToWeapons(new Sword("Sword", 25));
-
-            c.AddToSpellbook(new MagicMissle("Magic Missle", 25, 25));
-            c.AddToSpellbook(new Flashburn("Flashburn", 25, 25));
-
-            c.AddToBackpack(new Potion("Potion", 50, 0));
-            c.AddToBackpack(new Potion("Ether", 0, 50));
-            c.AddToBackpack(new Potion("Elixir", 30, 30));
-            c.AddToBackpack(new RuneStone("Red Runestone", 1, 0));
-
             m_gameRoster.Add(c);
         }
 

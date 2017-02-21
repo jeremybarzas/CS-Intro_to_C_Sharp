@@ -5,25 +5,20 @@ namespace WinForms_Combat_Assessment
 {    
     public class Stats
     {
-        [XmlIgnore]
         private Character m_attackTarget;
-        [XmlIgnore]
         private Character m_itemTarget;
-        [XmlIgnore]
         private Character m_spellTarget;
-        [XmlIgnore]
+
         public Character AttackTarget
         {
             get { return m_attackTarget; }
             set { m_attackTarget = value; }
         }
-        [XmlIgnore]
         public Character ItemTarget
         {
             get { return m_itemTarget; }
             set { m_itemTarget = value; }
         }
-        [XmlIgnore]
         public Character SpellTarget
         {
             get { return m_spellTarget; }

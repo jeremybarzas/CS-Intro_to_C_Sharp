@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace WinForms_Combat_Assessment
 {
@@ -45,47 +46,72 @@ namespace WinForms_Combat_Assessment
             Info.Backpack.Remove(item);
         }
 
-        public void RecieveWeaponAction(Weapon w, int modifier)
+        public int RecieveWeaponAction(Weapon w, int modifier)
         {
-            w.Strike(this, modifier);
+            int value = w.Strike(this, modifier);
 
             if (this.Info.Health <= 0)
                 this.Info.Alive = false;
+
+            return value;
         }
 
-        public void RecieveSpellAction(Spell s, int modifier)
+        public List<int> RecieveSpellAction(Spell s, int modifier)
         {
-            s.Cast(this, modifier);
+            List<int> values = s.Cast(this, modifier);
 
             if (this.Info.Health <= 0)
                 this.Info.Alive = false;
+
+            return values;
         }
 
-        public void RecieveItemAction(Item i)
+        public List<int> RecieveItemAction(Item i)
         {
-            i.Use(this);
+            List<int> values = i.Use(this);
 
             if (this.Info.Health <= 0)
                 this.Info.Alive = false;
+
+            return values;
         }        
 
-        public void DoWeaponAction(Character target)
+        public int DoWeaponAction(Character target)
         {
-            target.RecieveWeaponAction(this.Info.ActiveWeapon, this.Info.Strength);
+           int value = target.RecieveWeaponAction(this.Info.ActiveWeapon, this.Info.Strength);
+
+            return value;
         }
 
-        public void DoSpellAction(Character target)
+        public List<int> DoSpellAction(Character target)
         {
-            target.RecieveSpellAction(this.Info.ActiveSpell, this.Info.Intellect);
+            List<int> values = target.RecieveSpellAction(this.Info.ActiveSpell, this.Info.Intellect);
             this.Info.Mana -= this.Info.ActiveSpell.ManaCost;
+
+            return values;
         }
 
-        public void DoItemAction(Character target)
+        public List<int> DoItemAction(Character target)
         {
-            target.RecieveItemAction(this.Info.ActiveItem);
+            List<int> values = target.RecieveItemAction(this.Info.ActiveItem);
+
+            return values;
         }
 
-        public Character() { }
+        public Character()
+        {
+            m_info = new Stats();
+
+            Info.Name = "Default Name";
+            Info.Health = 100;
+            Info.Mana = 100;
+            Info.Strength = 1;
+            Info.Intellect = 1;
+            Info.Alive = true;
+            Info.Kills = 0;
+            Info.Gold = 0;
+            Info.TurnOrder = 0;
+        }
 
         public Character(string n)
         {

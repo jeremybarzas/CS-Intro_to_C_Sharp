@@ -1,19 +1,32 @@
-﻿namespace WinForms_Combat_Assessment
+﻿using System.Collections.Generic;
+
+namespace WinForms_Combat_Assessment
 {
     public class Flashburn : Spell
     {
-        public override void Cast(Character target, int intModifer)
+        public override List<int> Cast(Character target, int intModifer)
         {
-            int dmg = (SpellPower * intModifer);
+            List<int> values = new List<int>();
+
+            int dmg = (Damage * intModifer);
+            int heal = (Healing * intModifer);
+
             target.Info.Health -= dmg;
+            target.Info.Health += heal;
+
+            values.Add(dmg);
+            values.Add(heal);
+
+            return values;
         }
 
         public Flashburn() { }
 
-        public Flashburn(string n, int dmg, int mana)
+        public Flashburn(string n, int dmg, int heal, int mana)
         {
             Name = n;
-            SpellPower = dmg;
+            Damage = dmg;
+            Healing = heal;
             ManaCost = mana;
         }
     }

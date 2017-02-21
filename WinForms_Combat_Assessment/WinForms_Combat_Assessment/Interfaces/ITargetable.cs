@@ -1,17 +1,19 @@
-﻿namespace WinForms_Combat_Assessment
+﻿using System.Collections.Generic;
+
+namespace WinForms_Combat_Assessment
 {
     public interface ITargetable
     {
-        void RecieveWeaponAction(Weapon w, int strModifer);
+        int RecieveWeaponAction(Weapon w, int strModifer);
 
-        void RecieveSpellAction(Spell s, int intModifer);
-        
-        void RecieveItemAction(Item i);
+        List<int> RecieveSpellAction(Spell s, int intModifer);
 
-        void DoWeaponAction(Character target);
+        List<int> RecieveItemAction(Item i);
 
-        void DoSpellAction(Character target);
+        int DoWeaponAction(Character target);
 
-        void DoItemAction(Character target);
+        List<int> DoSpellAction(Character target);
+
+        List<int> DoItemAction(Character target);
     }
 }

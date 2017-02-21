@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {
@@ -11,8 +12,9 @@ namespace WinForms_Combat_Assessment
     public abstract class Spell
     {
         public string Name;
-        public int SpellPower;
+        public int Damage;
+        public int Healing;
         public int ManaCost;
-        public abstract void Cast(Character target, int intModifer);
+        public abstract List<int> Cast(Character target, int intModifer);
     }
 }

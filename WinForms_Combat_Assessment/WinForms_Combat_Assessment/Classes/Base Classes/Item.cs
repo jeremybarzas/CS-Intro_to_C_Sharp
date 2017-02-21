@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {   
@@ -7,6 +8,6 @@ namespace WinForms_Combat_Assessment
     public abstract class Item
     {
         public string Name;
-        public abstract void Use(Character target);
+        public abstract List<int> Use(Character target);
     }
 }
