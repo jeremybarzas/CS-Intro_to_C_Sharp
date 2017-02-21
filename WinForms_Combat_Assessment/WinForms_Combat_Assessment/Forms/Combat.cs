@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {
@@ -162,6 +163,8 @@ namespace WinForms_Combat_Assessment
 
         private void End_Turn_Click(object sender, EventArgs e)
         {
+            AppManager.Instance.DataManager.TurnCount += 1;
+
             if (AppManager.Instance.DataManager.TurnCount >= AppManager.Instance.DataManager.RemainingPlayers - 1)
             {
                 AppManager.Instance.DataManager.RoundNumber++;
@@ -170,9 +173,10 @@ namespace WinForms_Combat_Assessment
                 Program.ChangeForm(this, 3);
             }
             else
-            {
-                AppManager.Instance.DataManager.TurnCount += 1;
-                AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);
+            {                
+                if(AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1].Info.Alive &&
+                   AppManager.Instance.DataManager.CurrentPlayer != AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.Count - 1])
+                AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);               
 
                 Program.ChangeForm(this, 5);
             }
