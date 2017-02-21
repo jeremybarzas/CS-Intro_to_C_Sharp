@@ -59,5 +59,28 @@
             Initializer += InitalizeMainFSM;
             Initializer += InitalizeDataManager;
         }
+ 
+
+        public static void DoActions()
+        {
+            instance.DataManager.CurrentPlayer.DoItemAction(instance.DataManager.CurrentPlayer.Info.ItemTarget);
+            instance.DataManager.CurrentPlayer.DoWeaponAction(instance.DataManager.CurrentPlayer.Info.AttackTarget);
+            instance.DataManager.CurrentPlayer.DoSpellAction(instance.DataManager.CurrentPlayer.Info.SpellTarget);
+            instance.CombatLog = "";
+            // item action
+            var info = instance.DataManager.CurrentPlayer.Info;
+            string s1 = string.Format("{0} has used {1} on {2} \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name);
+            string s2 = string.Format("{0} has attacked with {1} on {2} \n", info.Name, info.ActiveWeapon.Name, info.AttackTarget.Info.Name);
+            string s3 = string.Format("{0} has cast {1} on {2} \n", info.Name, info.ActiveSpell.Name, info.SpellTarget.Info.Name);
+            string s4 = string.Format("Item Info: {0} \nWeapon Info: {1}\n Spell Info: {2}\n", s1, s2, s3);
+            instance.CombatLog += s4;
+            instance.DataManager.GameRoster.ForEach(x => instance.CombatLog += string.Format("{0} is {1} \n",x.Info.Name, x.Info.Alive));
+                 
+        }
+
+        public string CombatLog
+        {
+            get;set;
+        }
     }
 }

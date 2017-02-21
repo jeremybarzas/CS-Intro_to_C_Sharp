@@ -2,6 +2,7 @@
 
 namespace WinForms_Combat_Assessment
 {
+ 
     public class Character : ITargetable
     {
         private Stats m_info;
@@ -44,17 +45,17 @@ namespace WinForms_Combat_Assessment
             Info.Backpack.Remove(item);
         }
 
-        public void RecieveWeaponAction(Weapon w, int modifer)
+        public void RecieveWeaponAction(Weapon w, int modifier)
         {
-            w.Strike(this, modifer);
+            w.Strike(this, modifier);
 
             if (this.Info.Health <= 0)
                 this.Info.Alive = false;
         }
 
-        public void RecieveSpellAction(Spell s, int modifer)
+        public void RecieveSpellAction(Spell s, int modifier)
         {
-            s.Cast(this, modifer);
+            s.Cast(this, modifier);
 
             if (this.Info.Health <= 0)
                 this.Info.Alive = false;
@@ -66,7 +67,7 @@ namespace WinForms_Combat_Assessment
 
             if (this.Info.Health <= 0)
                 this.Info.Alive = false;
-        }
+        }        
 
         public void DoWeaponAction(Character target)
         {

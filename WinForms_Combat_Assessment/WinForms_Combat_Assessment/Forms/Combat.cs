@@ -30,9 +30,16 @@ namespace WinForms_Combat_Assessment
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
                 if (character.Info.Alive == true)
                     Item_Target_Selector.Items.Add(character.Info.Name);
+            foreach(var control in Controls)
+            {
+                var c = control as ComboBox;
+                if(c != null)               
+                    c.SelectedIndex = 1;
+            }
+         
         }
 
-        private void ConfirmSelctions()
+        private void ConfirmSelections()
         {
             foreach (Weapon weapon in AppManager.Instance.DataManager.CurrentPlayer.Info.Weapons)
             {
@@ -89,38 +96,12 @@ namespace WinForms_Combat_Assessment
             }            
         }
 
-        private void ResolveActions()
-        {            
-            AppManager.Instance.DataManager.CurrentPlayer.DoItemAction(AppManager.Instance.DataManager.CurrentPlayer.Info.ItemTarget);
-            AppManager.Instance.DataManager.CurrentPlayer.DoWeaponAction(AppManager.Instance.DataManager.CurrentPlayer.Info.AttackTarget);
-            AppManager.Instance.DataManager.CurrentPlayer.DoSpellAction(AppManager.Instance.DataManager.CurrentPlayer.Info.SpellTarget);            
-        }
+ 
 
         private void FillCombatText()
         {
-            // item action
-            Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.Name;
-            Combat_Textbox.Text += " has used " + AppManager.Instance.DataManager.CurrentPlayer.Info.ActiveItem.Name;
-            Combat_Textbox.Text += " on " + AppManager.Instance.DataManager.CurrentPlayer.Info.ItemTarget.Info.Name + ".\n\n";
-
-            if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer.Info.ItemTarget)].Info.Alive == false)               
-                Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.ItemTarget.Info.Name + " has been killed.\n\n";
-
-            // attack action
-            Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.Name + " has attacked ";
-            Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.AttackTarget.Info.Name;
-            Combat_Textbox.Text += " with " + AppManager.Instance.DataManager.CurrentPlayer.Info.ActiveWeapon.Name + ".\n\n";
-
-            if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer.Info.AttackTarget)].Info.Alive == false)
-                Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.AttackTarget.Info.Name + " has been killed.\n\n";
-
-            // spell action
-            Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.Name;
-            Combat_Textbox.Text += " has cast " + AppManager.Instance.DataManager.CurrentPlayer.Info.ActiveSpell.Name;
-            Combat_Textbox.Text += " on " + AppManager.Instance.DataManager.CurrentPlayer.Info.SpellTarget.Info.Name + ".\n\n";
-
-            if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer.Info.SpellTarget)].Info.Alive == false)
-                Combat_Textbox.Text += AppManager.Instance.DataManager.CurrentPlayer.Info.SpellTarget.Info.Name + " has been killed.\n\n";
+            Combat_Textbox.Text = AppManager.Instance.CombatLog;
+            
         }
 
         public Combat()
@@ -156,8 +137,8 @@ namespace WinForms_Combat_Assessment
             Confirm.Enabled = false;
             End_Turn.Enabled = true;
 
-            ConfirmSelctions();
-            ResolveActions();
+            ConfirmSelections();
+            AppManager.DoActions();
             FillCombatText();
         }
 
