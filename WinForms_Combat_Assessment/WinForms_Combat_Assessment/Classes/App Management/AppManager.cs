@@ -53,7 +53,6 @@ namespace WinForms_Combat_Assessment
             DataManager.AddToWeaponList(new Sword("Sword", 25));
             DataManager.AddToWeaponList(new Axe("Axe", 25));
             DataManager.AddToWeaponList(new Mace("Mace", 25));
-            DataManager.AddToWeaponList(new Mace("PunkBuster VAC Ban Hammer", 100));
 
             DataManager.AddToSpellList(new MagicMissle("Magic Missle", 25, 0, 25));
             DataManager.AddToSpellList(new Flashburn("Flashburn", 25, 0, 25));

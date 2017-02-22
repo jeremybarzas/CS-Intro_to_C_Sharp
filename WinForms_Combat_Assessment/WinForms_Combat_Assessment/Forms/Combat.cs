@@ -113,6 +113,9 @@ namespace WinForms_Combat_Assessment
             Combat_Phase_Label.Text = "Combat Round " + AppManager.Instance.DataManager.RoundNumber;                                
             Current_Player_Name_Label.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Name + "'s Turn";
 
+            Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
+            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();
+
             FillComboBoxes();
         }
 
@@ -137,13 +140,25 @@ namespace WinForms_Combat_Assessment
             ConfirmSelections();
             AppManager.DoActions();
             FillCombatText();
+
+            Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
+            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();
+
+            AppManager.Instance.DataManager.SetRemainingPlayers();
         }
 
         private void End_Turn_Click(object sender, EventArgs e)
         {
-            AppManager.Instance.DataManager.TurnCount += 1;
+            Character temp = AppManager.Instance.DataManager.CurrentPlayer;
 
-            if (AppManager.Instance.DataManager.TurnCount >= AppManager.Instance.DataManager.RemainingPlayers - 1)
+            if (AppManager.Instance.DataManager.RemainingPlayers == 1)
+            {
+                AppManager.Instance.DataManager.RoundNumber++;
+                AppManager.Instance.DataManager.TurnCount = 0;
+
+                Program.ChangeForm(this, 3);
+            }
+            else if (AppManager.Instance.DataManager.TurnCount == AppManager.Instance.DataManager.RemainingPlayers)
             {
                 AppManager.Instance.DataManager.RoundNumber++;
                 AppManager.Instance.DataManager.TurnCount = 0;
@@ -151,44 +166,17 @@ namespace WinForms_Combat_Assessment
                 Program.ChangeForm(this, 3);
             }
             else
-            {                
-                if(AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1].Info.Alive &&
+            {
+                AppManager.Instance.DataManager.TurnCount += 1;
+
+                if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1].Info.Alive == true &&
                    AppManager.Instance.DataManager.CurrentPlayer != AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.Count - 1])
-
-                AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);               
-
+                {
+                    AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);
+                }
+                
                 Program.ChangeForm(this, 5);
             }
-        }
-
-        private void Attack_Selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Item_Selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }        
-
-        private void Spell_Selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Attack_Target_Selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Item_Target_Selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Spell_Target_Selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

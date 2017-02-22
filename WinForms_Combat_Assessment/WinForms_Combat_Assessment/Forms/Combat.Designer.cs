@@ -51,6 +51,10 @@
             this.gameRosterBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataManagerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.Combat_Textbox = new System.Windows.Forms.RichTextBox();
+            this.Player_Health_Label = new System.Windows.Forms.Label();
+            this.Player_Mana_Label = new System.Windows.Forms.Label();
+            this.Player_Health_Text = new System.Windows.Forms.RichTextBox();
+            this.Player_Mana_Text = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).BeginInit();
@@ -91,7 +95,6 @@
             this.Attack_Selector.Size = new System.Drawing.Size(121, 21);
             this.Attack_Selector.TabIndex = 2;
             this.Attack_Selector.Text = "Select Attack";
-            this.Attack_Selector.SelectedIndexChanged += new System.EventHandler(this.Attack_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource4
             // 
@@ -120,7 +123,6 @@
             this.Item_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Selector.TabIndex = 3;
             this.Item_Selector.Text = "Select Item";
-            this.Item_Selector.SelectedIndexChanged += new System.EventHandler(this.Item_Selector_SelectedIndexChanged);
             // 
             // itemListBindingSource
             // 
@@ -135,7 +137,6 @@
             this.Spell_Selector.Size = new System.Drawing.Size(121, 21);
             this.Spell_Selector.TabIndex = 4;
             this.Spell_Selector.Text = "Select Spell";
-            this.Spell_Selector.SelectedIndexChanged += new System.EventHandler(this.Spell_Selector_SelectedIndexChanged);
             // 
             // spellListBindingSource
             // 
@@ -180,7 +181,6 @@
             this.Spell_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Spell_Target_Selector.TabIndex = 10;
             this.Spell_Target_Selector.Text = "Select Spell Target";
-            this.Spell_Target_Selector.SelectedIndexChanged += new System.EventHandler(this.Spell_Target_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource3
             // 
@@ -195,7 +195,6 @@
             this.Item_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Target_Selector.TabIndex = 9;
             this.Item_Target_Selector.Text = "Select Item Target";
-            this.Item_Target_Selector.SelectedIndexChanged += new System.EventHandler(this.Item_Target_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource2
             // 
@@ -210,7 +209,6 @@
             this.Attack_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Attack_Target_Selector.TabIndex = 8;
             this.Attack_Target_Selector.Text = "Select Attack Target";
-            this.Attack_Target_Selector.SelectedIndexChanged += new System.EventHandler(this.Attack_Target_Selector_SelectedIndexChanged);
             // 
             // gameRosterBindingSource1
             // 
@@ -229,11 +227,51 @@
             this.Combat_Textbox.TabIndex = 11;
             this.Combat_Textbox.Text = "";
             // 
+            // Player_Health_Label
+            // 
+            this.Player_Health_Label.AutoSize = true;
+            this.Player_Health_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player_Health_Label.Location = new System.Drawing.Point(26, 59);
+            this.Player_Health_Label.Name = "Player_Health_Label";
+            this.Player_Health_Label.Size = new System.Drawing.Size(61, 16);
+            this.Player_Health_Label.TabIndex = 12;
+            this.Player_Health_Label.Text = "Health: ";
+            // 
+            // Player_Mana_Label
+            // 
+            this.Player_Mana_Label.AutoSize = true;
+            this.Player_Mana_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player_Mana_Label.Location = new System.Drawing.Point(437, 60);
+            this.Player_Mana_Label.Name = "Player_Mana_Label";
+            this.Player_Mana_Label.Size = new System.Drawing.Size(54, 16);
+            this.Player_Mana_Label.TabIndex = 13;
+            this.Player_Mana_Label.Text = "Mana: ";
+            // 
+            // Player_Health_Text
+            // 
+            this.Player_Health_Text.Location = new System.Drawing.Point(93, 58);
+            this.Player_Health_Text.Name = "Player_Health_Text";
+            this.Player_Health_Text.Size = new System.Drawing.Size(61, 23);
+            this.Player_Health_Text.TabIndex = 15;
+            this.Player_Health_Text.Text = "";
+            // 
+            // Player_Mana_Text
+            // 
+            this.Player_Mana_Text.Location = new System.Drawing.Point(497, 59);
+            this.Player_Mana_Text.Name = "Player_Mana_Text";
+            this.Player_Mana_Text.Size = new System.Drawing.Size(61, 23);
+            this.Player_Mana_Text.TabIndex = 16;
+            this.Player_Mana_Text.Text = "";
+            // 
             // Combat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.Player_Mana_Text);
+            this.Controls.Add(this.Player_Health_Text);
+            this.Controls.Add(this.Player_Mana_Label);
+            this.Controls.Add(this.Player_Health_Label);
             this.Controls.Add(this.Combat_Textbox);
             this.Controls.Add(this.Spell_Target_Selector);
             this.Controls.Add(this.Item_Target_Selector);
@@ -288,5 +326,9 @@
         private System.Windows.Forms.BindingSource gameRosterBindingSource4;
         private System.Windows.Forms.BindingSource dataManagerBindingSource1;
         private System.Windows.Forms.RichTextBox Combat_Textbox;
+        private System.Windows.Forms.Label Player_Health_Label;
+        private System.Windows.Forms.Label Player_Mana_Label;
+        private System.Windows.Forms.RichTextBox Player_Health_Text;
+        private System.Windows.Forms.RichTextBox Player_Mana_Text;
     }
 }

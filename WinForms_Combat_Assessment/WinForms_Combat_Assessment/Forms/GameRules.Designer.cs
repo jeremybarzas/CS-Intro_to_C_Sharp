@@ -32,6 +32,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Next = new System.Windows.Forms.Button();
             this.To_Main_Menu = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -75,11 +76,20 @@
             this.To_Main_Menu.UseVisualStyleBackColor = true;
             this.To_Main_Menu.Click += new System.EventHandler(this.To_Main_Menu_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(56, 137);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(450, 266);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
             // GameRules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.To_Main_Menu);
             this.Controls.Add(this.Next);
             this.Controls.Add(this.comboBox1);
@@ -98,5 +108,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.Button To_Main_Menu;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

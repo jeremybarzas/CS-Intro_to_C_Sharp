@@ -39,7 +39,7 @@ namespace WinForms_Combat_Assessment
         private bool m_alive;
         private int m_kills;
         private int m_gold;
-        private int m_turnOrder;
+        private int m_turnOrder;       
 
         public List<Weapon> Weapons
         {
