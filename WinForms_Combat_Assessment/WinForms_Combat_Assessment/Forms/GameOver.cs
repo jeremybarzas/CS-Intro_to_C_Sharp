@@ -12,7 +12,7 @@ namespace WinForms_Combat_Assessment
 
         private void GameOver_Load(object sender, EventArgs e)
         {
-            AppManager.Instance.DataManager.GameRoster.Sort((a, b) => -1 * (a.Info.DamageDealt.CompareTo(b.Info.DamageDealt)));
+            AppManager.Instance.DataManager.GameRoster.Sort((a, b) => -1 * (a.Info.Alive.CompareTo(b.Info.Alive)));
 
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {

@@ -182,7 +182,7 @@ namespace WinForms_Combat_Assessment
         {
             Character temp = AppManager.Instance.DataManager.CurrentPlayer;
 
-            AppManager.Instance.DataManager.TurnCount += 1;
+            
 
             AppManager.Instance.DataManager.SetRemainingPlayers();
 
@@ -208,6 +208,7 @@ namespace WinForms_Combat_Assessment
                     AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);
                 }
 
+                AppManager.Instance.DataManager.TurnCount += 1;
                 Program.ChangeForm(this, 5);
             }
         }
