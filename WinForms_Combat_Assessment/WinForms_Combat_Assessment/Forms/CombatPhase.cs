@@ -191,7 +191,7 @@ namespace WinForms_Combat_Assessment
                 AppManager.Instance.DataManager.RoundNumber++;
                 AppManager.Instance.DataManager.TurnCount = 0;
 
-                Program.ChangeForm(this, 3);
+                Program.ChangeForm(this, 6);
             }
             else if (AppManager.Instance.DataManager.TurnCount == AppManager.Instance.DataManager.RemainingPlayers)
             {

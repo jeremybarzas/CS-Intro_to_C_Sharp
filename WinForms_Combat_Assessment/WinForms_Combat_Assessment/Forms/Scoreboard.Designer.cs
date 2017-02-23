@@ -129,7 +129,7 @@
             this.Player_Name_Text.Name = "Player_Name_Text";
             this.Player_Name_Text.ReadOnly = true;
             this.Player_Name_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.Player_Name_Text.Size = new System.Drawing.Size(142, 340);
+            this.Player_Name_Text.Size = new System.Drawing.Size(142, 332);
             this.Player_Name_Text.TabIndex = 8;
             this.Player_Name_Text.Text = "";
             this.Player_Name_Text.WordWrap = false;
@@ -141,7 +141,7 @@
             this.Status_Text.Name = "Status_Text";
             this.Status_Text.ReadOnly = true;
             this.Status_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.Status_Text.Size = new System.Drawing.Size(112, 340);
+            this.Status_Text.Size = new System.Drawing.Size(112, 332);
             this.Status_Text.TabIndex = 9;
             this.Status_Text.Text = "";
             this.Status_Text.WordWrap = false;
@@ -153,7 +153,7 @@
             this.Kills_Text.Name = "Kills_Text";
             this.Kills_Text.ReadOnly = true;
             this.Kills_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.Kills_Text.Size = new System.Drawing.Size(112, 340);
+            this.Kills_Text.Size = new System.Drawing.Size(112, 332);
             this.Kills_Text.TabIndex = 10;
             this.Kills_Text.Text = "";
             this.Kills_Text.WordWrap = false;
@@ -165,7 +165,7 @@
             this.Damage_Dealt_Text.Name = "Damage_Dealt_Text";
             this.Damage_Dealt_Text.ReadOnly = true;
             this.Damage_Dealt_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.Damage_Dealt_Text.Size = new System.Drawing.Size(112, 340);
+            this.Damage_Dealt_Text.Size = new System.Drawing.Size(112, 332);
             this.Damage_Dealt_Text.TabIndex = 11;
             this.Damage_Dealt_Text.Text = "";
             this.Damage_Dealt_Text.WordWrap = false;

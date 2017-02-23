@@ -32,6 +32,9 @@ namespace WinForms_Combat_Assessment
             if (currentState as CombatPhaseState != null)
                 nextForm = new CombatPhase();
 
+            if (currentState as GameOverState != null)
+                nextForm = new GameOver();
+
             f.Enabled = false;
             f.Visible = false;
             nextForm.Show();

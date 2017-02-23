@@ -58,6 +58,7 @@
     <Compile Include="Classes\Spells\LightningBolt.cs" />
     <Compile Include="Classes\Spells\MagicMissle.cs" />
     <Compile Include="Classes\Spells\Regeneration.cs" />
+    <Compile Include="Classes\States\GameOverState.cs" />
     <Compile Include="Classes\Weapons\Axe.cs" />
     <Compile Include="Classes\Weapons\Mace.cs" />
     <Compile Include="Forms\CharacterSheet.cs">
@@ -82,6 +83,12 @@
     </Compile>
     <Compile Include="Classes\States\DiceRollState.cs" />
     <Compile Include="Classes\App Management\FSM.cs" />
+    <Compile Include="Forms\GameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameOver.Designer.cs">
+      <DependentUpon>GameOver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GameRules.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiceRoll.resx">
       <DependentUpon>DiceRoll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameOver.resx">
+      <DependentUpon>GameOver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameRules.resx">
       <DependentUpon>GameRules.cs</DependentUpon>
