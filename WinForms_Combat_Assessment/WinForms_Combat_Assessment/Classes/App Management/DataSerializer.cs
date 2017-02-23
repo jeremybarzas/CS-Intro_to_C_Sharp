@@ -32,6 +32,6 @@ namespace WinForms_Combat_Assessment
             reader.Close();
 
             return data;
-        }
+        }        
     }
 }

@@ -17,6 +17,7 @@ namespace WinForms_Combat_Assessment
 
         private void New_Game_Click(object sender, EventArgs e)
         {
+            AppManager.Instance.Initializer.Invoke();
             Program.ChangeForm(this, 1);
         }
 

@@ -41,6 +41,9 @@
             this.Weapon_Selector_2 = new System.Windows.Forms.ComboBox();
             this.Item_Selector_3 = new System.Windows.Forms.ComboBox();
             this.Item_Selector_4 = new System.Windows.Forms.ComboBox();
+            this.Weapon_Selector_Label = new System.Windows.Forms.Label();
+            this.Item_Selector_Label = new System.Windows.Forms.Label();
+            this.Spell_Selector_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -63,9 +66,10 @@
             // Character_Name_Label
             // 
             this.Character_Name_Label.AutoSize = true;
-            this.Character_Name_Label.Location = new System.Drawing.Point(138, 96);
+            this.Character_Name_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Character_Name_Label.Location = new System.Drawing.Point(102, 94);
             this.Character_Name_Label.Name = "Character_Name_Label";
-            this.Character_Name_Label.Size = new System.Drawing.Size(84, 13);
+            this.Character_Name_Label.Size = new System.Drawing.Size(120, 16);
             this.Character_Name_Label.TabIndex = 2;
             this.Character_Name_Label.Text = "Character Name";
             // 
@@ -161,11 +165,44 @@
             this.Item_Selector_4.Size = new System.Drawing.Size(121, 21);
             this.Item_Selector_4.TabIndex = 15;
             // 
+            // Weapon_Selector_Label
+            // 
+            this.Weapon_Selector_Label.AutoSize = true;
+            this.Weapon_Selector_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Weapon_Selector_Label.Location = new System.Drawing.Point(54, 141);
+            this.Weapon_Selector_Label.Name = "Weapon_Selector_Label";
+            this.Weapon_Selector_Label.Size = new System.Drawing.Size(128, 16);
+            this.Weapon_Selector_Label.TabIndex = 18;
+            this.Weapon_Selector_Label.Text = "Weapon Selector";
+            // 
+            // Item_Selector_Label
+            // 
+            this.Item_Selector_Label.AutoSize = true;
+            this.Item_Selector_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Item_Selector_Label.Location = new System.Drawing.Point(225, 141);
+            this.Item_Selector_Label.Name = "Item_Selector_Label";
+            this.Item_Selector_Label.Size = new System.Drawing.Size(99, 16);
+            this.Item_Selector_Label.TabIndex = 19;
+            this.Item_Selector_Label.Text = "Item Selector";
+            // 
+            // Spell_Selector_Label
+            // 
+            this.Spell_Selector_Label.AutoSize = true;
+            this.Spell_Selector_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Spell_Selector_Label.Location = new System.Drawing.Point(393, 141);
+            this.Spell_Selector_Label.Name = "Spell_Selector_Label";
+            this.Spell_Selector_Label.Size = new System.Drawing.Size(106, 16);
+            this.Spell_Selector_Label.TabIndex = 20;
+            this.Spell_Selector_Label.Text = "Spell Selector";
+            // 
             // CharacterSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.Spell_Selector_Label);
+            this.Controls.Add(this.Item_Selector_Label);
+            this.Controls.Add(this.Weapon_Selector_Label);
             this.Controls.Add(this.Item_Selector_4);
             this.Controls.Add(this.Item_Selector_3);
             this.Controls.Add(this.Spell_Selector_2);
@@ -202,5 +239,8 @@
         private System.Windows.Forms.ComboBox Weapon_Selector_2;
         private System.Windows.Forms.ComboBox Item_Selector_3;
         private System.Windows.Forms.ComboBox Item_Selector_4;
+        private System.Windows.Forms.Label Weapon_Selector_Label;
+        private System.Windows.Forms.Label Item_Selector_Label;
+        private System.Windows.Forms.Label Spell_Selector_Label;
     }
 }

@@ -12,13 +12,13 @@ namespace WinForms_Combat_Assessment
 
         private void Scoreboard_Load(object sender, EventArgs e)
         {
-            AppManager.Instance.DataManager.GameRoster.Sort((a, b) => -1 * (a.Info.Gold.CompareTo(b.Info.Gold)));
+            AppManager.Instance.DataManager.GameRoster.Sort((a, b) => -1 * (a.Info.Score.CompareTo(b.Info.Score)));
 
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {
                 Player_Name_Text.Text += " " + character.Info.Name + "\n\n";                
                 Kills_Text.Text += "    " + character.Info.Kills + "\n\n";
-                Score_Text.Text += "    " + character.Info.Gold + "\n\n";
+                Score_Text.Text += "    " + character.Info.Score + "\n\n";
 
                 if (character.Info.Alive == true)
                     Status_Text.Text += "   Alive" + "\n\n";

@@ -55,6 +55,12 @@
             this.Player_Mana_Label = new System.Windows.Forms.Label();
             this.Player_Health_Text = new System.Windows.Forms.RichTextBox();
             this.Player_Mana_Text = new System.Windows.Forms.RichTextBox();
+            this.Attack_Selector_Label = new System.Windows.Forms.Label();
+            this.Target_Selector_Label1 = new System.Windows.Forms.Label();
+            this.Target_Selector_Label2 = new System.Windows.Forms.Label();
+            this.Target_Selector_Label3 = new System.Windows.Forms.Label();
+            this.Item_Selector_Label = new System.Windows.Forms.Label();
+            this.Spell_Selector_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).BeginInit();
@@ -90,7 +96,7 @@
             // Attack_Selector
             // 
             this.Attack_Selector.FormattingEnabled = true;
-            this.Attack_Selector.Location = new System.Drawing.Point(59, 110);
+            this.Attack_Selector.Location = new System.Drawing.Point(59, 132);
             this.Attack_Selector.Name = "Attack_Selector";
             this.Attack_Selector.Size = new System.Drawing.Size(121, 21);
             this.Attack_Selector.TabIndex = 2;
@@ -118,7 +124,7 @@
             // Item_Selector
             // 
             this.Item_Selector.FormattingEnabled = true;
-            this.Item_Selector.Location = new System.Drawing.Point(227, 110);
+            this.Item_Selector.Location = new System.Drawing.Point(227, 132);
             this.Item_Selector.Name = "Item_Selector";
             this.Item_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Selector.TabIndex = 3;
@@ -132,7 +138,7 @@
             // Spell_Selector
             // 
             this.Spell_Selector.FormattingEnabled = true;
-            this.Spell_Selector.Location = new System.Drawing.Point(396, 110);
+            this.Spell_Selector.Location = new System.Drawing.Point(396, 132);
             this.Spell_Selector.Name = "Spell_Selector";
             this.Spell_Selector.Size = new System.Drawing.Size(121, 21);
             this.Spell_Selector.TabIndex = 4;
@@ -176,7 +182,7 @@
             // Spell_Target_Selector
             // 
             this.Spell_Target_Selector.FormattingEnabled = true;
-            this.Spell_Target_Selector.Location = new System.Drawing.Point(396, 179);
+            this.Spell_Target_Selector.Location = new System.Drawing.Point(396, 197);
             this.Spell_Target_Selector.Name = "Spell_Target_Selector";
             this.Spell_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Spell_Target_Selector.TabIndex = 10;
@@ -190,7 +196,7 @@
             // Item_Target_Selector
             // 
             this.Item_Target_Selector.FormattingEnabled = true;
-            this.Item_Target_Selector.Location = new System.Drawing.Point(227, 179);
+            this.Item_Target_Selector.Location = new System.Drawing.Point(227, 197);
             this.Item_Target_Selector.Name = "Item_Target_Selector";
             this.Item_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Item_Target_Selector.TabIndex = 9;
@@ -204,7 +210,7 @@
             // Attack_Target_Selector
             // 
             this.Attack_Target_Selector.FormattingEnabled = true;
-            this.Attack_Target_Selector.Location = new System.Drawing.Point(59, 179);
+            this.Attack_Target_Selector.Location = new System.Drawing.Point(59, 197);
             this.Attack_Target_Selector.Name = "Attack_Target_Selector";
             this.Attack_Target_Selector.Size = new System.Drawing.Size(121, 21);
             this.Attack_Target_Selector.TabIndex = 8;
@@ -221,9 +227,10 @@
             // 
             // Combat_Textbox
             // 
-            this.Combat_Textbox.Location = new System.Drawing.Point(59, 222);
+            this.Combat_Textbox.Location = new System.Drawing.Point(59, 247);
             this.Combat_Textbox.Name = "Combat_Textbox";
-            this.Combat_Textbox.Size = new System.Drawing.Size(458, 176);
+            this.Combat_Textbox.ReadOnly = true;
+            this.Combat_Textbox.Size = new System.Drawing.Size(458, 151);
             this.Combat_Textbox.TabIndex = 11;
             this.Combat_Textbox.Text = "";
             // 
@@ -251,6 +258,7 @@
             // 
             this.Player_Health_Text.Location = new System.Drawing.Point(93, 58);
             this.Player_Health_Text.Name = "Player_Health_Text";
+            this.Player_Health_Text.ReadOnly = true;
             this.Player_Health_Text.Size = new System.Drawing.Size(61, 23);
             this.Player_Health_Text.TabIndex = 15;
             this.Player_Health_Text.Text = "";
@@ -259,15 +267,82 @@
             // 
             this.Player_Mana_Text.Location = new System.Drawing.Point(497, 59);
             this.Player_Mana_Text.Name = "Player_Mana_Text";
+            this.Player_Mana_Text.ReadOnly = true;
             this.Player_Mana_Text.Size = new System.Drawing.Size(61, 23);
             this.Player_Mana_Text.TabIndex = 16;
             this.Player_Mana_Text.Text = "";
+            // 
+            // Attack_Selector_Label
+            // 
+            this.Attack_Selector_Label.AutoSize = true;
+            this.Attack_Selector_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Attack_Selector_Label.Location = new System.Drawing.Point(56, 113);
+            this.Attack_Selector_Label.Name = "Attack_Selector_Label";
+            this.Attack_Selector_Label.Size = new System.Drawing.Size(113, 16);
+            this.Attack_Selector_Label.TabIndex = 17;
+            this.Attack_Selector_Label.Text = "Attack Selector";
+            // 
+            // Target_Selector_Label1
+            // 
+            this.Target_Selector_Label1.AutoSize = true;
+            this.Target_Selector_Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Target_Selector_Label1.Location = new System.Drawing.Point(56, 178);
+            this.Target_Selector_Label1.Name = "Target_Selector_Label1";
+            this.Target_Selector_Label1.Size = new System.Drawing.Size(116, 16);
+            this.Target_Selector_Label1.TabIndex = 18;
+            this.Target_Selector_Label1.Text = "Target Selector";
+            // 
+            // Target_Selector_Label2
+            // 
+            this.Target_Selector_Label2.AutoSize = true;
+            this.Target_Selector_Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Target_Selector_Label2.Location = new System.Drawing.Point(224, 178);
+            this.Target_Selector_Label2.Name = "Target_Selector_Label2";
+            this.Target_Selector_Label2.Size = new System.Drawing.Size(116, 16);
+            this.Target_Selector_Label2.TabIndex = 19;
+            this.Target_Selector_Label2.Text = "Target Selector";
+            // 
+            // Target_Selector_Label3
+            // 
+            this.Target_Selector_Label3.AutoSize = true;
+            this.Target_Selector_Label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Target_Selector_Label3.Location = new System.Drawing.Point(393, 178);
+            this.Target_Selector_Label3.Name = "Target_Selector_Label3";
+            this.Target_Selector_Label3.Size = new System.Drawing.Size(116, 16);
+            this.Target_Selector_Label3.TabIndex = 20;
+            this.Target_Selector_Label3.Text = "Target Selector";
+            // 
+            // Item_Selector_Label
+            // 
+            this.Item_Selector_Label.AutoSize = true;
+            this.Item_Selector_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Item_Selector_Label.Location = new System.Drawing.Point(228, 113);
+            this.Item_Selector_Label.Name = "Item_Selector_Label";
+            this.Item_Selector_Label.Size = new System.Drawing.Size(99, 16);
+            this.Item_Selector_Label.TabIndex = 21;
+            this.Item_Selector_Label.Text = "Item Selector";
+            // 
+            // Spell_Selector_Label
+            // 
+            this.Spell_Selector_Label.AutoSize = true;
+            this.Spell_Selector_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Spell_Selector_Label.Location = new System.Drawing.Point(393, 113);
+            this.Spell_Selector_Label.Name = "Spell_Selector_Label";
+            this.Spell_Selector_Label.Size = new System.Drawing.Size(106, 16);
+            this.Spell_Selector_Label.TabIndex = 22;
+            this.Spell_Selector_Label.Text = "Spell Selector";
             // 
             // Combat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.Spell_Selector_Label);
+            this.Controls.Add(this.Item_Selector_Label);
+            this.Controls.Add(this.Target_Selector_Label3);
+            this.Controls.Add(this.Target_Selector_Label2);
+            this.Controls.Add(this.Target_Selector_Label1);
+            this.Controls.Add(this.Attack_Selector_Label);
             this.Controls.Add(this.Player_Mana_Text);
             this.Controls.Add(this.Player_Health_Text);
             this.Controls.Add(this.Player_Mana_Label);
@@ -330,5 +405,11 @@
         private System.Windows.Forms.Label Player_Mana_Label;
         private System.Windows.Forms.RichTextBox Player_Health_Text;
         private System.Windows.Forms.RichTextBox Player_Mana_Text;
+        private System.Windows.Forms.Label Attack_Selector_Label;
+        private System.Windows.Forms.Label Target_Selector_Label1;
+        private System.Windows.Forms.Label Target_Selector_Label2;
+        private System.Windows.Forms.Label Target_Selector_Label3;
+        private System.Windows.Forms.Label Item_Selector_Label;
+        private System.Windows.Forms.Label Spell_Selector_Label;
     }
 }

@@ -22,7 +22,8 @@ namespace WinForms_Combat_Assessment
             string s3 = string.Format("{0} has cast {1} on {2} for {3} damage and {4} healing. \n", info.Name, info.ActiveSpell.Name, info.SpellTarget.Info.Name, spellValues[0], spellValues[1]);
             string s4 = string.Format("Item Info: {0} \nWeapon Info: {1}\nSpell Info: {2}\n", s1, s2, s3);
             instance.CombatLog += s4;
-            instance.DataManager.GameRoster.ForEach(x => instance.CombatLog += string.Format("{0} is {1} \n", x.Info.Name, x.Info.Alive));
+
+            //instance.DataManager.GameRoster.ForEach(x => instance.CombatLog += string.Format("{0} is {1} \n", x.Info.Name, x.Info.Alive));           
         }
 
         private DataManager m_dataManager;
@@ -35,21 +36,11 @@ namespace WinForms_Combat_Assessment
 
         public delegate void Del();
         public Del Initializer;
-
-        public void InitalizeMainFSM()
-        {            
-            DataManager.MainFSM.AddState(new MainMenuState(0));
-            DataManager.MainFSM.AddState(new GameRulesState(1));
-            DataManager.MainFSM.AddState(new CharacterSheetState(2));
-            DataManager.MainFSM.AddState(new ScoreboardState(3));
-            DataManager.MainFSM.AddState(new DiceRollState(4));
-            DataManager.MainFSM.AddState(new CombatState(5));
-
-            DataManager.MainFSM.SetState(0);           
-        }
-
+        
         public void InitalizeDataManager()
         {
+            DataManager = new DataManager();
+
             DataManager.AddToWeaponList(new Sword("Sword", 25));
             DataManager.AddToWeaponList(new Axe("Axe", 25));
             DataManager.AddToWeaponList(new Mace("Mace", 25));
@@ -68,6 +59,20 @@ namespace WinForms_Combat_Assessment
             DataManager.AddToItemList(new RuneStone("Blue Runestone", 0, 1));
         }
 
+        public void InitalizeMainFSM()
+        {
+            DataManager.MainFSM = new FSM();
+
+            DataManager.MainFSM.AddState(new MainMenuState(0));
+            DataManager.MainFSM.AddState(new GameRulesState(1));
+            DataManager.MainFSM.AddState(new CharacterSheetState(2));
+            DataManager.MainFSM.AddState(new ScoreboardState(3));
+            DataManager.MainFSM.AddState(new DiceRollState(4));
+            DataManager.MainFSM.AddState(new CombatState(5));
+
+            DataManager.MainFSM.SetState(0);
+        }
+
         private static readonly AppManager instance = new AppManager();
 
         public static AppManager Instance
@@ -77,9 +82,10 @@ namespace WinForms_Combat_Assessment
 
         private AppManager()
         {
-            DataManager = new DataManager();
-            Initializer += InitalizeMainFSM;
             Initializer += InitalizeDataManager;
+            Initializer += InitalizeMainFSM;
+
+            Initializer.Invoke();
         } 
     }
 }

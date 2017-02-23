@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WinForms_Combat_Assessment
 {
     public partial class Combat : Form
-    {        
+    {
         private void FillComboBoxes()
         {
             // attack spell item select
@@ -35,7 +35,7 @@ namespace WinForms_Combat_Assessment
             {
                 var c = control as ComboBox;
                 if(c != null)               
-                    c.SelectedIndex = 1;
+                    c.SelectedIndex = 0;
             }         
         }
 
@@ -55,6 +55,7 @@ namespace WinForms_Combat_Assessment
                 if (Item_Selector.SelectedItem.Equals(item.Name))
                 {
                     AppManager.Instance.DataManager.CurrentPlayer.Info.ActiveItem = item;
+                    AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer)].RemoveFromBackpack(item);
                     break;
                 }
             }
@@ -98,7 +99,22 @@ namespace WinForms_Combat_Assessment
 
         private void FillCombatText()
         {
-            Combat_Textbox.Text = AppManager.Instance.CombatLog;            
+            DataSerializer<List<Character>>.Serialize("GameRoster", AppManager.Instance.DataManager.GameRoster);
+
+            List<Character> tmpRoster = DataSerializer<List<Character>>.Deserialize("GameRoster");
+            
+            AppManager.DoActions();       
+
+            Combat_Textbox.Text = AppManager.Instance.CombatLog;
+
+            foreach (Character character in AppManager.Instance.DataManager.GameRoster)
+            {
+                int a = tmpRoster.IndexOf(character) + 1;
+                if (character.Info.Alive == false && tmpRoster[tmpRoster.IndexOf(character) + 1 ].Info.Alive == true)
+                {
+                    Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
+                }                
+            }            
         }
 
         public Combat()
@@ -138,18 +154,20 @@ namespace WinForms_Combat_Assessment
             End_Turn.Enabled = true;
 
             ConfirmSelections();
-            AppManager.DoActions();
+            
             FillCombatText();
 
             Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
-            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();
-
-            AppManager.Instance.DataManager.SetRemainingPlayers();
+            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();            
         }
 
         private void End_Turn_Click(object sender, EventArgs e)
         {
             Character temp = AppManager.Instance.DataManager.CurrentPlayer;
+
+            AppManager.Instance.DataManager.TurnCount += 1;
+
+            AppManager.Instance.DataManager.SetRemainingPlayers();
 
             if (AppManager.Instance.DataManager.RemainingPlayers == 1)
             {
@@ -167,8 +185,6 @@ namespace WinForms_Combat_Assessment
             }
             else
             {
-                AppManager.Instance.DataManager.TurnCount += 1;
-
                 if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1].Info.Alive == true &&
                    AppManager.Instance.DataManager.CurrentPlayer != AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.Count - 1])
                 {

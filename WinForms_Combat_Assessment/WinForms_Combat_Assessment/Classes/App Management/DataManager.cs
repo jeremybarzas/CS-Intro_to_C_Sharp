@@ -140,8 +140,7 @@ namespace WinForms_Combat_Assessment
         }       
 
         public DataManager()
-        {
-            MainFSM = new FSM();                   
+        {                   
             m_gameRoster = new List<Character>();           
             m_weaponList = new List<Weapon>();
             m_spellList = new List<Spell>();

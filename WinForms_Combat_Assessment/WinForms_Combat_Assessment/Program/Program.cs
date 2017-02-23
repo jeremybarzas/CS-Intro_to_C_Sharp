@@ -31,7 +31,8 @@ namespace WinForms_Combat_Assessment
             if (currentState as CombatState != null)
                 nextForm = new Combat();
 
-            f.Hide();
+            f.Enabled = false;
+            f.Visible = false;
             nextForm.Show();
             return nextForm;
         }
@@ -49,8 +50,6 @@ namespace WinForms_Combat_Assessment
         [STAThread]
         static void Main()
         {
-            AppManager.Instance.Initializer.Invoke();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(ChangeForm(0));

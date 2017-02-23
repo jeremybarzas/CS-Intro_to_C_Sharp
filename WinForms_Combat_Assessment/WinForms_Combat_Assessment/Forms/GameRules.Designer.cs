@@ -33,15 +33,16 @@
             this.Next = new System.Windows.Forms.Button();
             this.To_Main_Menu = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.Number_of_Player_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(185, 33);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(184, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 39);
+            this.label1.Size = new System.Drawing.Size(193, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Game Rules";
             // 
@@ -49,7 +50,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(222, 91);
+            this.comboBox1.Location = new System.Drawing.Point(222, 67);
             this.comboBox1.MaxDropDownItems = 10;
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(128, 21);
@@ -78,17 +79,29 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(56, 137);
+            this.richTextBox1.Location = new System.Drawing.Point(56, 112);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(450, 266);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(450, 291);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
+            // 
+            // Number_of_Player_Label
+            // 
+            this.Number_of_Player_Label.AutoSize = true;
+            this.Number_of_Player_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Number_of_Player_Label.Location = new System.Drawing.Point(80, 68);
+            this.Number_of_Player_Label.Name = "Number_of_Player_Label";
+            this.Number_of_Player_Label.Size = new System.Drawing.Size(136, 16);
+            this.Number_of_Player_Label.TabIndex = 5;
+            this.Number_of_Player_Label.Text = "Number of Players";
             // 
             // GameRules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.Number_of_Player_Label);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.To_Main_Menu);
             this.Controls.Add(this.Next);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.Button To_Main_Menu;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label Number_of_Player_Label;
     }
 }

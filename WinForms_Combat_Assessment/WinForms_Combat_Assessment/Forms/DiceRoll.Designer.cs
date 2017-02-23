@@ -33,6 +33,7 @@
             this.To_Main_Menu = new System.Windows.Forms.Button();
             this.Roll = new System.Windows.Forms.Button();
             this.Turn_Order_Box = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Dice_Roll_Label
@@ -78,19 +79,30 @@
             // Turn_Order_Box
             // 
             this.Turn_Order_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Turn_Order_Box.Location = new System.Drawing.Point(199, 49);
+            this.Turn_Order_Box.Location = new System.Drawing.Point(199, 83);
             this.Turn_Order_Box.Name = "Turn_Order_Box";
             this.Turn_Order_Box.ReadOnly = true;
-            this.Turn_Order_Box.Size = new System.Drawing.Size(187, 372);
+            this.Turn_Order_Box.Size = new System.Drawing.Size(187, 327);
             this.Turn_Order_Box.TabIndex = 4;
             this.Turn_Order_Box.Text = "";
             this.Turn_Order_Box.WordWrap = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(85, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(417, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Click the \"Roll\" button to assign the alive players turn order.\r\n";
             // 
             // DiceRoll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Turn_Order_Box);
             this.Controls.Add(this.Roll);
             this.Controls.Add(this.To_Main_Menu);
@@ -111,5 +123,6 @@
         private System.Windows.Forms.Button To_Main_Menu;
         private System.Windows.Forms.Button Roll;
         private System.Windows.Forms.RichTextBox Turn_Order_Box;
+        private System.Windows.Forms.Label label1;
     }
 }

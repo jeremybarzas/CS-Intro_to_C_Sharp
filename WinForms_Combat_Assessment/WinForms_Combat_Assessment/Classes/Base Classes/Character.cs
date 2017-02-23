@@ -41,7 +41,7 @@ namespace WinForms_Combat_Assessment
             return true;
         }
 
-        public void RemoveToBackpack(Item item)
+        public void RemoveFromBackpack(Item item)
         {
             Info.Backpack.Remove(item);
         }
@@ -109,23 +109,25 @@ namespace WinForms_Combat_Assessment
             Info.Intellect = 1;
             Info.Alive = true;
             Info.Kills = 0;
-            Info.Gold = 0;
+            Info.Score = 0;
             Info.TurnOrder = 0;
         }
 
-        public Character(string n)
+        public Character(Character c)
         {
-            m_info = new Stats();
+            this.m_info = c.m_info;
 
-            Info.Name = n;
-            Info.Health = 100;
-            Info.Mana = 100;
-            Info.Strength = 1;
-            Info.Intellect = 1;
-            Info.Alive = true;
-            Info.Kills = 0;
-            Info.Gold = 0;
-            Info.TurnOrder = 0;
+            //m_info = c.m_info;
+
+            //m_info.Name = c.m_info.Name;
+            //m_info.Health = c.m_info.Health;
+            //m_info.Mana = c.m_info.Mana;
+            //m_info.Strength = c.m_info.Strength;
+            //m_info.Intellect = c.m_info.Intellect;
+            //m_info.Alive = c.m_info.Alive;
+            //m_info.Kills = c.m_info.Kills;
+            //m_info.Score = c.m_info.Score;
+            //m_info.TurnOrder = c.m_info.TurnOrder;
         }
 
         public Character(string n, Weapon w1, Weapon w2, Spell s1, Spell s2, Item i1, Item i2, Item i3, Item i4)
@@ -139,7 +141,7 @@ namespace WinForms_Combat_Assessment
             Info.Intellect = 1;
             Info.Alive = true;
             Info.Kills = 0;
-            Info.Gold = 0;
+            Info.Score = 0;
             Info.TurnOrder = 0;
 
             AddToWeapons(w1);

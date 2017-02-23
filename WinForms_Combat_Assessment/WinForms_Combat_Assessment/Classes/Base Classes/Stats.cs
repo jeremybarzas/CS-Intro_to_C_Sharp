@@ -8,17 +8,19 @@ namespace WinForms_Combat_Assessment
         private Character m_attackTarget;
         private Character m_itemTarget;
         private Character m_spellTarget;
-
+        [XmlIgnore]
         public Character AttackTarget
         {
             get { return m_attackTarget; }
             set { m_attackTarget = value; }
         }
+        [XmlIgnore]
         public Character ItemTarget
         {
             get { return m_itemTarget; }
             set { m_itemTarget = value; }
         }
+        [XmlIgnore]
         public Character SpellTarget
         {
             get { return m_spellTarget; }
@@ -38,7 +40,7 @@ namespace WinForms_Combat_Assessment
         private int m_intellect;
         private bool m_alive;
         private int m_kills;
-        private int m_gold;
+        private int m_score;
         private int m_turnOrder;       
 
         public List<Weapon> Weapons
@@ -119,10 +121,10 @@ namespace WinForms_Combat_Assessment
             set { m_kills = value; }
         }
 
-        public int Gold
+        public int Score
         {
-            get { return m_gold; }
-            set { m_gold = value; }
+            get { return m_score; }
+            set { m_score = value; }
         }
 
         public int TurnOrder
