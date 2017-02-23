@@ -68,7 +68,7 @@ namespace WinForms_Combat_Assessment
             DataManager.MainFSM.AddState(new CharacterSheetState(2));
             DataManager.MainFSM.AddState(new ScoreboardState(3));
             DataManager.MainFSM.AddState(new DiceRollState(4));
-            DataManager.MainFSM.AddState(new CombatState(5));
+            DataManager.MainFSM.AddState(new CombatPhaseState(5));
 
             DataManager.MainFSM.SetState(0);
         }

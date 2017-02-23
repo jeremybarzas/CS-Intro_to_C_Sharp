@@ -67,13 +67,13 @@
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\States\CharacterSheetState.cs" />
-    <Compile Include="Forms\Combat.cs">
+    <Compile Include="Forms\CombatPhase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Combat.Designer.cs">
-      <DependentUpon>Combat.cs</DependentUpon>
+    <Compile Include="Forms\CombatPhase.Designer.cs">
+      <DependentUpon>CombatPhase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\States\CombatState.cs" />
+    <Compile Include="Classes\States\CombatPhaseState.cs" />
     <Compile Include="Forms\DiceRoll.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,8 +115,8 @@
     <EmbeddedResource Include="Forms\CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Combat.resx">
-      <DependentUpon>Combat.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CombatPhase.resx">
+      <DependentUpon>CombatPhase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiceRoll.resx">
       <DependentUpon>DiceRoll.cs</DependentUpon>

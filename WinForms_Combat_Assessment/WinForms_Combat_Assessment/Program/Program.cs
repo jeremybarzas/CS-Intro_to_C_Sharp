@@ -29,8 +29,8 @@ namespace WinForms_Combat_Assessment
             if (currentState as DiceRollState != null)
                 nextForm = new DiceRoll();
 
-            if (currentState as CombatState != null)
-                nextForm = new Combat();
+            if (currentState as CombatPhaseState != null)
+                nextForm = new CombatPhase();
 
             f.Enabled = false;
             f.Visible = false;

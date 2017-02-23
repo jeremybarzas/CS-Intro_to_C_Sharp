@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WinForms_Combat_Assessment
 {
-    public partial class Combat : Form
+    public partial class CombatPhase : Form
     {
         private void CombatFormLoad()
         {
@@ -128,6 +128,7 @@ namespace WinForms_Combat_Assessment
                 if(character.Info.Alive != tmpRoster[i])
                 {
                     Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
+                    AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer)].Info.Kills += 1;
                 }                
                 i++;
             }
@@ -211,7 +212,7 @@ namespace WinForms_Combat_Assessment
             }
         }
 
-        public Combat()
+        public CombatPhase()
         {
             InitializeComponent();
         }

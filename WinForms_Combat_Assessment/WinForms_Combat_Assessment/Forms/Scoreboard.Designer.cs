@@ -35,11 +35,11 @@
             this.Player_Label = new System.Windows.Forms.Label();
             this.Status_Label = new System.Windows.Forms.Label();
             this.Kills_Label = new System.Windows.Forms.Label();
-            this.Gold_Label = new System.Windows.Forms.Label();
+            this.Damage_Dealt_Label = new System.Windows.Forms.Label();
             this.Player_Name_Text = new System.Windows.Forms.RichTextBox();
             this.Status_Text = new System.Windows.Forms.RichTextBox();
             this.Kills_Text = new System.Windows.Forms.RichTextBox();
-            this.Score_Text = new System.Windows.Forms.RichTextBox();
+            this.Damage_Dealt_Text = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -112,15 +112,15 @@
             this.Kills_Label.TabIndex = 6;
             this.Kills_Label.Text = "Kills";
             // 
-            // Gold_Label
+            // Damage_Dealt_Label
             // 
-            this.Gold_Label.AutoSize = true;
-            this.Gold_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gold_Label.Location = new System.Drawing.Point(475, 58);
-            this.Gold_Label.Name = "Gold_Label";
-            this.Gold_Label.Size = new System.Drawing.Size(47, 20);
-            this.Gold_Label.TabIndex = 7;
-            this.Gold_Label.Text = "Gold";
+            this.Damage_Dealt_Label.AutoSize = true;
+            this.Damage_Dealt_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Damage_Dealt_Label.Location = new System.Drawing.Point(446, 58);
+            this.Damage_Dealt_Label.Name = "Damage_Dealt_Label";
+            this.Damage_Dealt_Label.Size = new System.Drawing.Size(124, 20);
+            this.Damage_Dealt_Label.TabIndex = 7;
+            this.Damage_Dealt_Label.Text = "Damage Dealt";
             // 
             // Player_Name_Text
             // 
@@ -158,28 +158,28 @@
             this.Kills_Text.Text = "";
             this.Kills_Text.WordWrap = false;
             // 
-            // Score_Text
+            // Damage_Dealt_Text
             // 
-            this.Score_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Score_Text.Location = new System.Drawing.Point(450, 81);
-            this.Score_Text.Name = "Score_Text";
-            this.Score_Text.ReadOnly = true;
-            this.Score_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.Score_Text.Size = new System.Drawing.Size(112, 340);
-            this.Score_Text.TabIndex = 11;
-            this.Score_Text.Text = "";
-            this.Score_Text.WordWrap = false;
+            this.Damage_Dealt_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Damage_Dealt_Text.Location = new System.Drawing.Point(450, 81);
+            this.Damage_Dealt_Text.Name = "Damage_Dealt_Text";
+            this.Damage_Dealt_Text.ReadOnly = true;
+            this.Damage_Dealt_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.Damage_Dealt_Text.Size = new System.Drawing.Size(112, 340);
+            this.Damage_Dealt_Text.TabIndex = 11;
+            this.Damage_Dealt_Text.Text = "";
+            this.Damage_Dealt_Text.WordWrap = false;
             // 
             // Scoreboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
-            this.Controls.Add(this.Score_Text);
+            this.Controls.Add(this.Damage_Dealt_Text);
             this.Controls.Add(this.Kills_Text);
             this.Controls.Add(this.Status_Text);
             this.Controls.Add(this.Player_Name_Text);
-            this.Controls.Add(this.Gold_Label);
+            this.Controls.Add(this.Damage_Dealt_Label);
             this.Controls.Add(this.Kills_Label);
             this.Controls.Add(this.Status_Label);
             this.Controls.Add(this.Player_Label);
@@ -204,10 +204,10 @@
         private System.Windows.Forms.Label Player_Label;
         private System.Windows.Forms.Label Status_Label;
         private System.Windows.Forms.Label Kills_Label;
-        private System.Windows.Forms.Label Gold_Label;
+        private System.Windows.Forms.Label Damage_Dealt_Label;
         private System.Windows.Forms.RichTextBox Player_Name_Text;
         private System.Windows.Forms.RichTextBox Status_Text;
         private System.Windows.Forms.RichTextBox Kills_Text;
-        private System.Windows.Forms.RichTextBox Score_Text;
+        private System.Windows.Forms.RichTextBox Damage_Dealt_Text;
     }
 }

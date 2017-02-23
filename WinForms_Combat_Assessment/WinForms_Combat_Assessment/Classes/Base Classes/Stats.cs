@@ -40,7 +40,7 @@ namespace WinForms_Combat_Assessment
         private int m_intellect;
         private bool m_alive;
         private int m_kills;
-        private int m_score;
+        private int m_damageDealt;
         private int m_turnOrder;       
 
         public List<Weapon> Weapons
@@ -121,10 +121,10 @@ namespace WinForms_Combat_Assessment
             set { m_kills = value; }
         }
 
-        public int Score
+        public int DamageDealt
         {
-            get { return m_score; }
-            set { m_score = value; }
+            get { return m_damageDealt; }
+            set { m_damageDealt = value; }
         }
 
         public int TurnOrder

@@ -1,6 +1,6 @@
 ﻿namespace WinForms_Combat_Assessment
 {
-    partial class Combat
+    partial class CombatPhase
     {
         /// <summary>
         /// Required designer variable.

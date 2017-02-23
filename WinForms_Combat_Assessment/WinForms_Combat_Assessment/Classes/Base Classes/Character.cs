@@ -78,7 +78,8 @@ namespace WinForms_Combat_Assessment
 
         public int DoWeaponAction(Character target)
         {
-           int value = target.RecieveWeaponAction(this.Info.ActiveWeapon, this.Info.Strength);
+            int value = target.RecieveWeaponAction(this.Info.ActiveWeapon, this.Info.Strength);
+            this.m_info.DamageDealt += value;
 
             return value;
         }
@@ -87,6 +88,7 @@ namespace WinForms_Combat_Assessment
         {
             List<int> values = target.RecieveSpellAction(this.Info.ActiveSpell, this.Info.Intellect);
             this.Info.Mana -= this.Info.ActiveSpell.ManaCost;
+            this.m_info.DamageDealt += values[0];
 
             return values;
         }
@@ -94,7 +96,6 @@ namespace WinForms_Combat_Assessment
         public List<int> DoItemAction(Character target)
         {
             List<int> values = target.RecieveItemAction(this.Info.ActiveItem);
-
             return values;
         }
 
@@ -109,7 +110,7 @@ namespace WinForms_Combat_Assessment
             Info.Intellect = 1;
             Info.Alive = true;
             Info.Kills = 0;
-            Info.Score = 0;
+            Info.DamageDealt = 0;
             Info.TurnOrder = 0;
         }
 
@@ -141,7 +142,7 @@ namespace WinForms_Combat_Assessment
             Info.Intellect = 1;
             Info.Alive = true;
             Info.Kills = 0;
-            Info.Score = 0;
+            Info.DamageDealt = 0;
             Info.TurnOrder = 0;
 
             AddToWeapons(w1);
