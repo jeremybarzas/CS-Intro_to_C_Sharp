@@ -29,6 +29,19 @@ namespace WinForms_Combat_Assessment
             Name = n;
             m_healingPower = heal;
             m_manaPower = mana;
+            ItemInfo += Name + ":";
+
+            if (m_healingPower != 0 && m_manaPower != 0)
+            {
+                ItemInfo += " + " + m_healingPower + " Health, ";
+                ItemInfo += " + " + m_manaPower + " Mana";
+            }
+                        
+            else if (m_healingPower != 0)
+                ItemInfo += " + " + m_healingPower + " Health ";
+
+            else if (m_manaPower != 0)
+                ItemInfo += " + " + m_manaPower + " Mana";
         }      
     }
 }

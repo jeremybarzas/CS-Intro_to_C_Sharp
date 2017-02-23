@@ -125,32 +125,22 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            Program.ChangeForm(0);
+            Program.ChangeForm(this, 0);
         }
 
         private void Next_Click(object sender, EventArgs e)
+        { 
+            AppManager.Instance.DataManager.AddToRoster(ConfirmSelections());
+
+            if (AppManager.Instance.DataManager.GameRoster.Count < AppManager.Instance.DataManager.PlayerCount)
+                Program.ChangeForm(this, 2);
+            else
+                Program.ChangeForm(this, 3);
+        }
+
+        private void To_Loadout_Options_Info_Click(object sender, EventArgs e)
         {
-            ////Actual Code
-            //AppManager.Instance.DataManager.AddToRoster(ConfirmSelections());
-
-            //if (AppManager.Instance.DataManager.GameRoster.Count < AppManager.Instance.DataManager.PlayerCount)
-            //    Program.ChangeForm(this, 2);
-            //else
-            //    Program.ChangeForm(this, 3);
-
-            // Test Code
-            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 1", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 2", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 3", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 4", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 5", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 6", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 7", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 8", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 9", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-            //AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 10", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
-
-            Program.ChangeForm(this, 3);
+            Program.ChangeForm(this, 7);
         }
     }    
 }

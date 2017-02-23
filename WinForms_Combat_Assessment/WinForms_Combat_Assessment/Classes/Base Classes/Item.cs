@@ -8,6 +8,7 @@ namespace WinForms_Combat_Assessment
     public abstract class Item
     {
         public string Name;
+        public string ItemInfo;
         public abstract List<int> Use(Character target);
     }
 }

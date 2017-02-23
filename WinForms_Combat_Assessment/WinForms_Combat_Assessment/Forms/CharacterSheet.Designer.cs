@@ -44,6 +44,7 @@
             this.Weapon_Selector_Label = new System.Windows.Forms.Label();
             this.Item_Selector_Label = new System.Windows.Forms.Label();
             this.Spell_Selector_Label = new System.Windows.Forms.Label();
+            this.To_Loadout_Options_Info = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -96,6 +97,7 @@
             // Weapon_Selector_1
             // 
             this.Weapon_Selector_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Weapon_Selector_1.DropDownWidth = 150;
             this.Weapon_Selector_1.FormattingEnabled = true;
             this.Weapon_Selector_1.Location = new System.Drawing.Point(57, 160);
             this.Weapon_Selector_1.Name = "Weapon_Selector_1";
@@ -105,6 +107,7 @@
             // Item_Selector_1
             // 
             this.Item_Selector_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Item_Selector_1.DropDownWidth = 150;
             this.Item_Selector_1.FormattingEnabled = true;
             this.Item_Selector_1.Location = new System.Drawing.Point(228, 160);
             this.Item_Selector_1.Name = "Item_Selector_1";
@@ -114,6 +117,7 @@
             // Spell_Selector_1
             // 
             this.Spell_Selector_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Spell_Selector_1.DropDownWidth = 150;
             this.Spell_Selector_1.FormattingEnabled = true;
             this.Spell_Selector_1.Location = new System.Drawing.Point(396, 160);
             this.Spell_Selector_1.Name = "Spell_Selector_1";
@@ -123,6 +127,7 @@
             // Spell_Selector_2
             // 
             this.Spell_Selector_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Spell_Selector_2.DropDownWidth = 150;
             this.Spell_Selector_2.FormattingEnabled = true;
             this.Spell_Selector_2.Location = new System.Drawing.Point(396, 207);
             this.Spell_Selector_2.Name = "Spell_Selector_2";
@@ -132,6 +137,7 @@
             // Item_Selector_2
             // 
             this.Item_Selector_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Item_Selector_2.DropDownWidth = 150;
             this.Item_Selector_2.FormattingEnabled = true;
             this.Item_Selector_2.Location = new System.Drawing.Point(228, 207);
             this.Item_Selector_2.Name = "Item_Selector_2";
@@ -141,6 +147,7 @@
             // Weapon_Selector_2
             // 
             this.Weapon_Selector_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Weapon_Selector_2.DropDownWidth = 150;
             this.Weapon_Selector_2.FormattingEnabled = true;
             this.Weapon_Selector_2.Location = new System.Drawing.Point(57, 207);
             this.Weapon_Selector_2.Name = "Weapon_Selector_2";
@@ -150,6 +157,7 @@
             // Item_Selector_3
             // 
             this.Item_Selector_3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Item_Selector_3.DropDownWidth = 150;
             this.Item_Selector_3.FormattingEnabled = true;
             this.Item_Selector_3.Location = new System.Drawing.Point(228, 252);
             this.Item_Selector_3.Name = "Item_Selector_3";
@@ -159,6 +167,7 @@
             // Item_Selector_4
             // 
             this.Item_Selector_4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Item_Selector_4.DropDownWidth = 150;
             this.Item_Selector_4.FormattingEnabled = true;
             this.Item_Selector_4.Location = new System.Drawing.Point(228, 298);
             this.Item_Selector_4.Name = "Item_Selector_4";
@@ -195,11 +204,22 @@
             this.Spell_Selector_Label.TabIndex = 20;
             this.Spell_Selector_Label.Text = "Spell Selector";
             // 
+            // To_Loadout_Options_Info
+            // 
+            this.To_Loadout_Options_Info.Location = new System.Drawing.Point(12, 12);
+            this.To_Loadout_Options_Info.Name = "To_Loadout_Options_Info";
+            this.To_Loadout_Options_Info.Size = new System.Drawing.Size(75, 23);
+            this.To_Loadout_Options_Info.TabIndex = 21;
+            this.To_Loadout_Options_Info.Text = "Loadout Info";
+            this.To_Loadout_Options_Info.UseVisualStyleBackColor = true;
+            this.To_Loadout_Options_Info.Click += new System.EventHandler(this.To_Loadout_Options_Info_Click);
+            // 
             // CharacterSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.To_Loadout_Options_Info);
             this.Controls.Add(this.Spell_Selector_Label);
             this.Controls.Add(this.Item_Selector_Label);
             this.Controls.Add(this.Weapon_Selector_Label);
@@ -242,5 +262,6 @@
         private System.Windows.Forms.Label Weapon_Selector_Label;
         private System.Windows.Forms.Label Item_Selector_Label;
         private System.Windows.Forms.Label Spell_Selector_Label;
+        private System.Windows.Forms.Button To_Loadout_Options_Info;
     }
 }

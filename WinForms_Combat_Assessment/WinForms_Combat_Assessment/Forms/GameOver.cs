@@ -21,7 +21,11 @@ namespace WinForms_Combat_Assessment
                 Damage_Dealt_Text.Text += "    " + character.Info.DamageDealt + "\n\n";
 
                 if (character.Info.Alive == true)
+                {
                     Status_Text.Text += "   Alive" + "\n\n";
+                    Game_Winner_Label.Text = character.Info.Name + " has won the game.";
+                }
+                
                 else
                     Status_Text.Text += "   Dead" + "\n\n";
             }

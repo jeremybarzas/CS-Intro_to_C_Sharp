@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Number_of_Players_Selector = new System.Windows.Forms.ComboBox();
             this.Next = new System.Windows.Forms.Button();
             this.To_Main_Menu = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.Game_Rules_Text = new System.Windows.Forms.RichTextBox();
             this.Number_of_Player_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -46,16 +46,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Game Rules";
             // 
-            // comboBox1
+            // Number_of_Players_Selector
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(222, 67);
-            this.comboBox1.MaxDropDownItems = 10;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.Number_of_Players_Selector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Number_of_Players_Selector.FormattingEnabled = true;
+            this.Number_of_Players_Selector.Location = new System.Drawing.Point(260, 67);
+            this.Number_of_Players_Selector.MaxDropDownItems = 10;
+            this.Number_of_Players_Selector.Name = "Number_of_Players_Selector";
+            this.Number_of_Players_Selector.Size = new System.Drawing.Size(45, 21);
+            this.Number_of_Players_Selector.TabIndex = 1;
+            this.Number_of_Players_Selector.SelectedIndexChanged += new System.EventHandler(this.Number_of_Players_Selector_SelectedIndexChanged);
             // 
             // Next
             // 
@@ -77,20 +77,20 @@
             this.To_Main_Menu.UseVisualStyleBackColor = true;
             this.To_Main_Menu.Click += new System.EventHandler(this.To_Main_Menu_Click);
             // 
-            // richTextBox1
+            // Game_Rules_Text
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(56, 112);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(450, 291);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
+            this.Game_Rules_Text.Location = new System.Drawing.Point(56, 112);
+            this.Game_Rules_Text.Name = "Game_Rules_Text";
+            this.Game_Rules_Text.ReadOnly = true;
+            this.Game_Rules_Text.Size = new System.Drawing.Size(450, 291);
+            this.Game_Rules_Text.TabIndex = 4;
+            this.Game_Rules_Text.Text = "";
             // 
             // Number_of_Player_Label
             // 
             this.Number_of_Player_Label.AutoSize = true;
             this.Number_of_Player_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Number_of_Player_Label.Location = new System.Drawing.Point(80, 68);
+            this.Number_of_Player_Label.Location = new System.Drawing.Point(118, 68);
             this.Number_of_Player_Label.Name = "Number_of_Player_Label";
             this.Number_of_Player_Label.Size = new System.Drawing.Size(136, 16);
             this.Number_of_Player_Label.TabIndex = 5;
@@ -102,10 +102,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
             this.Controls.Add(this.Number_of_Player_Label);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.Game_Rules_Text);
             this.Controls.Add(this.To_Main_Menu);
             this.Controls.Add(this.Next);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Number_of_Players_Selector);
             this.Controls.Add(this.label1);
             this.Name = "GameRules";
             this.Text = "GameRules";
@@ -118,10 +118,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Number_of_Players_Selector;
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.Button To_Main_Menu;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox Game_Rules_Text;
         private System.Windows.Forms.Label Number_of_Player_Label;
     }
 }

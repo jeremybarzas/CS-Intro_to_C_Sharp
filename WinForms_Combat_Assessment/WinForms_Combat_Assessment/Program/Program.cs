@@ -10,6 +10,8 @@ namespace WinForms_Combat_Assessment
         {
             Form nextForm = new Form();
 
+            AppManager.Instance.DataManager.MainFSM.PreviousStateId = AppManager.Instance.DataManager.MainFSM.CurrentState.StateID;
+
             AppManager.Instance.DataManager.MainFSM.SetState(i);
 
             State currentState = AppManager.Instance.DataManager.MainFSM.CurrentState;           
@@ -34,6 +36,9 @@ namespace WinForms_Combat_Assessment
 
             if (currentState as GameOverState != null)
                 nextForm = new GameOver();
+
+            if (currentState as LoadoutOptionsInfoState != null)
+                nextForm = new LoadoutOptionsInfo();
 
             f.Enabled = false;
             f.Visible = false;

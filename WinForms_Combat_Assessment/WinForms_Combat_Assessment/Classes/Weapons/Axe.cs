@@ -15,6 +15,7 @@
         {
             Name = n;
             Damage = dmg;
+            WeaponInfo += Name + ": - " + Damage + " Health";
         }        
     }
 }

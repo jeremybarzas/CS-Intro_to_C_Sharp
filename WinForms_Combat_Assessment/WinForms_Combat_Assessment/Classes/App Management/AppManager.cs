@@ -4,26 +4,78 @@ namespace WinForms_Combat_Assessment
 {
     public class AppManager
     {
+        private string m_combatLog;
+
         public string CombatLog
         {
-            get; set;
+            get { return m_combatLog; }
+            set { m_combatLog = value; }
         }
 
         public static void DoActions()
         {
-            List<int> itemValues = instance.DataManager.CurrentPlayer.DoItemAction(instance.DataManager.CurrentPlayer.Info.ItemTarget);
-            int weaponValue = instance.DataManager.CurrentPlayer.DoWeaponAction(instance.DataManager.CurrentPlayer.Info.AttackTarget);
-            List<int> spellValues = instance.DataManager.CurrentPlayer.DoSpellAction(instance.DataManager.CurrentPlayer.Info.SpellTarget);
-            instance.CombatLog = "";
-
             var info = instance.DataManager.CurrentPlayer.Info;
-            string s1 = string.Format("{0} has used {1} on {2} for {3} healing, {4} mana, {5} strength, {6} intellect. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[0], itemValues[1], itemValues[2], itemValues[3]);
-            string s2 = string.Format("{0} has attacked {1} with {2} for {3} damage. \n", info.Name, info.AttackTarget.Info.Name, info.ActiveWeapon.Name, weaponValue);
-            string s3 = string.Format("{0} has cast {1} on {2} for {3} damage and {4} healing. \n", info.Name, info.ActiveSpell.Name, info.SpellTarget.Info.Name, spellValues[0], spellValues[1]);
-            string s4 = string.Format("Item Info: {0} \nWeapon Info: {1}\nSpell Info: {2}\n", s1, s2, s3);
-            instance.CombatLog += s4;
+            string s1 = "";
+            string s2 = "";
+            string s3 = "";
 
-            //instance.DataManager.GameRoster.ForEach(x => instance.CombatLog += string.Format("{0} is {1} \n", x.Info.Name, x.Info.Alive));           
+            // item action
+            List<int> itemValues = instance.DataManager.CurrentPlayer.DoItemAction(instance.DataManager.CurrentPlayer.Info.ItemTarget);
+
+            // weapon action
+            int weaponValue = instance.DataManager.CurrentPlayer.DoWeaponAction(instance.DataManager.CurrentPlayer.Info.AttackTarget);
+
+            // spell action
+            List<int> spellValues = instance.DataManager.CurrentPlayer.DoSpellAction(instance.DataManager.CurrentPlayer.Info.SpellTarget);
+
+            // potion check
+            if (itemValues[0] != 0 && itemValues[1] == 0 && itemValues[2] == 0 && itemValues[3] == 0)
+            {
+                s1 = string.Format("{0} has used {1} on {2} for + {3} health. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[0]);
+            }
+           
+            // ether check
+            if (itemValues[0] == 0 && itemValues[1] != 0 && itemValues[2] == 0 && itemValues[3] == 0)
+            {
+                s1 = string.Format("{0} has used {1} on {2} for + {3} mana. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[1]);
+            }
+            
+            // elixir check
+            if (itemValues[0] != 0 && itemValues[1] != 0 && itemValues[2] == 0 && itemValues[3] == 0)
+            {                
+                s1 = string.Format("{0} has used {1} on {2} for + {3} health and + {4} mana. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[0], itemValues[1]);                
+            }
+            
+            // red runestone check
+            if (itemValues[0] == 0 && itemValues[1] == 0 && itemValues[2] != 0 && itemValues[3] == 0)
+            {
+                s1 = string.Format("{0} has used {1} on {2} for + {3} strength. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[2]);
+            }
+            
+            // blue runestone check
+            if (itemValues[0] == 0 && itemValues[1] == 0 && itemValues[2] == 0 && itemValues[3] != 0)
+            {
+                s1 = string.Format("{0} has used {1} on {2} for + {3} intellect. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[3]);
+            }            
+
+            // weapon check
+            s2 = string.Format("{0} has attacked {1} with {2} for - {3} health. \n", info.Name, info.AttackTarget.Info.Name, info.ActiveWeapon.Name, weaponValue);           
+            
+            // spell damage check
+            if (spellValues[0] != 0 && spellValues[1] == 0)
+            {
+                s3 = string.Format("{0} has cast {1} on {2} for - {3} health. \n", info.Name, info.ActiveSpell.Name, info.SpellTarget.Info.Name, spellValues[0]);
+            }
+
+            // spell healing check
+            if (spellValues[0] == 0 && spellValues[1] != 0)
+            {
+                s3 = string.Format("{0} has cast {1} on {2} for + {3} health. \n", info.Name, info.ActiveSpell.Name, info.SpellTarget.Info.Name, spellValues[1]);
+            }           
+
+            string s4 = string.Format("==================== Action Results ====================\n\n{0}\n{1}\n{2}\n", s1, s2, s3);
+            
+            instance.CombatLog = s4;     
         }
 
         private DataManager m_dataManager;
@@ -70,6 +122,7 @@ namespace WinForms_Combat_Assessment
             DataManager.MainFSM.AddState(new DiceRollState(4));
             DataManager.MainFSM.AddState(new CombatPhaseState(5));
             DataManager.MainFSM.AddState(new GameOverState(6));
+            DataManager.MainFSM.AddState(new LoadoutOptionsInfoState(7));
 
             DataManager.MainFSM.SetState(0);
         }

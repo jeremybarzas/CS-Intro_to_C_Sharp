@@ -61,6 +61,7 @@
             this.Target_Selector_Label3 = new System.Windows.Forms.Label();
             this.Item_Selector_Label = new System.Windows.Forms.Label();
             this.Spell_Selector_Label = new System.Windows.Forms.Label();
+            this.To_Loadout_Options_Info = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponListBindingSource)).BeginInit();
@@ -95,6 +96,7 @@
             // 
             // Attack_Selector
             // 
+            this.Attack_Selector.DropDownWidth = 150;
             this.Attack_Selector.FormattingEnabled = true;
             this.Attack_Selector.Location = new System.Drawing.Point(59, 132);
             this.Attack_Selector.Name = "Attack_Selector";
@@ -123,6 +125,7 @@
             // 
             // Item_Selector
             // 
+            this.Item_Selector.DropDownWidth = 150;
             this.Item_Selector.FormattingEnabled = true;
             this.Item_Selector.Location = new System.Drawing.Point(227, 132);
             this.Item_Selector.Name = "Item_Selector";
@@ -137,6 +140,7 @@
             // 
             // Spell_Selector
             // 
+            this.Spell_Selector.DropDownWidth = 150;
             this.Spell_Selector.FormattingEnabled = true;
             this.Spell_Selector.Location = new System.Drawing.Point(396, 132);
             this.Spell_Selector.Name = "Spell_Selector";
@@ -181,6 +185,7 @@
             // 
             // Spell_Target_Selector
             // 
+            this.Spell_Target_Selector.DropDownWidth = 150;
             this.Spell_Target_Selector.FormattingEnabled = true;
             this.Spell_Target_Selector.Location = new System.Drawing.Point(396, 197);
             this.Spell_Target_Selector.Name = "Spell_Target_Selector";
@@ -195,6 +200,7 @@
             // 
             // Item_Target_Selector
             // 
+            this.Item_Target_Selector.DropDownWidth = 150;
             this.Item_Target_Selector.FormattingEnabled = true;
             this.Item_Target_Selector.Location = new System.Drawing.Point(227, 197);
             this.Item_Target_Selector.Name = "Item_Target_Selector";
@@ -209,6 +215,7 @@
             // 
             // Attack_Target_Selector
             // 
+            this.Attack_Target_Selector.DropDownWidth = 150;
             this.Attack_Target_Selector.FormattingEnabled = true;
             this.Attack_Target_Selector.Location = new System.Drawing.Point(59, 197);
             this.Attack_Target_Selector.Name = "Attack_Target_Selector";
@@ -332,11 +339,22 @@
             this.Spell_Selector_Label.TabIndex = 22;
             this.Spell_Selector_Label.Text = "Spell Selector";
             // 
-            // Combat
+            // To_Loadout_Options_Info
+            // 
+            this.To_Loadout_Options_Info.Location = new System.Drawing.Point(12, 12);
+            this.To_Loadout_Options_Info.Name = "To_Loadout_Options_Info";
+            this.To_Loadout_Options_Info.Size = new System.Drawing.Size(75, 23);
+            this.To_Loadout_Options_Info.TabIndex = 23;
+            this.To_Loadout_Options_Info.Text = "Loadout Info";
+            this.To_Loadout_Options_Info.UseVisualStyleBackColor = true;
+            this.To_Loadout_Options_Info.Click += new System.EventHandler(this.To_Loadout_Options_Info_Click);
+            // 
+            // CombatPhase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.To_Loadout_Options_Info);
             this.Controls.Add(this.Spell_Selector_Label);
             this.Controls.Add(this.Item_Selector_Label);
             this.Controls.Add(this.Target_Selector_Label3);
@@ -359,7 +377,7 @@
             this.Controls.Add(this.Attack_Selector);
             this.Controls.Add(this.Current_Player_Name_Label);
             this.Controls.Add(this.Combat_Phase_Label);
-            this.Name = "Combat";
+            this.Name = "CombatPhase";
             this.Text = "CombatPhase";
             this.Load += new System.EventHandler(this.Combat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gameRosterBindingSource4)).EndInit();
@@ -411,5 +429,6 @@
         private System.Windows.Forms.Label Target_Selector_Label3;
         private System.Windows.Forms.Label Item_Selector_Label;
         private System.Windows.Forms.Label Spell_Selector_Label;
+        private System.Windows.Forms.Button To_Loadout_Options_Info;
     }
 }

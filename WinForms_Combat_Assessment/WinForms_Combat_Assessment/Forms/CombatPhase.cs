@@ -108,26 +108,50 @@ namespace WinForms_Combat_Assessment
         }
 
         private void FillCombatText()
-        {            
-            bool[] tmpRoster = new bool[AppManager.Instance.DataManager.GameRoster.Count];
+        {
+            var info = AppManager.Instance.DataManager.CurrentPlayer.Info;
+  
+            bool[] tmpRosterBools = new bool[AppManager.Instance.DataManager.GameRoster.Count];
 
             int i = 0;
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {                
-                tmpRoster[i] = character.Info.Alive;
+                tmpRosterBools[i] = character.Info.Alive;
                 i++;
             }
 
             AppManager.DoActions();
 
             Combat_Textbox.Text = AppManager.Instance.CombatLog;
+            Combat_Textbox.Text += "==================== Affected Players Health ====================\n\n";
+
+            if (info.ItemTarget == info.AttackTarget && info.ItemTarget == info.SpellTarget)
+            {
+                Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
+            }
+
+            else if (info.AttackTarget == info.ItemTarget && info.AttackTarget == info.SpellTarget)
+            {
+                Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
+            }
+
+            else if (info.SpellTarget == info.ItemTarget && info.SpellTarget == info.AttackTarget)
+            {
+                Combat_Textbox.Text += info.SpellTarget.Info.Name + " now has " + info.SpellTarget.Info.Health + " health. \n";
+            }
+            else
+            {
+                Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.SpellTarget.Info.Name + " now has " + info.SpellTarget.Info.Health + " health. \n";
+            }           
 
             i = 0;
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {
-                if(character.Info.Alive != tmpRoster[i])
+                if (character.Info.Alive != tmpRosterBools[i])
                 {
-                    Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
+                    Combat_Textbox.Text += "\n" + character.Info.Name + " has died.\n\n";
                     AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer)].Info.Kills += 1;
                 }                
                 i++;
@@ -135,37 +159,11 @@ namespace WinForms_Combat_Assessment
 
             // updates health and mana
             Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
-            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();
-
-            //Character[] tmpRoster = new Character[AppManager.Instance.DataManager.GameRoster.Count];
-            //AppManager.Instance.DataManager.GameRoster.CopyTo(tmpRoster);
-
-            //AppManager.DoActions();
-
-            //Combat_Textbox.Text = AppManager.Instance.CombatLog;
-
-            //foreach (Character character in AppManager.Instance.DataManager.GameRoster)
-            //{
-            //    int i = AppManager.Instance.DataManager.GameRoster.IndexOf(character);
-
-            //    if (character.Info.Alive != tmpRoster[i].Info.Alive)
-            //    {
-            //        Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
-            //    }
-
-            //    int a = tmpRoster.IndexOf(character) + 1;
-            //    if (character.Info.Alive == false && tmpRoster[tmpRoster.IndexOf(character) + 1].Info.Alive == true)
-            //    {
-            //        Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
-            //    }
-            //}
+            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();                       
         }
 
         private void ConfirmClick()
         {
-            Confirm.Enabled = false;
-            End_Turn.Enabled = true;
-
             Attack_Selector.Enabled = false;
             Item_Selector.Enabled = false;
             Spell_Selector.Enabled = false;
@@ -173,6 +171,9 @@ namespace WinForms_Combat_Assessment
             Attack_Target_Selector.Enabled = false;
             Item_Target_Selector.Enabled = false;
             Spell_Target_Selector.Enabled = false;
+
+            Confirm.Enabled = false;
+            End_Turn.Enabled = true;
 
             ConfirmSelections();
             FillCombatText();
@@ -182,9 +183,9 @@ namespace WinForms_Combat_Assessment
         {
             Character temp = AppManager.Instance.DataManager.CurrentPlayer;
 
-            
-
             AppManager.Instance.DataManager.SetRemainingPlayers();
+
+            AppManager.Instance.DataManager.TurnCount += 1;
 
             if (AppManager.Instance.DataManager.RemainingPlayers == 1)
             {
@@ -202,13 +203,12 @@ namespace WinForms_Combat_Assessment
             }
             else
             {
-                if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1].Info.Alive == true &&
-                   AppManager.Instance.DataManager.CurrentPlayer != AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.Count - 1])
+                if (AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.IndexOf(temp) + 1].Info.Alive == true &&
+                  temp != AppManager.Instance.DataManager.GameRoster[AppManager.Instance.DataManager.GameRoster.Count - 1])
                 {
-                    AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);
+                    AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(temp) + 1);
                 }
 
-                AppManager.Instance.DataManager.TurnCount += 1;
                 Program.ChangeForm(this, 5);
             }
         }
@@ -225,7 +225,7 @@ namespace WinForms_Combat_Assessment
 
         private void To_Main_Menu_Click(object sender, EventArgs e)
         {
-            Program.ChangeForm(0);
+            Program.ChangeForm(this, 0);
         }
 
         private void Confirm_Click(object sender, EventArgs e)
@@ -236,6 +236,11 @@ namespace WinForms_Combat_Assessment
         private void End_Turn_Click(object sender, EventArgs e)
         {
             EndTurnClick();
+        }
+
+        private void To_Loadout_Options_Info_Click(object sender, EventArgs e)
+        {
+            Program.ChangeForm(this, 7);
         }
     }
 }

@@ -28,6 +28,16 @@ namespace WinForms_Combat_Assessment
             Damage = dmg;
             Healing = heal;
             ManaCost = mana;
+            SpellInfo += Name + ":";
+           
+            if (Damage != 0)
+                SpellInfo += " - " + Damage + " Health";
+
+            if (Healing != 0)
+                SpellInfo += " + " + Healing + " Health";
+
+            if (ManaCost != 0)
+                SpellInfo += ", " + ManaCost + " Mana Cost ";
         }      
     }
 }

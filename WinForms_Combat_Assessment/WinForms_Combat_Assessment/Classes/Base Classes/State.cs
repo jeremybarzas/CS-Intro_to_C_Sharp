@@ -8,18 +8,17 @@ namespace WinForms_Combat_Assessment
     [XmlInclude(typeof(ScoreboardState))]
     [XmlInclude(typeof(DiceRollState))]
     [XmlInclude(typeof(CombatPhaseState))]
+    [XmlInclude(typeof(GameOverState))]
+    [XmlInclude(typeof(LoadoutOptionsInfoState))]
     public abstract class State
     {       
         public State() { }
 
-        public State(string n, int id)
+        public State(int id)
         {
-            StateName = n;
             StateID = id;
         }
 
         public int StateID { get; set; }
-
-        public string StateName { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace WinForms_Combat_Assessment
     {
         public string Name;
         public int Damage;
+        public string WeaponInfo;
         public abstract int Strike(Character target, int strModifer);  
     }
 }

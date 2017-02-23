@@ -59,6 +59,7 @@
     <Compile Include="Classes\Spells\MagicMissle.cs" />
     <Compile Include="Classes\Spells\Regeneration.cs" />
     <Compile Include="Classes\States\GameOverState.cs" />
+    <Compile Include="Classes\States\LoadoutOptionsInfoState.cs" />
     <Compile Include="Classes\Weapons\Axe.cs" />
     <Compile Include="Classes\Weapons\Mace.cs" />
     <Compile Include="Forms\CharacterSheet.cs">
@@ -98,6 +99,12 @@
     <Compile Include="Classes\States\GameRulesState.cs" />
     <Compile Include="Classes\App Management\AppManager.cs" />
     <Compile Include="Classes\Base Classes\Character.cs" />
+    <Compile Include="Forms\LoadoutOptionsInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadoutOptionsInfo.Designer.cs">
+      <DependentUpon>LoadoutOptionsInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ITargetable.cs" />
     <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
@@ -133,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameRules.resx">
       <DependentUpon>GameRules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoadoutOptionsInfo.resx">
+      <DependentUpon>LoadoutOptionsInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

@@ -33,6 +33,7 @@
             this.Exit_Game = new System.Windows.Forms.Button();
             this.Form_Name = new System.Windows.Forms.Label();
             this.Game_Title = new System.Windows.Forms.Label();
+            this.Debug_Mode = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // New_Game
@@ -74,7 +75,6 @@
             this.Form_Name.Size = new System.Drawing.Size(174, 37);
             this.Form_Name.TabIndex = 4;
             this.Form_Name.Text = "Main Menu";
-            this.Form_Name.Click += new System.EventHandler(this.Form_Name_Click);
             // 
             // Game_Title
             // 
@@ -85,13 +85,23 @@
             this.Game_Title.Size = new System.Drawing.Size(311, 55);
             this.Game_Title.TabIndex = 5;
             this.Game_Title.Text = "TBFFARPGA";
-            this.Game_Title.Click += new System.EventHandler(this.Game_Title_Click);
+            // 
+            // Debug_Mode
+            // 
+            this.Debug_Mode.Location = new System.Drawing.Point(12, 427);
+            this.Debug_Mode.Name = "Debug_Mode";
+            this.Debug_Mode.Size = new System.Drawing.Size(75, 23);
+            this.Debug_Mode.TabIndex = 6;
+            this.Debug_Mode.Text = "Debug Mode";
+            this.Debug_Mode.UseVisualStyleBackColor = true;
+            this.Debug_Mode.Click += new System.EventHandler(this.Debug_Mode_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.Debug_Mode);
             this.Controls.Add(this.Game_Title);
             this.Controls.Add(this.Form_Name);
             this.Controls.Add(this.Exit_Game);
@@ -102,7 +112,6 @@
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -112,5 +121,6 @@
         private System.Windows.Forms.Button Exit_Game;
         private System.Windows.Forms.Label Form_Name;
         private System.Windows.Forms.Label Game_Title;
+        private System.Windows.Forms.Button Debug_Mode;
     }
 }

@@ -15,6 +15,7 @@ namespace WinForms_Combat_Assessment
         public int Damage;
         public int Healing;
         public int ManaCost;
+        public string SpellInfo;
         public abstract List<int> Cast(Character target, int intModifer);
     }
 }

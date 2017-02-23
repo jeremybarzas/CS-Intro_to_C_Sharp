@@ -33,14 +33,17 @@ namespace WinForms_Combat_Assessment
             Application.Exit();
         }
 
-        private void Game_Title_Click(object sender, EventArgs e)
+        private void Debug_Mode_Click(object sender, EventArgs e)
         {
+            AppManager.Instance.Initializer.Invoke();
 
-        }
+            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 1", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
+            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 2", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
+            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 3", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
+            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 4", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
+            AppManager.Instance.DataManager.AddToRoster(new Character("Test Player 5", new Mace("PunkBuster VAC Ban Hammer", 9001), new Sword("Sword", 25), new MagicMissle("Magic Missle", 25, 0, 25), new Regeneration("Regeneration", 0, 25, 25), new Potion("Potion", 50, 0), new Potion("Ether", 0, 50), new RuneStone("Blue Runestone", 0, 1), new RuneStone("Red Runestone", 1, 0)));
 
-        private void Form_Name_Click(object sender, EventArgs e)
-        {
-
+            Program.ChangeForm(this, 3);
         }
     }
 }

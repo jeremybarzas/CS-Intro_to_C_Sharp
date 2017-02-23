@@ -114,23 +114,6 @@ namespace WinForms_Combat_Assessment
             Info.TurnOrder = 0;
         }
 
-        public Character(Character c)
-        {
-            this.m_info = c.m_info;
-
-            //m_info = c.m_info;
-
-            //m_info.Name = c.m_info.Name;
-            //m_info.Health = c.m_info.Health;
-            //m_info.Mana = c.m_info.Mana;
-            //m_info.Strength = c.m_info.Strength;
-            //m_info.Intellect = c.m_info.Intellect;
-            //m_info.Alive = c.m_info.Alive;
-            //m_info.Kills = c.m_info.Kills;
-            //m_info.Score = c.m_info.Score;
-            //m_info.TurnOrder = c.m_info.TurnOrder;
-        }
-
         public Character(string n, Weapon w1, Weapon w2, Spell s1, Spell s2, Item i1, Item i2, Item i3, Item i4)
         {            
             m_info = new Stats();

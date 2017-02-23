@@ -8,13 +8,14 @@
             target.Info.Health -= dmg;
             return dmg;
         }
-
+        
         public Sword() { }
 
         public Sword(string n, int dmg)
         {
             Name = n;
             Damage = dmg;
+            WeaponInfo += Name + ": - " + Damage + " Health";
         }
     }
 }

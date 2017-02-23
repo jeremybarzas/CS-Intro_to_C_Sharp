@@ -29,6 +29,13 @@ namespace WinForms_Combat_Assessment
             Name = n;
             m_strBuff = s;
             m_intBuff = i;
+            ItemInfo += Name + ":";
+
+            if (m_strBuff != 0)
+                ItemInfo += " + " + m_strBuff + " Strength ";
+
+            if (m_intBuff != 0)
+                ItemInfo += " + " + m_intBuff + " Intellect";
         }       
     }
 }
