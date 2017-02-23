@@ -6,8 +6,10 @@ namespace WinForms_Combat_Assessment
 {
     public partial class Combat : Form
     {
-        private void FillComboBoxes()
+        private void CombatFormLoad()
         {
+            End_Turn.Enabled = false;
+
             // attack spell item select
             foreach (Weapon weapon in AppManager.Instance.DataManager.CurrentPlayer.Info.Weapons)
                 Attack_Selector.Items.Add(weapon.Name);
@@ -36,7 +38,15 @@ namespace WinForms_Combat_Assessment
                 var c = control as ComboBox;
                 if(c != null)               
                     c.SelectedIndex = 0;
-            }         
+            }
+
+            // updates combat round number
+            Combat_Phase_Label.Text = "Combat Round " + AppManager.Instance.DataManager.RoundNumber;
+            Current_Player_Name_Label.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Name + "'s Turn";
+            
+            // updates health and mana
+            Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
+            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();
         }
 
         private void ConfirmSelections()
@@ -94,54 +104,67 @@ namespace WinForms_Combat_Assessment
                     AppManager.Instance.DataManager.CurrentPlayer.Info.SpellTarget = character;
                     break;
                 }
-            }            
+            }           
         }
 
         private void FillCombatText()
-        {
-            DataSerializer<List<Character>>.Serialize("GameRoster", AppManager.Instance.DataManager.GameRoster);
+        {            
+            bool[] tmpRoster = new bool[AppManager.Instance.DataManager.GameRoster.Count];
 
-            List<Character> tmpRoster = DataSerializer<List<Character>>.Deserialize("GameRoster");
-            
-            AppManager.DoActions();       
+            int i = 0;
+            foreach (Character character in AppManager.Instance.DataManager.GameRoster)
+            {                
+                tmpRoster[i] = character.Info.Alive;
+                i++;
+            }
+
+            AppManager.DoActions();
 
             Combat_Textbox.Text = AppManager.Instance.CombatLog;
 
+            i = 0;
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {
-                int a = tmpRoster.IndexOf(character) + 1;
-                if (character.Info.Alive == false && tmpRoster[tmpRoster.IndexOf(character) + 1 ].Info.Alive == true)
+                if(character.Info.Alive != tmpRoster[i])
                 {
                     Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
                 }                
-            }            
-        }
+                i++;
+            }
 
-        public Combat()
-        {
-            InitializeComponent();
-        }
-
-        private void Combat_Load(object sender, EventArgs e)
-        {
-            End_Turn.Enabled = false;
-
-            Combat_Phase_Label.Text = "Combat Round " + AppManager.Instance.DataManager.RoundNumber;                                
-            Current_Player_Name_Label.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Name + "'s Turn";
-
+            // updates health and mana
             Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
             Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();
 
-            FillComboBoxes();
+            //Character[] tmpRoster = new Character[AppManager.Instance.DataManager.GameRoster.Count];
+            //AppManager.Instance.DataManager.GameRoster.CopyTo(tmpRoster);
+
+            //AppManager.DoActions();
+
+            //Combat_Textbox.Text = AppManager.Instance.CombatLog;
+
+            //foreach (Character character in AppManager.Instance.DataManager.GameRoster)
+            //{
+            //    int i = AppManager.Instance.DataManager.GameRoster.IndexOf(character);
+
+            //    if (character.Info.Alive != tmpRoster[i].Info.Alive)
+            //    {
+            //        Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
+            //    }
+
+            //    int a = tmpRoster.IndexOf(character) + 1;
+            //    if (character.Info.Alive == false && tmpRoster[tmpRoster.IndexOf(character) + 1].Info.Alive == true)
+            //    {
+            //        Combat_Textbox.Text += character.Info.Name + " has died.\n\n";
+            //    }
+            //}
         }
 
-        private void To_Main_Menu_Click(object sender, EventArgs e)
+        private void ConfirmClick()
         {
-            Program.ChangeForm(0);
-        }
+            Confirm.Enabled = false;
+            End_Turn.Enabled = true;
 
-        private void Confirm_Click(object sender, EventArgs e)
-        {
             Attack_Selector.Enabled = false;
             Item_Selector.Enabled = false;
             Spell_Selector.Enabled = false;
@@ -150,18 +173,11 @@ namespace WinForms_Combat_Assessment
             Item_Target_Selector.Enabled = false;
             Spell_Target_Selector.Enabled = false;
 
-            Confirm.Enabled = false;
-            End_Turn.Enabled = true;
-
             ConfirmSelections();
-            
             FillCombatText();
-
-            Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
-            Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();            
         }
 
-        private void End_Turn_Click(object sender, EventArgs e)
+        private void EndTurnClick()
         {
             Character temp = AppManager.Instance.DataManager.CurrentPlayer;
 
@@ -190,9 +206,34 @@ namespace WinForms_Combat_Assessment
                 {
                     AppManager.Instance.DataManager.SetCurrentPlayer(AppManager.Instance.DataManager.GameRoster.IndexOf(AppManager.Instance.DataManager.CurrentPlayer) + 1);
                 }
-                
+
                 Program.ChangeForm(this, 5);
             }
+        }
+
+        public Combat()
+        {
+            InitializeComponent();
+        }
+
+        private void Combat_Load(object sender, EventArgs e)
+        {
+            CombatFormLoad();
+        }
+
+        private void To_Main_Menu_Click(object sender, EventArgs e)
+        {
+            Program.ChangeForm(0);
+        }
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            ConfirmClick();
+        }
+
+        private void End_Turn_Click(object sender, EventArgs e)
+        {
+            EndTurnClick();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WinForms_Combat_Assessment
 {
@@ -49,7 +50,7 @@ namespace WinForms_Combat_Assessment
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {   
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(ChangeForm(0));
