@@ -22,44 +22,46 @@ namespace WinForms_Combat_Assessment
             // item action
             List<int> itemValues = instance.DataManager.CurrentPlayer.DoItemAction(instance.DataManager.CurrentPlayer.Info.ItemTarget);
 
-            // weapon action
-            int weaponValue = instance.DataManager.CurrentPlayer.DoWeaponAction(instance.DataManager.CurrentPlayer.Info.AttackTarget);
-
-            // spell action
-            List<int> spellValues = instance.DataManager.CurrentPlayer.DoSpellAction(instance.DataManager.CurrentPlayer.Info.SpellTarget);
-
             // potion check
             if (itemValues[0] != 0 && itemValues[1] == 0 && itemValues[2] == 0 && itemValues[3] == 0)
             {
                 s1 = string.Format("{0} has used {1} on {2} for + {3} health. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[0]);
             }
-           
+
             // ether check
             if (itemValues[0] == 0 && itemValues[1] != 0 && itemValues[2] == 0 && itemValues[3] == 0)
             {
                 s1 = string.Format("{0} has used {1} on {2} for + {3} mana. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[1]);
             }
-            
+
             // elixir check
             if (itemValues[0] != 0 && itemValues[1] != 0 && itemValues[2] == 0 && itemValues[3] == 0)
-            {                
-                s1 = string.Format("{0} has used {1} on {2} for + {3} health and + {4} mana. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[0], itemValues[1]);                
+            {
+                s1 = string.Format("{0} has used {1} on {2} for + {3} health and + {4} mana. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[0], itemValues[1]);
             }
-            
+
             // red runestone check
             if (itemValues[0] == 0 && itemValues[1] == 0 && itemValues[2] != 0 && itemValues[3] == 0)
             {
                 s1 = string.Format("{0} has used {1} on {2} for + {3} strength. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[2]);
             }
-            
+
             // blue runestone check
             if (itemValues[0] == 0 && itemValues[1] == 0 && itemValues[2] == 0 && itemValues[3] != 0)
             {
                 s1 = string.Format("{0} has used {1} on {2} for + {3} intellect. \n", info.Name, info.ActiveItem.Name, info.ItemTarget.Info.Name, itemValues[3]);
-            }            
+            }
+
+            /////
+            // weapon action
+            int weaponValue = instance.DataManager.CurrentPlayer.DoWeaponAction(instance.DataManager.CurrentPlayer.Info.AttackTarget);
 
             // weapon check
-            s2 = string.Format("{0} has attacked {1} with {2} for - {3} health. \n", info.Name, info.AttackTarget.Info.Name, info.ActiveWeapon.Name, weaponValue);           
+            s2 = string.Format("{0} has attacked {1} with {2} for - {3} health. \n", info.Name, info.AttackTarget.Info.Name, info.ActiveWeapon.Name, weaponValue);
+
+            /////
+            // spell action
+            List<int> spellValues = instance.DataManager.CurrentPlayer.DoSpellAction(instance.DataManager.CurrentPlayer.Info.SpellTarget);
             
             // spell damage check
             if (spellValues[0] != 0 && spellValues[1] == 0)

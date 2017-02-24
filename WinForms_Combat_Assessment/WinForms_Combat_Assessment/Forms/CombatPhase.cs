@@ -31,7 +31,7 @@ namespace WinForms_Combat_Assessment
 
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
                 if (character.Info.Alive == true)
-                    Item_Target_Selector.Items.Add(character.Info.Name);
+                    Item_Target_Selector.Items.Add(character.Info.Name);           
 
             foreach (var control in Controls)
             {
@@ -77,7 +77,7 @@ namespace WinForms_Combat_Assessment
                     AppManager.Instance.DataManager.CurrentPlayer.Info.ActiveSpell = spell;
                     break;
                 }
-            }
+            }              
 
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {
@@ -125,27 +125,55 @@ namespace WinForms_Combat_Assessment
             Combat_Textbox.Text = AppManager.Instance.CombatLog;
             Combat_Textbox.Text += "==================== Affected Players Health ====================\n\n";
 
-            if (info.ItemTarget == info.AttackTarget && info.ItemTarget == info.SpellTarget)
+            bool targetCheck = false;
+
+            // all targets are the same check
+            if (info.SpellTarget == info.AttackTarget && info.ItemTarget == info.SpellTarget)
             {
                 Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
             }
-
-            else if (info.AttackTarget == info.ItemTarget && info.AttackTarget == info.SpellTarget)
+            // item check
+            else if (info.ItemTarget == info.AttackTarget)
+            {
+                Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.SpellTarget.Info.Name + " now has " + info.SpellTarget.Info.Health + " health. \n";
+                targetCheck = true;
+            }
+            else if (info.ItemTarget == info.SpellTarget)
+            {
+                Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
+                targetCheck = true;
+            }
+            // attack check
+            else if (info.AttackTarget == info.ItemTarget)
             {
                 Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.SpellTarget.Info.Name + " now has " + info.SpellTarget.Info.Health + " health. \n";
+                targetCheck = true;
             }
-
-            else if (info.SpellTarget == info.ItemTarget && info.SpellTarget == info.AttackTarget)
+            else if (info.AttackTarget == info.SpellTarget)
+            {
+                Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
+                targetCheck = true;
+            }
+            // spell check
+            else if (info.SpellTarget == info.ItemTarget)
             {
                 Combat_Textbox.Text += info.SpellTarget.Info.Name + " now has " + info.SpellTarget.Info.Health + " health. \n";
+                Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
+                targetCheck = true;
             }
-            else
+            // no targets are the same check
+            else if (targetCheck = true)
             {
                 Combat_Textbox.Text += info.ItemTarget.Info.Name + " now has " + info.ItemTarget.Info.Health + " health. \n";
                 Combat_Textbox.Text += info.AttackTarget.Info.Name + " now has " + info.AttackTarget.Info.Health + " health. \n";
                 Combat_Textbox.Text += info.SpellTarget.Info.Name + " now has " + info.SpellTarget.Info.Health + " health. \n";
-            }           
-
+            }
+            
+            // alive check
             i = 0;
             foreach (Character character in AppManager.Instance.DataManager.GameRoster)
             {
@@ -157,7 +185,7 @@ namespace WinForms_Combat_Assessment
                 i++;
             }
 
-            // updates health and mana
+            // updates health and mana text
             Player_Health_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Health.ToString();
             Player_Mana_Text.Text = AppManager.Instance.DataManager.CurrentPlayer.Info.Mana.ToString();                       
         }
